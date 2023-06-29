@@ -3,6 +3,7 @@ import React from 'react';
 import PrioritiesTaxValuesBox from '../components/PrioritiesTax/PrioritiesTax';
 import Main from 'src/components/templates/Main';
 import BlocksInfo from 'src/components/BlocksInfo/BlocksInfo';
+import TransactionsInfo from 'src/components/Transactions/TransactionsInfo';
 
 
 export default function Home() {
@@ -13,6 +14,8 @@ export default function Home() {
       <PrioritiesTaxValuesBox />
 
       <BlocksInfo />
+
+      <TransactionsInfo />
     </Main>
   );
 }

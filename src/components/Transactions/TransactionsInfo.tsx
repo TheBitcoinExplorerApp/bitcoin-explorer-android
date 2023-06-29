@@ -4,8 +4,8 @@ import Transaction from './component/Transaction';
 
 export default function TransactionsInfo() {
   return (
-    <View style={styles.container} >
-      <Text style={styles.title} >Transações</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Transações</Text>
 
       <Transaction
         transactions={[
@@ -15,7 +15,27 @@ export default function TransactionsInfo() {
             tax: 10,
           },
           {
-            transactionId: '1234',
+            transactionId: '321',
+            value: 100,
+            tax: 10,
+          },
+          {
+            transactionId: '111',
+            value: 100,
+            tax: 10,
+          },
+          {
+            transactionId: '222',
+            value: 100,
+            tax: 10,
+          },
+          {
+            transactionId: '444',
+            value: 100,
+            tax: 10,
+          },
+          {
+            transactionId: '555',
             value: 100,
             tax: 10,
           },
@@ -26,12 +46,12 @@ export default function TransactionsInfo() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        gap: 15,
-    },
-    title: {
-        fontSize: 15,
-        fontWeight: '600',
-        color: 'white'
-    }
-})
+  container: {
+    gap: 15,
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: 'white',
+  },
+});

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Title from '../Title/Title';
 import Search from '../Search/Search';
 
@@ -10,19 +10,23 @@ export default function Main(props: MainProps) {
   const { children } = props;
 
   return (
-    <View style={styles.container}>
-      <Title />
+    <ScrollView style={styles.scrollContainer}>
+      <View style={styles.container} >
+        <Title />
 
-      <Search />
+        <Search />
 
-      {children}
-    </View>
+        {children}
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     width: '100%',
-    gap: 18,
   },
+  container: {
+    gap: 18,
+  }
 });

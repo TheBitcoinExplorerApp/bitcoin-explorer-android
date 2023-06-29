@@ -15,8 +15,8 @@ export default function SmallBoxInfo(props: SmallBoxInfoProps) {
 
   return (
     <View style={styles.container}>
-      {boxesInfos.map((infos) => (
-        <View style={styles.boxContainer}>
+      {boxesInfos.map((infos, idx) => (
+        <View style={styles.boxContainer} key={idx}>
           <Text style={styles.text}>{infos.title} sat/vB</Text>
           <Text style={styles.text}>R$ {infos.value}</Text>
         </View>

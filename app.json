@@ -1,15 +1,17 @@
 {
   "expo": {
-    "name": "bitcoin-explorer-android",
+    "name": "Bitcoin Block Explorer",
     "slug": "bitcoin-explorer-android",
+    "description": "A simple app, but beautiful, to explore the Bitcoin blockchain.",
+    "privacy": "hidden",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon.jpg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#111229"
     },
     "experiments": {
       "tsconfigPaths": true

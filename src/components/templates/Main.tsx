@@ -10,7 +10,7 @@ export default function Main(props: MainProps) {
   const { children } = props;
 
   return (
-    <ScrollView style={styles.scrollContainer}>
+    <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
       <View style={styles.container} >
         <Title />
 

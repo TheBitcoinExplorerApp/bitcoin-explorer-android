@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 
-type SmallBox = {
+export type SmallBox = {
   title: string;
   value: string;
 };

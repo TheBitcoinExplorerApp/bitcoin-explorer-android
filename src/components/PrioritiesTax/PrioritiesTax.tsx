@@ -17,15 +17,13 @@ export default function PrioritiesTax() {
   useEffect(() => {
     const getTaxesData = async () => {
       const data = await getTaxes();
-      const { minimumFee, hourFee, fastestFee } = data;
+      const { halfHourFee, hourFee, fastestFee } = data;
 
       const taxesData: SmallBox[] = [
-        { title: `${minimumFee}`, value: '0' },
+        { title: `${halfHourFee}`, value: '0' },
         { title: `${hourFee}`, value: '0' },
         { title: `${fastestFee}`, value: '0' },
       ];
-
-      console.log(data);
 
       setTaxes(taxesData);
     };

@@ -1,17 +1,6 @@
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import React from 'react';
-
-type Block = {
-  blockHeight: number;
-  satPerVbyte: number;
-  size: number;
-  transactions: number;
-  timeAgo: string;
-};
-
-type BlockProps = {
-  blocks: Block[];
-};
+import { BlockProps } from './type';
 
 export default function Block(props: BlockProps) {
   const { blocks } = props;
@@ -37,7 +26,7 @@ export default function Block(props: BlockProps) {
             <Text style={styles.text}>{item.satPerVbyte} sat/vB</Text>
             <Text style={styles.text}>{item.size} MB</Text>
             <Text style={styles.text}>{item.transactions} transações</Text>
-            <Text style={styles.text}>{item.timeAgo} minutos atrás</Text>
+            <Text style={styles.text}>{item.timeAgo}</Text>
           </View>
         );
       }}
@@ -48,10 +37,11 @@ export default function Block(props: BlockProps) {
 const styles = StyleSheet.create({
   blockContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     width: 160,
     height: 110,
     backgroundColor: '#1d2133',
-    borderRadius: 7
+    borderRadius: 7,
   },
   textPrimary: {
     color: '#DF7800',

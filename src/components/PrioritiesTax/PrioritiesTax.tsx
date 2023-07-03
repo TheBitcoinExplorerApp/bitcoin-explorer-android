@@ -28,7 +28,7 @@ export default function PrioritiesTax() {
       setTaxes(taxesData);
     };
     getTaxesData();
-  });
+  }, []);
 
   return (
     <>

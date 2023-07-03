@@ -4,7 +4,7 @@ import React from 'react';
 type transaction = {
   transactionId: string;
   value: number;
-  tax: number;
+  fee: number;
 };
 
 type TransactionProps = {
@@ -21,16 +21,22 @@ export default function Transaction(props: TransactionProps) {
         <View style={styles.container}>
           <View style={styles.transactionInfoContainer}>
             <Text style={styles.transactionInfoLabel}>ID transação</Text>
-            <Text style={styles.transactionId}>{item.transactionId}</Text>
+            <Text style={styles.transactionId}>
+              {item.transactionId.slice(0, 14).concat('...')}
+            </Text>
           </View>
 
           <View style={styles.transactionInfoContainer}>
             <Text style={styles.transactionInfoLabel}>Valor</Text>
-            <Text style={styles.transactionInfoValue}>{item.value}</Text>
+            <Text style={styles.transactionInfoValue}>
+              {item.value / 100000000} BTC
+            </Text>
           </View>
           <View style={styles.transactionInfoContainer}>
             <Text style={styles.transactionInfoLabel}>Taxa</Text>
-            <Text style={styles.transactionInfoValue}>{item.tax}</Text>
+            <Text style={styles.transactionInfoValue}>
+              {item.fee.toLocaleString()} sats
+            </Text>
           </View>
         </View>
       )}
@@ -51,6 +57,7 @@ const styles = StyleSheet.create({
   },
   transactionInfoContainer: {
     alignItems: 'center',
+    gap: 8,
   },
   transactionId: {
     color: '#DF7800',

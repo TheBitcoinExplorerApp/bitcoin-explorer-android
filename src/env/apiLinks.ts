@@ -11,4 +11,5 @@ export const transactionInfo = 'https://mempool.space/api/tx/';
 
 export const addressInfo = 'https://mempool.space/api/address/';
 
-export const addressTransactions = 'https://mempool.space/api/address/bitcoin_address/txs/chain';
+export const addressTransactions =
+  'https://mempool.space/api/address/bitcoin_address/txs/chain';

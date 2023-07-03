@@ -1,45 +1,33 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Transaction from './component/Transaction';
+import { getTransactions } from 'src/api/getData';
 
 export default function TransactionsInfo() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getTransactions();
+      const formatedData = response.map((basicInfoTransaction) => {
+        return {
+          transactionId: basicInfoTransaction.txid,
+          value: basicInfoTransaction.value,
+          fee: basicInfoTransaction.fee,
+        };
+      });
+
+      setData(formatedData);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Transações</Text>
 
       <Transaction
-        transactions={[
-          {
-            transactionId: '123',
-            value: 100,
-            tax: 10,
-          },
-          {
-            transactionId: '321',
-            value: 100,
-            tax: 10,
-          },
-          {
-            transactionId: '111',
-            value: 100,
-            tax: 10,
-          },
-          {
-            transactionId: '222',
-            value: 100,
-            tax: 10,
-          },
-          {
-            transactionId: '444',
-            value: 100,
-            tax: 10,
-          },
-          {
-            transactionId: '555',
-            value: 100,
-            tax: 10,
-          },
-        ]}
+        transactions={data}
       />
     </View>
   );

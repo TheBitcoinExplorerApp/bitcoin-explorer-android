@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/icon.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#111229"
+      "backgroundColor": "#111428"
     },
     "experiments": {
       "tsconfigPaths": true

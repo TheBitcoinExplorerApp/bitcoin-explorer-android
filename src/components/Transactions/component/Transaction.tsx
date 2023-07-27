@@ -1,5 +1,6 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native';
-import React from 'react';
+import { View, Text, FlatList, StyleSheet, Pressable } from 'react-native';
+import { useState } from 'react';
+import Modal from 'src/components/Modal/Modal';
 
 type transaction = {
   transactionId: string;
@@ -13,36 +14,59 @@ type TransactionProps = {
 
 export default function Transaction(props: TransactionProps) {
   const { transactions } = props;
+  const [modal, setModal] = useState({
+    isVisible: false,
+    keyForSearch: '',
+  });
 
   return (
-    <FlatList
-      data={transactions}
-      renderItem={({ item }) => (
-        <View style={styles.container}>
-          <View style={styles.transactionInfoContainer}>
-            <Text style={styles.transactionInfoLabel}>ID transação</Text>
-            <Text style={styles.transactionId}>
-              {item.transactionId.slice(0, 14).concat('...')}
-            </Text>
-          </View>
+    <>
+      <FlatList
+        data={transactions}
+        renderItem={({ item }) => (
+          <Pressable
+            onPress={() => {
+              const newData = {
+                isVisible: true,
+                keyForSearch: item.transactionId,
+              };
+              setModal({ ...newData });
+            }}
+          >
+            <View style={styles.container}>
+              <View style={styles.transactionInfoContainer}>
+                <Text style={styles.transactionInfoLabel}>ID transação</Text>
+                <Text style={styles.transactionId}>
+                  {item.transactionId.slice(0, 14).concat('...')}
+                </Text>
+              </View>
 
-          <View style={styles.transactionInfoContainer}>
-            <Text style={styles.transactionInfoLabel}>Valor</Text>
-            <Text style={styles.transactionInfoValue}>
-              {item.value / 100000000} BTC
-            </Text>
-          </View>
-          <View style={styles.transactionInfoContainer}>
-            <Text style={styles.transactionInfoLabel}>Taxa</Text>
-            <Text style={styles.transactionInfoValue}>
-              {item.fee.toLocaleString()} sats
-            </Text>
-          </View>
-        </View>
-      )}
-      keyExtractor={(item) => item.transactionId}
-      ItemSeparatorComponent={() => <View style={{ height: 18 }} />}
-    />
+              <View style={styles.transactionInfoContainer}>
+                <Text style={styles.transactionInfoLabel}>Valor</Text>
+                <Text style={styles.transactionInfoValue}>
+                  {item.value / 100000000} BTC
+                </Text>
+              </View>
+              <View style={styles.transactionInfoContainer}>
+                <Text style={styles.transactionInfoLabel}>Taxa</Text>
+                <Text style={styles.transactionInfoValue}>
+                  {item.fee.toLocaleString()} sats
+                </Text>
+              </View>
+            </View>
+          </Pressable>
+        )}
+        keyExtractor={(item) => item.transactionId}
+        ItemSeparatorComponent={() => <View style={{ height: 18 }} />}
+      />
+
+      <Modal
+        isVisible={modal.isVisible}
+        modalType="Transaction"
+        keyForSearch={modal.keyForSearch}
+        handleModalClose={() => setModal({ isVisible: false, keyForSearch: '' })}
+      />
+    </>
   );
 }
 

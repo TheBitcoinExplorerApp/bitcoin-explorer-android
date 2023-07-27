@@ -3,3 +3,33 @@ export type BasicTransactionInfo = {
   fee: number;
   value: number;
 };
+
+type PreviousOutput = {
+  scriptpubkey_address: string;
+  value: number;
+};
+
+export type inputTransactions = {
+  prevout?: PreviousOutput;
+};
+
+export type outputTransactions = {
+  scriptpubkey_address?: string;
+  value: number;
+};
+
+export type StatusTransaction = {
+  confirmed: boolean;
+  block_height: number;
+  block_hash: string;
+  block_time: number;
+};
+
+export type TransactionsData = {
+  txid: string;
+  size: number;
+  fee: number;
+  vin: inputTransactions[];
+  vout: outputTransactions[];
+  status: StatusTransaction;
+};

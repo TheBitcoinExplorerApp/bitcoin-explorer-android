@@ -22,7 +22,10 @@ export default function AllTransactionsInTransactionModal(
             const { scriptpubkey_address, value } = prevout;
 
             return (
-              <>
+              <View
+                style={styles.transactionContentContainer}
+                key={scriptpubkey_address}
+              >
                 <View>
                   <View>
                     <Text style={styles.transactionAddress}>
@@ -34,8 +37,7 @@ export default function AllTransactionsInTransactionModal(
                   </View>
                   <View>
                     <Text style={styles.text}>
-                      {(prevout?.value / 100000000)
-                        .toString()}
+                      {(prevout?.value / 100000000).toString()}
                       BTC
                     </Text>
                   </View>
@@ -43,12 +45,12 @@ export default function AllTransactionsInTransactionModal(
 
                 <Text style={styles.destinationTransaction}>{">"}</Text>
 
-                <View style={styles.outputTransactionsContainer} >
+                <View style={styles.outputTransactionsContainer}>
                   {outputTransactions.map((outputTransaction) => {
                     const { value, scriptpubkey_address } = outputTransaction;
 
                     return (
-                      <View>
+                      <View key={scriptpubkey_address}>
                         <Text style={styles.transactionAddress}>
                           {scriptpubkey_address
                             .toString()
@@ -60,7 +62,7 @@ export default function AllTransactionsInTransactionModal(
                     );
                   })}
                 </View>
-              </>
+              </View>
             );
           })}
         </View>
@@ -80,12 +82,15 @@ const styles = StyleSheet.create({
   },
   transactionContainer: {
     backgroundColor: "#1d2133",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
     borderRadius: 8,
     paddingVertical: 5,
     paddingHorizontal: 8,
+  },
+  transactionContentContainer: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   transactionAddress: {
     color: "#DF7800",
@@ -103,5 +108,5 @@ const styles = StyleSheet.create({
   },
   outputTransactionsContainer: {
     gap: 5,
-  }
+  },
 });

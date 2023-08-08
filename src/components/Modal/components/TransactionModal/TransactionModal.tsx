@@ -14,11 +14,16 @@ import { initialStateTransaction } from "src/mocks/initialStates";
 import { Image } from "react-native";
 import NotConfirmedContent from "./components/NotConfirmedContent";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInTransactionModal";
+import * as Clipboard from "expo-clipboard";
 
 export default function TransactionModal(props: TransactionModalProps) {
   const { keyForSearch, isVisible, handleModalClose } = props;
 
   const [data, setData] = useState<TransactionType>(initialStateTransaction);
+
+  const copyToClipboard = async (text: string) => {
+    await Clipboard.setStringAsync(text);
+  };
 
   const shouldRenderBlockInfo = (blockHeight: number) => (
     <BoxContainerWithText
@@ -72,10 +77,16 @@ export default function TransactionModal(props: TransactionModalProps) {
         </View>
 
         <View style={styles.contentContainer}>
-          <BoxContainerWithText
-            firstText="Transação"
-            secondText={data.transactionId.slice(0, 18).concat("...")}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              copyToClipboard(data.transactionId);
+            }}
+          >
+            <BoxContainerWithText
+              firstText="Transação"
+              secondText={data.transactionId.slice(0, 18).concat("...")}
+            />
+          </TouchableOpacity>
 
           <NotConfirmedContent fee={data.fee} size={data.size} />
 

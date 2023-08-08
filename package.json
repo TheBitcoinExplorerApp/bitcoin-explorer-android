@@ -16,7 +16,8 @@
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-svg": "13.4.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "expo-clipboard": "~4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

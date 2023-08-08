@@ -19,7 +19,7 @@ export default function AllTransactionsInTransactionModal(
         <View style={styles.transactionContainer}>
           {inputTransactions.map((inputTransaction) => {
             const { prevout } = inputTransaction;
-            const { scriptpubkey_address, value } = prevout;
+            const { scriptpubkey_address } = prevout;
 
             return (
               <View

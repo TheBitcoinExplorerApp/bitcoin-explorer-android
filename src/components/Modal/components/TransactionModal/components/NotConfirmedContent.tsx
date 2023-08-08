@@ -48,7 +48,7 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
         />
         <BoxContainerWithText
           firstText="Taxa"
-          secondText={`${(fee / 100000000).toString().replace('.', ',')} BTC`}
+          secondText={`${(fee / 100000000).toString()} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,
             borderTopStartRadius: 0,

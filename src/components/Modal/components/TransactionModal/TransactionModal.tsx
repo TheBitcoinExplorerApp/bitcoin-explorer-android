@@ -79,9 +79,7 @@ export default function TransactionModal(props: TransactionModalProps) {
 
           <NotConfirmedContent fee={data.fee} size={data.size} />
 
-         <AllTransactionsInTransactionModal 
-          data={data}
-         />
+          <AllTransactionsInTransactionModal data={data} />
         </View>
       </View>
     </Modal>

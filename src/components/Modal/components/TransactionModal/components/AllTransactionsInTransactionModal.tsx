@@ -15,8 +15,8 @@ export default function AllTransactionsInTransactionModal(
     <View style={styles.container}>
       <Text style={styles.title}>Entradas e Saídas</Text>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.transactionContainer}>
+      <View style={styles.transactionContainer}>
+        <View style={styles.inputTransactionsContainer}>
           {inputTransactions.map((inputTransaction) => {
             const { prevout } = inputTransaction;
             const { scriptpubkey_address } = prevout;
@@ -42,31 +42,28 @@ export default function AllTransactionsInTransactionModal(
                     </Text>
                   </View>
                 </View>
-
-                <Text style={styles.destinationTransaction}>{">"}</Text>
-
-                <View style={styles.outputTransactionsContainer}>
-                  {outputTransactions.map((outputTransaction) => {
-                    const { value, scriptpubkey_address } = outputTransaction;
-
-                    return (
-                      <View key={scriptpubkey_address}>
-                        <Text style={styles.transactionAddress}>
-                          {scriptpubkey_address
-                            .toString()
-                            .slice(0, 14)
-                            .concat("...")}
-                        </Text>
-                        <Text style={styles.text}>{value / 100000000} BTC</Text>
-                      </View>
-                    );
-                  })}
-                </View>
               </View>
             );
           })}
         </View>
-      </ScrollView>
+
+        <Text style={styles.destinationTransactionSeparator}>{">"}</Text>
+
+        <View style={styles.outputTransactionsContainer}>
+          {outputTransactions.map((outputTransaction) => {
+            const { value, scriptpubkey_address } = outputTransaction;
+
+            return (
+              <View key={scriptpubkey_address}>
+                <Text style={styles.transactionAddress}>
+                  {scriptpubkey_address.toString().slice(0, 14).concat("...")}
+                </Text>
+                <Text style={styles.text}>{value / 100000000} BTC</Text>
+              </View>
+            );
+          })}
+        </View>
+      </View>
     </View>
   );
 }
@@ -85,9 +82,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 5,
     paddingHorizontal: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  inputTransactionsContainer: {
+    gap: 5,
+    alignItems: "center",
+  },
+  outputTransactionsContainer: {
+    gap: 5,
+    alignItems: "center",
   },
   transactionContentContainer: {
-    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -101,12 +108,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     textAlign: "right",
   },
-  destinationTransaction: {
+  destinationTransactionSeparator: {
     color: "#D9D9D9",
     fontSize: 28,
     fontWeight: "800",
-  },
-  outputTransactionsContainer: {
-    gap: 5,
   },
 });

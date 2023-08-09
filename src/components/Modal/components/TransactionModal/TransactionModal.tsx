@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Button,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { useEffect, useState } from "react";
 import { TransactionModalProps, TransactionType } from "../../types";
@@ -63,35 +64,35 @@ export default function TransactionModal(props: TransactionModalProps) {
       <View style={{ width: "100%", height: "20%" }}></View>
 
       <View style={styles.container}>
-        <View style={styles.headerModal}>
-          <Text style={styles.title}>Transação</Text>
-          <TouchableOpacity
-            style={styles.closeButton}
-            onPress={() => {
-              handleModalClose();
-              setData({ ...initialStateTransaction });
-            }}
-          >
-            <Image source={require("../../../../../assets/xIcon.png")} />
-          </TouchableOpacity>
-        </View>
+          <View style={styles.headerModal}>
+            <Text style={styles.title}>Transação</Text>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => {
+                handleModalClose();
+                setData({ ...initialStateTransaction });
+              }}
+            >
+              <Image source={require("../../../../../assets/xIcon.png")} />
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.contentContainer}>
-          <TouchableOpacity
-            onPress={() => {
-              copyToClipboard(data.transactionId);
-            }}
-          >
-            <BoxContainerWithText
-              firstText="Transação"
-              secondText={data.transactionId.slice(0, 18).concat("...")}
-            />
-          </TouchableOpacity>
+          <View style={styles.contentContainer}>
+            <TouchableOpacity
+              onPress={() => {
+                copyToClipboard(data.transactionId);
+              }}
+            >
+              <BoxContainerWithText
+                firstText="Transação"
+                secondText={data.transactionId.slice(0, 18).concat("...")}
+              />
+            </TouchableOpacity>
 
-          <NotConfirmedContent fee={data.fee} size={data.size} />
+            <NotConfirmedContent fee={data.fee} size={data.size} />
 
-          <AllTransactionsInTransactionModal data={data} />
-        </View>
+            <AllTransactionsInTransactionModal data={data} />
+          </View>
       </View>
     </Modal>
   );

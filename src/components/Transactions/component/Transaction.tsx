@@ -1,6 +1,13 @@
-import { View, Text, FlatList, StyleSheet, Pressable } from 'react-native';
-import { useState } from 'react';
-import Modal from 'src/components/Modal/Modal';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+} from "react-native";
+import { useState } from "react";
+import Modal from "src/components/Modal/Modal";
 
 type transaction = {
   transactionId: string;
@@ -16,84 +23,90 @@ export default function Transaction(props: TransactionProps) {
   const { transactions } = props;
   const [modal, setModal] = useState({
     isVisible: false,
-    keyForSearch: '',
+    keyForSearch: "",
   });
 
   return (
     <>
-      <FlatList
-        data={transactions}
-        renderItem={({ item }) => (
-          <Pressable
-            onPress={() => {
-              const newData = {
-                isVisible: true,
-                keyForSearch: item.transactionId,
-              };
-              setModal({ ...newData });
-            }}
-          >
-            <View style={styles.container}>
-              <View style={styles.transactionInfoContainer}>
-                <Text style={styles.transactionInfoLabel}>ID transação</Text>
-                <Text style={styles.transactionId}>
-                  {item.transactionId.slice(0, 14).concat('...')}
-                </Text>
-              </View>
+      <View style={styles.transactionsContainer} >
+        {transactions.map((transaction) => {
+          const { transactionId, fee, value } = transaction;
 
-              <View style={styles.transactionInfoContainer}>
-                <Text style={styles.transactionInfoLabel}>Valor</Text>
-                <Text style={styles.transactionInfoValue}>
-                  {item.value / 100000000} BTC
-                </Text>
+          return (
+            <Pressable
+              onPress={() => {
+                const newData = {
+                  isVisible: true,
+                  keyForSearch: transactionId,
+                };
+                setModal({ ...newData });
+              }}
+            >
+              <View style={styles.container}>
+                <View style={styles.transactionInfoContainer}>
+                  <Text style={styles.transactionInfoLabel}>ID transação</Text>
+                  <Text style={styles.transactionId}>
+                    {transactionId.slice(0, 14).concat("...")}
+                  </Text>
+                </View>
+
+                <View style={styles.transactionInfoContainer}>
+                  <Text style={styles.transactionInfoLabel}>Valor</Text>
+                  <Text style={styles.transactionInfoValue}>
+                    {value / 100000000} BTC
+                  </Text>
+                </View>
+                <View style={styles.transactionInfoContainer}>
+                  <Text style={styles.transactionInfoLabel}>Taxa</Text>
+                  <Text style={styles.transactionInfoValue}>
+                    {fee.toLocaleString()} sats
+                  </Text>
+                </View>
               </View>
-              <View style={styles.transactionInfoContainer}>
-                <Text style={styles.transactionInfoLabel}>Taxa</Text>
-                <Text style={styles.transactionInfoValue}>
-                  {item.fee.toLocaleString()} sats
-                </Text>
-              </View>
-            </View>
-          </Pressable>
-        )}
-        keyExtractor={(item) => item.transactionId}
-        ItemSeparatorComponent={() => <View style={{ height: 18 }} />}
-      />
+            </Pressable>
+          );
+        })}
+      </View>
 
       <Modal
         isVisible={modal.isVisible}
         modalType="Transaction"
         keyForSearch={modal.keyForSearch}
-        handleModalClose={() => setModal({ isVisible: false, keyForSearch: '' })}
+        handleModalClose={() =>
+          setModal({ isVisible: false, keyForSearch: "" })
+        }
       />
     </>
   );
 }
 
 const styles = StyleSheet.create({
+  transactionsContainer: {
+    gap: 16
+  },
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#1d2133',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#1d2133",
     borderRadius: 7,
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
   transactionInfoContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     gap: 8,
   },
   transactionId: {
-    color: '#DF7800',
-    fontWeight: '500',
+    color: "#DF7800",
+    fontWeight: "500",
   },
   transactionInfoLabel: {
-    color: 'white',
+    color: "white",
     fontSize: 13,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   transactionInfoValue: {
-    color: 'white',
-    fontWeight: '500',
+    color: "white",
+    fontWeight: "500",
   },
 });

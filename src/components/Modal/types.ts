@@ -1,11 +1,15 @@
-import { inputTransactions, outputTransactions } from '../Transactions/types';
+import { BlockType } from "../BlocksInfo/components/Block/type";
+import { inputTransactions, outputTransactions } from "../Transactions/types";
 
-export type ModalProps = {
-  modalType: 'Transaction' | 'Block';
-  keyForSearch: string;
+type BasicModalProps = {
+  modalType: "Transaction" | "Block";
   isVisible: boolean;
   handleModalClose: () => void;
 };
+export type BlockModalProps = {
+  isVisible: boolean;
+  handleModalClose: () => void;
+} & BlockType;
 
 export type TransactionModalProps = {
   keyForSearch: string;
@@ -26,3 +30,7 @@ export type TransactionType = {
     blockTime?: number;
   };
 };
+
+export type ModalProps =
+  | (BasicModalProps & BlockModalProps)
+  | (BasicModalProps & TransactionModalProps);

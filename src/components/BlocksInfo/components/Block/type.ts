@@ -1,4 +1,5 @@
 export type BlockType = {
+    blockHash: string;
     blockHeight: number;
     satPerVbyte: string;
     size: string;

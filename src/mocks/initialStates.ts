@@ -10,6 +10,7 @@ const timeAgoInitialState = {
 
 export const initialStateBlocks = [
   {
+    blockHash: "",
     blockHeight: 1,
     satPerVbyte: "1",
     size: "1",
@@ -17,6 +18,7 @@ export const initialStateBlocks = [
     timeAgo: timeAgoInitialState,
   },
   {
+    blockHash: "",
     blockHeight: 2,
     satPerVbyte: "1",
     size: "1",
@@ -24,6 +26,7 @@ export const initialStateBlocks = [
     timeAgo: timeAgoInitialState,
   },
   {
+    blockHash: "",
     blockHeight: 3,
     satPerVbyte: "1",
     size: "1",
@@ -31,6 +34,7 @@ export const initialStateBlocks = [
     timeAgo: timeAgoInitialState,
   },
   {
+    blockHash: "",
     blockHeight: 4,
     satPerVbyte: "1",
     size: "1",

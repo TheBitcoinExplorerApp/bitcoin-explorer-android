@@ -36,7 +36,9 @@ export default function Block(props: BlockProps) {
                 <Text style={styles.text}>{item.satPerVbyte} sat/vB</Text>
                 <Text style={styles.text}>{item.size} MB</Text>
                 <Text style={styles.text}>{item.transactions} transações</Text>
-                <Text style={styles.text}>{item.timeAgo.hour}:{item.timeAgo.minutes}</Text>
+                <Text style={styles.text}>
+                  {item.timeAgo.hour}:{item.timeAgo.minutes}
+                </Text>
               </View>
             </Pressable>
 
@@ -46,7 +48,12 @@ export default function Block(props: BlockProps) {
                 setModalVisible(false);
               }}
               modalType="Block"
-              keyForSearch=""
+              blockHash={item.blockHash}
+              blockHeight={item.blockHeight}
+              satPerVbyte={item.satPerVbyte}
+              size={item.size}
+              timeAgo={item.timeAgo}
+              transactions={item.transactions}
             />
           </>
         );

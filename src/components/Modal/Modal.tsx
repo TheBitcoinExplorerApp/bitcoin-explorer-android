@@ -1,19 +1,15 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import { ModalProps } from './types';
-import TransactionModal from './components/TransactionModal/TransactionModal';
-import BlockModal from './components/BlockModal/BlockModal';
+import { View, Text } from "react-native";
+import React from "react";
+import { BlockModalProps, ModalProps, TransactionModalProps } from "./types";
+import TransactionModal from "./components/TransactionModal/TransactionModal";
+import BlockModal from "./components/BlockModal/BlockModal";
 
 export default function Modal(props: ModalProps) {
-  const { keyForSearch, modalType, isVisible, handleModalClose } = props;
+  const { modalType } = props;
 
-  return modalType === 'Transaction' ? (
-    <TransactionModal
-      keyForSearch={keyForSearch}
-      isVisible={isVisible}
-      handleModalClose={handleModalClose}
-    />
-  ) : (
-    <BlockModal />
-  );
+  if (modalType === "Transaction") {
+    return <TransactionModal {...(props as TransactionModalProps)} />;
+  }
+
+  return <BlockModal {...(props as BlockModalProps)} />;
 }

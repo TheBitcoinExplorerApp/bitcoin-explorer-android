@@ -3,7 +3,13 @@ export type BlockType = {
     satPerVbyte: string;
     size: string;
     transactions: number;
-    timeAgo: string;
+    timeAgo: {
+      day: number;
+      month: number;
+      year: number;
+      hour: number;
+      minutes: number;
+    };
   };
   
  export  type BlockProps = {

@@ -22,7 +22,7 @@ export default function BlocksInfo() {
           satPerVbyte: block.extras.medianFee.toFixed(1),
           size: convertBytesToMegabytes(block.size),
           transactions: block.tx_count,
-          timeAgo: `${formattedDate.hour}:${formattedDate.minutes}`,
+          timeAgo: formattedDate,
         };
       });
 

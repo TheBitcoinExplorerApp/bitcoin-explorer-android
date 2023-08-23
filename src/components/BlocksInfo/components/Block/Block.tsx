@@ -36,7 +36,7 @@ export default function Block(props: BlockProps) {
                 <Text style={styles.text}>{item.satPerVbyte} sat/vB</Text>
                 <Text style={styles.text}>{item.size} MB</Text>
                 <Text style={styles.text}>{item.transactions} transações</Text>
-                <Text style={styles.text}>{item.timeAgo}</Text>
+                <Text style={styles.text}>{item.timeAgo.hour}:{item.timeAgo.minutes}</Text>
               </View>
             </Pressable>
 

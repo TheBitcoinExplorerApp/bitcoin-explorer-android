@@ -1,13 +1,5 @@
-import {
-  View,
-  Text,
-  Modal,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { useEffect, useState } from "react";
+import { View, Modal, StyleSheet, TouchableOpacity } from "react-native";
+import { useState } from "react";
 import { TransactionModalProps, TransactionType } from "../../types";
 import { getTransactionInfo } from "src/api/getData";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
@@ -16,6 +8,7 @@ import { Image } from "react-native";
 import NotConfirmedContent from "./components/NotConfirmedContent";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInTransactionModal";
 import * as Clipboard from "expo-clipboard";
+import ModalHeader from "../ModalHeader/ModalHeader";
 
 export default function TransactionModal(props: TransactionModalProps) {
   const { keyForSearch, isVisible, handleModalClose } = props;
@@ -64,35 +57,30 @@ export default function TransactionModal(props: TransactionModalProps) {
       <View style={{ width: "100%", height: "20%" }}></View>
 
       <View style={styles.container}>
-          <View style={styles.headerModal}>
-            <Text style={styles.title}>Transação</Text>
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={() => {
-                handleModalClose();
-                setData({ ...initialStateTransaction });
-              }}
-            >
-              <Image source={require("../../../../../assets/xIcon.png")} />
-            </TouchableOpacity>
-          </View>
+        <ModalHeader
+          title="Transação"
+          handleModalClose={() => {
+            handleModalClose();
+            setData(initialStateTransaction);
+          }}
+        />
 
-          <View style={styles.contentContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                copyToClipboard(data.transactionId);
-              }}
-            >
-              <BoxContainerWithText
-                firstText="Transação"
-                secondText={data.transactionId.slice(0, 18).concat("...")}
-              />
-            </TouchableOpacity>
+        <View style={styles.contentContainer}>
+          <TouchableOpacity
+            onPress={() => {
+              copyToClipboard(data.transactionId);
+            }}
+          >
+            <BoxContainerWithText
+              firstText="Transação"
+              secondText={data.transactionId.slice(0, 18).concat("...")}
+            />
+          </TouchableOpacity>
 
-            <NotConfirmedContent fee={data.fee} size={data.size} />
+          <NotConfirmedContent fee={data.fee} size={data.size} />
 
-            <AllTransactionsInTransactionModal data={data} />
-          </View>
+          <AllTransactionsInTransactionModal data={data} />
+        </View>
       </View>
     </Modal>
   );
@@ -108,29 +96,9 @@ const styles = StyleSheet.create({
     paddingVertical: 17,
     paddingHorizontal: 10,
   },
-  title: {
-    color: "#fff",
-    fontSize: 18,
-  },
   contentContainer: {
     paddingHorizontal: 8,
     marginTop: 35,
     gap: 20,
-  },
-  headerModal: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  closeButton: {
-    width: 30,
-    height: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 100,
-    padding: 5,
-    backgroundColor: "#D9D9D9",
-    position: "absolute",
-    right: 0,
   },
 });

@@ -1,9 +1,12 @@
 import { View, Text, Modal, StyleSheet, TouchableOpacity } from "react-native";
+import { useState } from "react";
 import React from "react";
 import ModalHeader from "../ModalHeader/ModalHeader";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import { BlockModalProps } from "../../types";
+import { BlockModalProps, TransactionType } from "../../types";
 import * as Clipboard from "expo-clipboard";
+import { getBlockTransactions } from "src/api/getData";
+import AllTransactionsInTransactionModal from "./components/AllTransactionsInBlockModal";
 
 export default function BlockModal(props: BlockModalProps) {
   const {
@@ -20,12 +23,47 @@ export default function BlockModal(props: BlockModalProps) {
 
   const { pool } = extras;
 
+  const [transactionsData, setTransactionsData] = useState<TransactionType[]>(
+    []
+  );
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const copyToClipboard = async (text: string) => {
     await Clipboard.setStringAsync(text);
   };
 
   return (
-    <Modal animationType="slide" visible={isVisible} transparent>
+    <Modal
+      animationType="slide"
+      visible={isVisible}
+      transparent
+      onShow={() => {
+        setIsLoading(true);
+        const fetchData = async () => {
+          const response = await getBlockTransactions(blockHash);
+          const formattedData: TransactionType[] = response.map(
+            (transaction) => ({
+              transactionId: transaction.txid,
+              size: transaction.size,
+              fee: transaction.fee,
+              inputTransactions: transaction.vin,
+              outputTransactions: transaction.vout,
+              statusTransaction: {
+                confirmed: transaction.status.confirmed,
+                blockHeight: transaction.status.block_height,
+                blockHash: transaction.status.block_hash,
+                blockTime: transaction.status.block_time,
+              },
+            })
+          );
+
+          setTransactionsData(formattedData);
+          setIsLoading(false);
+        };
+        fetchData();
+      }}
+    >
       <View style={{ width: "100%", height: "20%" }}></View>
       <View style={styles.container}>
         <ModalHeader handleModalClose={handleModalClose} title="Bloco" />
@@ -105,8 +143,17 @@ export default function BlockModal(props: BlockModalProps) {
             {transactions} transações
           </Text>
 
-          <View>
-            
+          <View style={styles.transactionContainer} >
+            {isLoading ? (
+              <Text>Carregando...</Text>
+            ) : (
+              transactionsData.map((transaction) => (
+                <AllTransactionsInTransactionModal
+                  key={transaction.transactionId}
+                  data={transaction}
+                />
+              ))
+            )}
           </View>
         </View>
       </View>
@@ -132,5 +179,8 @@ const styles = StyleSheet.create({
   titleTransactionBlock: {
     color: "#FFF",
     fontSize: 15,
+  },
+  transactionContainer: {
+    gap: 15,
   },
 });

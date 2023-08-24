@@ -54,6 +54,7 @@ export default function Block(props: BlockProps) {
               size={item.size}
               timeAgo={item.timeAgo}
               transactions={item.transactions}
+              extras={item.extras}
             />
           </>
         );

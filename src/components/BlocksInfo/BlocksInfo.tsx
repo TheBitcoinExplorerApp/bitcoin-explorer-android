@@ -24,6 +24,7 @@ export default function BlocksInfo() {
           size: convertBytesToMegabytes(block.size),
           transactions: block.tx_count,
           timeAgo: formattedDate,
+          extras: block.extras,
         };
 
         return formatedBlockData;

@@ -1,3 +1,4 @@
+import { BlockType } from "src/components/BlocksInfo/components/Block/type";
 import { TransactionType } from "src/components/Modal/types";
 
 const timeAgoInitialState = {
@@ -8,7 +9,7 @@ const timeAgoInitialState = {
   year: 0,
 };
 
-export const initialStateBlocks = [
+export const initialStateBlocks: BlockType[] = [
   {
     blockHash: "",
     blockHeight: 1,
@@ -16,6 +17,12 @@ export const initialStateBlocks = [
     size: "1",
     transactions: 1,
     timeAgo: timeAgoInitialState,
+    extras: {
+      medianFee: 1,
+      pool: {
+        name: " ",
+      },
+    },
   },
   {
     blockHash: "",
@@ -24,6 +31,12 @@ export const initialStateBlocks = [
     size: "1",
     transactions: 1,
     timeAgo: timeAgoInitialState,
+    extras: {
+      medianFee: 1,
+      pool: {
+        name: " ",
+      },
+    },
   },
   {
     blockHash: "",
@@ -32,6 +45,12 @@ export const initialStateBlocks = [
     size: "1",
     transactions: 1,
     timeAgo: timeAgoInitialState,
+    extras: {
+      medianFee: 1,
+      pool: {
+        name: " ",
+      },
+    },
   },
   {
     blockHash: "",
@@ -40,6 +59,13 @@ export const initialStateBlocks = [
     size: "1",
     transactions: 1,
     timeAgo: timeAgoInitialState,
+
+    extras: {
+      medianFee: 1,
+      pool: {
+        name: " ",
+      },
+    },
   },
 ];
 

@@ -15,7 +15,10 @@ export default function BlockModal(props: BlockModalProps) {
     size,
     timeAgo,
     transactions,
+    extras,
   } = props;
+
+  const { pool } = extras;
 
   const copyToClipboard = async (text: string) => {
     await Clipboard.setStringAsync(text);
@@ -30,21 +33,81 @@ export default function BlockModal(props: BlockModalProps) {
         <View style={styles.contentContainer}>
           <BoxContainerWithText
             firstText="Bloco"
-            secondText="123456"
+            secondText={`${blockHeight}`}
             secondTextWhite
             width="42%"
           />
 
-          <TouchableOpacity
-            onPress={() => {
-              copyToClipboard(blockHash);
-            }}
-          >
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                copyToClipboard(blockHash);
+              }}
+            >
+              <BoxContainerWithText
+                firstText="Hash"
+                secondText={`${blockHash.substring(0, 24)}...`}
+                borderStyles={{
+                  borderBottomEndRadius: 0,
+                  borderBottomStartRadius: 0,
+                }}
+              />
+            </TouchableOpacity>
+
             <BoxContainerWithText
-              firstText="Hash"
-              secondText={`${blockHash.substring(0, 24)}...`}
+              firstText="Data/Hora"
+              secondText={`${timeAgo.day}/${timeAgo.month}/${timeAgo.year} ${timeAgo.hour}:${timeAgo.minutes}`}
+              secondTextWhite
+              borderStyles={{
+                borderTopEndRadius: 0,
+                borderTopStartRadius: 0,
+                borderBottomEndRadius: 0,
+                borderBottomStartRadius: 0,
+              }}
             />
-          </TouchableOpacity>
+
+            <BoxContainerWithText
+              firstText="Tamanho"
+              secondText={`${size} MB`}
+              secondTextWhite
+              borderStyles={{
+                borderTopEndRadius: 0,
+                borderTopStartRadius: 0,
+                borderBottomEndRadius: 0,
+                borderBottomStartRadius: 0,
+              }}
+            />
+
+            <BoxContainerWithText
+              firstText="Taxa mediana"
+              secondText={`~${satPerVbyte} sat/vB`}
+              secondTextWhite
+              borderStyles={{
+                borderTopEndRadius: 0,
+                borderTopStartRadius: 0,
+                borderBottomEndRadius: 0,
+                borderBottomStartRadius: 0,
+              }}
+            />
+
+            <BoxContainerWithText
+              firstText="Minerador"
+              secondText={pool.name}
+              secondTextWhite
+              borderStyles={{
+                borderTopEndRadius: 0,
+                borderTopStartRadius: 0,
+              }}
+            />
+          </View>
+
+          <Text style={styles.titleTransactionBlock}>
+            {transactions} transações
+          </Text>
+
+          <View>
+            
+          </View>
         </View>
       </View>
     </Modal>
@@ -65,5 +128,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     marginTop: 35,
     gap: 20,
+  },
+  titleTransactionBlock: {
+    color: "#FFF",
+    fontSize: 15,
   },
 });

@@ -2,7 +2,7 @@ type PoolInfoType = {
   name: string;
 };
 
-type ExtrasBlockInfoType = {
+export type ExtrasBlockInfoType = {
   medianFee: number;
   pool: PoolInfoType;
 };

@@ -1,4 +1,11 @@
-import { View, Text, Modal, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Modal,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { useState } from "react";
 import React from "react";
 import ModalHeader from "../ModalHeader/ModalHeader";
@@ -64,99 +71,105 @@ export default function BlockModal(props: BlockModalProps) {
         fetchData();
       }}
     >
-      <View style={{ width: "100%", height: "20%" }}></View>
-      <View style={styles.container}>
-        <ModalHeader handleModalClose={handleModalClose} title="Bloco" />
+      <ScrollView
+        contentContainerStyle={{
+          marginTop: "60%",
+          paddingBottom: "60%",
+        }}
+      >
+        <View style={styles.container}>
+          <ModalHeader handleModalClose={handleModalClose} title="Bloco" />
 
-        <View style={styles.contentContainer}>
-          <BoxContainerWithText
-            firstText="Bloco"
-            secondText={`${blockHeight}`}
-            secondTextWhite
-            width="42%"
-          />
+          <View style={styles.contentContainer}>
+            <BoxContainerWithText
+              firstText="Bloco"
+              secondText={`${blockHeight}`}
+              secondTextWhite
+              width="42%"
+            />
 
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                copyToClipboard(blockHash);
-              }}
-            >
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  copyToClipboard(blockHash);
+                }}
+              >
+                <BoxContainerWithText
+                  firstText="Hash"
+                  secondText={`${blockHash.substring(0, 24)}...`}
+                  borderStyles={{
+                    borderBottomEndRadius: 0,
+                    borderBottomStartRadius: 0,
+                  }}
+                />
+              </TouchableOpacity>
+
               <BoxContainerWithText
-                firstText="Hash"
-                secondText={`${blockHash.substring(0, 24)}...`}
+                firstText="Data/Hora"
+                secondText={`${timeAgo.day}/${timeAgo.month}/${timeAgo.year} ${timeAgo.hour}:${timeAgo.minutes}`}
+                secondTextWhite
                 borderStyles={{
+                  borderTopEndRadius: 0,
+                  borderTopStartRadius: 0,
                   borderBottomEndRadius: 0,
                   borderBottomStartRadius: 0,
                 }}
               />
-            </TouchableOpacity>
 
-            <BoxContainerWithText
-              firstText="Data/Hora"
-              secondText={`${timeAgo.day}/${timeAgo.month}/${timeAgo.year} ${timeAgo.hour}:${timeAgo.minutes}`}
-              secondTextWhite
-              borderStyles={{
-                borderTopEndRadius: 0,
-                borderTopStartRadius: 0,
-                borderBottomEndRadius: 0,
-                borderBottomStartRadius: 0,
-              }}
-            />
+              <BoxContainerWithText
+                firstText="Tamanho"
+                secondText={`${size} MB`}
+                secondTextWhite
+                borderStyles={{
+                  borderTopEndRadius: 0,
+                  borderTopStartRadius: 0,
+                  borderBottomEndRadius: 0,
+                  borderBottomStartRadius: 0,
+                }}
+              />
 
-            <BoxContainerWithText
-              firstText="Tamanho"
-              secondText={`${size} MB`}
-              secondTextWhite
-              borderStyles={{
-                borderTopEndRadius: 0,
-                borderTopStartRadius: 0,
-                borderBottomEndRadius: 0,
-                borderBottomStartRadius: 0,
-              }}
-            />
+              <BoxContainerWithText
+                firstText="Taxa mediana"
+                secondText={`~${satPerVbyte} sat/vB`}
+                secondTextWhite
+                borderStyles={{
+                  borderTopEndRadius: 0,
+                  borderTopStartRadius: 0,
+                  borderBottomEndRadius: 0,
+                  borderBottomStartRadius: 0,
+                }}
+              />
 
-            <BoxContainerWithText
-              firstText="Taxa mediana"
-              secondText={`~${satPerVbyte} sat/vB`}
-              secondTextWhite
-              borderStyles={{
-                borderTopEndRadius: 0,
-                borderTopStartRadius: 0,
-                borderBottomEndRadius: 0,
-                borderBottomStartRadius: 0,
-              }}
-            />
+              <BoxContainerWithText
+                firstText="Minerador"
+                secondText={pool.name}
+                secondTextWhite
+                borderStyles={{
+                  borderTopEndRadius: 0,
+                  borderTopStartRadius: 0,
+                }}
+              />
+            </View>
 
-            <BoxContainerWithText
-              firstText="Minerador"
-              secondText={pool.name}
-              secondTextWhite
-              borderStyles={{
-                borderTopEndRadius: 0,
-                borderTopStartRadius: 0,
-              }}
-            />
-          </View>
+            <Text style={styles.titleTransactionBlock}>
+              {transactions} transações
+            </Text>
 
-          <Text style={styles.titleTransactionBlock}>
-            {transactions} transações
-          </Text>
-
-          <View style={styles.transactionContainer} >
-            {isLoading ? (
-              <Text>Carregando...</Text>
-            ) : (
-              transactionsData.map((transaction) => (
-                <AllTransactionsInTransactionModal
-                  key={transaction.transactionId}
-                  data={transaction}
-                />
-              ))
-            )}
+            <View style={styles.transactionContainer}>
+              {isLoading ? (
+                <Text>Carregando...</Text>
+              ) : (
+                transactionsData.map((transaction) => (
+                  <AllTransactionsInTransactionModal
+                    key={transaction.transactionId}
+                    data={transaction}
+                  />
+                ))
+              )}
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </Modal>
   );
 }
@@ -167,7 +180,6 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "#101427",
-    height: "80%",
     paddingVertical: 17,
     paddingHorizontal: 10,
   },

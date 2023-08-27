@@ -18,7 +18,7 @@ export default function Home(props: HomeProps) {
 
       <PrioritiesTaxValuesBox />
 
-      <BlocksInfo />
+      <BlocksInfo qtdBlocksToRender={4} />
 
       <TransactionsInfo />
     </Main>

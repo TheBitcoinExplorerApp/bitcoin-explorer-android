@@ -7,8 +7,16 @@ import { BlockType } from "./components/Block/type";
 import { getBlocks } from "src/api/getData";
 import { convertBytesToMegabytes, formatDate } from "src/utils/formatBlockInfo";
 
-export default function BlocksInfo() {
+type BlocksInfoProps = {
+  qtdBlocksToRender?: number;
+}
+
+export default function BlocksInfo(props: BlocksInfoProps) {
+
+  const { qtdBlocksToRender } = props;
   const [blocks, setBlocks] = useState<BlockType[]>(initialStateBlocks);
+
+  const blocksToRender = qtdBlocksToRender ? blocks.slice(0, qtdBlocksToRender) : blocks;
 
   useEffect(() => {
     const getBlocksInfo = async () => {
@@ -39,7 +47,7 @@ export default function BlocksInfo() {
     <View style={styles.container}>
       <Text style={styles.title}>Blocos</Text>
 
-      <Block blocks={blocks.slice(0, 4)} />
+      <Block blocks={blocksToRender} />
     </View>
   );
 }

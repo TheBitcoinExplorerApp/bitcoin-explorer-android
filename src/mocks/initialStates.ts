@@ -89,3 +89,16 @@ export const initialStateTransaction: TransactionType = {
   ],
   statusTransaction: undefined,
 };
+
+export const initialStateFormattedTransactions = [
+  {
+    transactionId: "",
+    value: 0,
+    fee: 0,
+  },
+  {
+    transactionId: "",
+    value: 0,
+    fee: 0,
+  },
+];

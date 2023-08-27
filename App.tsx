@@ -4,34 +4,44 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Blocks from "src/screens/Blocks";
 import Transactions from "src/screens/Transactions";
+import { DataProvider } from "src/context/DataProvider";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Blocks"
-          component={Blocks}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Transactions"
-          component={Transactions}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
+    <DataProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              headerShown: false,
+              animation: "slide_from_bottom",
+            }}
+          />
+          <Stack.Screen
+            name="Blocks"
+            component={Blocks}
+            options={{
+              headerShown: false,
+              animation: "slide_from_bottom",
+            }}
+          />
+          <Stack.Screen
+            name="Transactions"
+            component={Transactions}
+            options={{
+              headerShown: false,
+              animation: "slide_from_bottom",
+            }}
+          />
+        </Stack.Navigator>
 
-      <StatusBar />
-    </NavigationContainer>
+        <StatusBar />
+      </NavigationContainer>
+    </DataProvider>
   );
 }
 

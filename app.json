@@ -5,11 +5,12 @@
     "description": "A simple app, but beautiful, to explore the Bitcoin blockchain.",
     "privacy": "hidden",
     "version": "1.0.0",
+    "platforms": ["android"],
     "orientation": "portrait",
-    "icon": "./assets/icon.jpg",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icon.jpg",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#111428"
     },
@@ -26,10 +27,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.pedrow21.bitcoinexplorerandroid"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "af163f27-004c-406d-a24b-aaaceaa27b0a"
+      }
     }
   }
 }

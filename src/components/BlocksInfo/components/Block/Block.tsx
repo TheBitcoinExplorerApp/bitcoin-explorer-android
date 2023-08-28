@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Pressable,
+  ScrollView,
+} from "react-native";
 import React from "react";
 import { BlockProps } from "./type";
 import Modal from "src/components/Modal/Modal";
@@ -10,17 +17,8 @@ export default function Block(props: BlockProps) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <FlatList
-      data={blocks}
-      keyExtractor={(blockInfo) => blockInfo.blockHeight.toString()}
-      numColumns={2}
-      contentContainerStyle={{ alignItems: "center", flexGrow: 1 }}
-      ItemSeparatorComponent={() => {
-        return <View style={{ height: 25 }} />;
-      }}
-      renderItem={({ item, index }) => {
-        const itemLeft = index % 2 === 0 ? 0 : 25;
-
+    <View style={styles.blocksContainer}>
+      {blocks.map((block) => {
         return (
           <>
             <Pressable
@@ -29,15 +27,15 @@ export default function Block(props: BlockProps) {
               }}
             >
               <View
-                key={item.blockHeight}
-                style={{ ...styles.blockContainer, marginLeft: itemLeft }}
+                key={block.blockHeight}
+                style={{ ...styles.blockContainer }}
               >
-                <Text style={styles.textPrimary}>{item.blockHeight}</Text>
-                <Text style={styles.text}>{item.satPerVbyte} sat/vB</Text>
-                <Text style={styles.text}>{item.size} MB</Text>
-                <Text style={styles.text}>{item.transactions} transações</Text>
+                <Text style={styles.textPrimary}>{block.blockHeight}</Text>
+                <Text style={styles.text}>{block.satPerVbyte} sat/vB</Text>
+                <Text style={styles.text}>{block.size} MB</Text>
+                <Text style={styles.text}>{block.transactions} transações</Text>
                 <Text style={styles.text}>
-                  {item.timeAgo.hour}:{item.timeAgo.minutes}
+                  {block.timeAgo.hour}:{block.timeAgo.minutes}
                 </Text>
               </View>
             </Pressable>
@@ -48,22 +46,28 @@ export default function Block(props: BlockProps) {
                 setModalVisible(false);
               }}
               modalType="Block"
-              blockHash={item.blockHash}
-              blockHeight={item.blockHeight}
-              satPerVbyte={item.satPerVbyte}
-              size={item.size}
-              timeAgo={item.timeAgo}
-              transactions={item.transactions}
-              extras={item.extras}
+              blockHash={block.blockHash}
+              blockHeight={block.blockHeight}
+              satPerVbyte={block.satPerVbyte}
+              size={block.size}
+              timeAgo={block.timeAgo}
+              transactions={block.transactions}
+              extras={block.extras}
             />
           </>
         );
-      }}
-    />
+      })}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  blocksContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: 18,
+  },
   blockContainer: {
     alignItems: "center",
     justifyContent: "center",

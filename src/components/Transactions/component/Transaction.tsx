@@ -28,7 +28,7 @@ export default function Transaction(props: TransactionProps) {
 
   return (
     <>
-      <View style={styles.transactionsContainer} >
+      <View style={styles.transactionsContainer}>
         {transactions.map((transaction) => {
           const { transactionId, fee, value } = transaction;
 
@@ -41,6 +41,7 @@ export default function Transaction(props: TransactionProps) {
                 };
                 setModal({ ...newData });
               }}
+              key={transactionId}
             >
               <View style={styles.container}>
                 <View style={styles.transactionInfoContainer}>
@@ -82,7 +83,7 @@ export default function Transaction(props: TransactionProps) {
 
 const styles = StyleSheet.create({
   transactionsContainer: {
-    gap: 16
+    gap: 16,
   },
   container: {
     flexDirection: "row",

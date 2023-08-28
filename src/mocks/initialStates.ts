@@ -1,5 +1,6 @@
 import { BlockType } from "src/components/BlocksInfo/components/Block/type";
 import { TransactionType } from "src/components/Modal/types";
+import crypto from "crypto";
 
 const timeAgoInitialState = {
   hour: 0,
@@ -70,7 +71,7 @@ export const initialStateBlocks: BlockType[] = [
 ];
 
 export const initialStateTransaction: TransactionType = {
-  transactionId: " ",
+  transactionId: `${Math.random()}`,
   size: 0,
   fee: 0,
   inputTransactions: [
@@ -92,12 +93,12 @@ export const initialStateTransaction: TransactionType = {
 
 export const initialStateFormattedTransactions = [
   {
-    transactionId: "",
+    transactionId: "0",
     value: 0,
     fee: 0,
   },
   {
-    transactionId: "",
+    transactionId: "1",
     value: 0,
     fee: 0,
   },

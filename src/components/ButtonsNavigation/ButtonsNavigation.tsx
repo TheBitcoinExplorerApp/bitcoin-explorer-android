@@ -17,8 +17,6 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
   const transactionsColor =
     actualScreen === "Transactions" ? "#DF7800" : "#D6D6D6";
 
-  console.log('ActualScreen: ', actualScreen)
-
   return (
     <View style={styles.container}>
       <TouchableOpacity

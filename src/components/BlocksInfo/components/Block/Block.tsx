@@ -20,7 +20,7 @@ export default function Block(props: BlockProps) {
     <View style={styles.blocksContainer}>
       {blocks.map((block) => {
         return (
-          <>
+          <View key={block.blockHeight}>
             <Pressable
               onPress={() => {
                 setModalVisible(true);
@@ -54,7 +54,7 @@ export default function Block(props: BlockProps) {
               transactions={block.transactions}
               extras={block.extras}
             />
-          </>
+          </View>
         );
       })}
     </View>

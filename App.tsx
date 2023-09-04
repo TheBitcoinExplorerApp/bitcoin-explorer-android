@@ -18,7 +18,7 @@ export default function App() {
             component={Home}
             options={{
               headerShown: false,
-              animation: "slide_from_bottom",
+              animation: "none",
             }}
           />
           <Stack.Screen
@@ -26,7 +26,7 @@ export default function App() {
             component={Blocks}
             options={{
               headerShown: false,
-              animation: "slide_from_bottom",
+              animation: "none",
             }}
           />
           <Stack.Screen
@@ -34,7 +34,7 @@ export default function App() {
             component={Transactions}
             options={{
               headerShown: false,
-              animation: "slide_from_bottom",
+              animation: "none",
             }}
           />
         </Stack.Navigator>

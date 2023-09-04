@@ -1,12 +1,24 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import React, { useEffect } from "react";
+import Modal from "../Modal/Modal";
+import { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  NativeSyntheticEvent,
+  TextInputSubmitEditingEventData,
+} from "react-native";
 
 export default function Search() {
-  const [searchContent, setSearchContent] = React.useState("");
-
-  useEffect(() => {}, [searchContent]);
-
   const onlyLettersAndNumbers = /^[a-zA-Z0-9]*$/;
+  const maxAddressSize = 62;
+
+  const [searchContent, setSearchContent] = useState("");
+  const [modalVisibility, setModalVisibility] = useState({
+    addressModal: false,
+    transactionModal: false,
+    blockModal: false,
+  });
 
   const handleInputChange = (text: string) => {
     if (onlyLettersAndNumbers.test(text)) {
@@ -14,16 +26,41 @@ export default function Search() {
     }
   };
 
+  const handleTransactionModalClose = () => {
+    setModalVisibility({
+      ...modalVisibility,
+      transactionModal: false,
+    });
+  };
+
+  const handleEnterPress = () => {
+    if (searchContent.length > maxAddressSize) {
+      setModalVisibility({
+        ...modalVisibility,
+        transactionModal: true,
+      });
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <TextInput
-        placeholder="Pesquisar"
-        style={styles.input}
-        placeholderTextColor="#8d8d9a"
-        value={searchContent}
-        onChangeText={handleInputChange}
+    <>
+      <View style={styles.container}>
+        <TextInput
+          placeholder="Pesquisar"
+          style={styles.input}
+          placeholderTextColor="#8d8d9a"
+          value={searchContent}
+          onChangeText={handleInputChange}
+          onSubmitEditing={handleEnterPress}
+        />
+      </View>
+      <Modal
+        modalType="Transaction"
+        keyForSearch={searchContent}
+        isVisible={modalVisibility.transactionModal}
+        handleModalClose={handleTransactionModalClose}
       />
-    </View>
+    </>
   );
 }
 

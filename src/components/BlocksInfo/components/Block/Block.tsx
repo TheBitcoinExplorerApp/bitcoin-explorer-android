@@ -5,24 +5,28 @@ import {
   FlatList,
   Pressable,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { BlockProps } from "./type";
+import { BlockProps, BlockType } from "./type";
 import Modal from "src/components/Modal/Modal";
 import { useState } from "react";
+import { initialStateBlocks } from "src/mocks/initialStates";
 
 export default function Block(props: BlockProps) {
   const { blocks } = props;
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [blockData, setBlockData] = useState<BlockType>(initialStateBlocks[0]);
 
   return (
     <View style={styles.blocksContainer}>
       {blocks.map((block) => {
         return (
           <View key={block.blockHeight}>
-            <Pressable
+            <TouchableOpacity
               onPress={() => {
+                setBlockData(block);
                 setModalVisible(true);
               }}
             >
@@ -38,25 +42,25 @@ export default function Block(props: BlockProps) {
                   {block.timeAgo.hour}:{block.timeAgo.minutes}
                 </Text>
               </View>
-            </Pressable>
-
-            <Modal
-              isVisible={modalVisible}
-              handleModalClose={() => {
-                setModalVisible(false);
-              }}
-              modalType="Block"
-              blockHash={block.blockHash}
-              blockHeight={block.blockHeight}
-              satPerVbyte={block.satPerVbyte}
-              size={block.size}
-              timeAgo={block.timeAgo}
-              transactions={block.transactions}
-              extras={block.extras}
-            />
+            </TouchableOpacity>
           </View>
         );
       })}
+
+      <Modal
+        isVisible={modalVisible}
+        handleModalClose={() => {
+          setModalVisible(false);
+        }}
+        modalType="Block"
+        blockHash={blockData.blockHash}
+        blockHeight={blockData.blockHeight}
+        satPerVbyte={blockData.satPerVbyte}
+        size={blockData.size}
+        timeAgo={blockData.timeAgo}
+        transactions={blockData.transactions}
+        extras={blockData.extras}
+      />
     </View>
   );
 }

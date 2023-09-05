@@ -1,5 +1,5 @@
 import { BlockType } from "src/components/BlocksInfo/components/Block/type";
-import { TransactionType } from "src/components/Modal/types";
+import { AddressInfoType, TransactionType } from "src/components/Modal/types";
 import crypto from "crypto";
 
 const timeAgoInitialState = {
@@ -103,3 +103,10 @@ export const initialStateFormattedTransactions = [
     fee: 0,
   },
 ];
+
+export const initialStateAddress: AddressInfoType = {
+  address: "",
+  balance: 0,
+  totalAmountReceived: 0,
+  totalAmountSent: 0,
+};

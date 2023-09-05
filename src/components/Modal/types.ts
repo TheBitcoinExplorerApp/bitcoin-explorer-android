@@ -2,7 +2,7 @@ import { BlockType } from "../BlocksInfo/components/Block/type";
 import { inputTransactions, outputTransactions } from "../Transactions/types";
 
 type BasicModalProps = {
-  modalType: "Transaction" | "Block";
+  modalType: "Transaction" | "Block" | "Address";
   isVisible: boolean;
   handleModalClose: () => void;
 };
@@ -31,6 +31,17 @@ export type TransactionType = {
   };
 };
 
+export type AddressInfoType = {
+  address: string;
+  totalAmountReceived: number;
+  totalAmountSent: number;
+  balance: number;
+};
+
+export type AddressModalProps = Omit<BasicModalProps, "modalType"> &
+  Pick<TransactionModalProps, "keyForSearch">;
+
 export type ModalProps =
   | (BasicModalProps & BlockModalProps)
-  | (BasicModalProps & TransactionModalProps);
+  | (BasicModalProps & TransactionModalProps)
+  | (BasicModalProps & AddressModalProps);

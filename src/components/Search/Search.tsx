@@ -31,6 +31,15 @@ export default function Search() {
       ...modalVisibility,
       transactionModal: false,
     });
+    setSearchContent("");
+  };
+
+  const handleAddressModalClose = () => {
+    setModalVisibility({
+      ...modalVisibility,
+      addressModal: false,
+    });
+    setSearchContent("");
   };
 
   const handleEnterPress = () => {
@@ -40,6 +49,11 @@ export default function Search() {
         transactionModal: true,
       });
     }
+
+    setModalVisibility({
+      ...modalVisibility,
+      addressModal: true,
+    });
   };
 
   return (
@@ -59,6 +73,13 @@ export default function Search() {
         keyForSearch={searchContent}
         isVisible={modalVisibility.transactionModal}
         handleModalClose={handleTransactionModalClose}
+      />
+
+      <Modal
+        modalType="Address"
+        keyForSearch={searchContent}
+        isVisible={modalVisibility.addressModal}
+        handleModalClose={handleAddressModalClose}
       />
     </>
   );

@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     height: 60,
-    justifyContent: "space-around",
+    justifyContent: "space-between",
+    paddingHorizontal: 44,
   },
   buttonContainer: {
     height: "100%",

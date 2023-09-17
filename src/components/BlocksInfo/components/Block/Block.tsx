@@ -7,17 +7,27 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { BlockProps, BlockType } from "./type";
 import Modal from "src/components/Modal/Modal";
 import { useState } from "react";
 import { initialStateBlocks } from "src/mocks/initialStates";
+import ModalServices from "src/services/ModalServices";
+import { TransactionType } from "src/components/Modal/types";
 
 export default function Block(props: BlockProps) {
   const { blocks } = props;
 
   const [modalVisible, setModalVisible] = useState(false);
   const [blockData, setBlockData] = useState<BlockType>(initialStateBlocks[0]);
+  const [blockTransactions, setBlockTransactions] = useState<TransactionType[]>(
+    []
+  );
+  const getTransactionsFromBlock = async (blockHash: string) => {
+    const data = await ModalServices.getBlockTransactions(blockHash);
+
+    setBlockTransactions(data);
+  };
 
   return (
     <View style={styles.blocksContainer}>
@@ -26,6 +36,7 @@ export default function Block(props: BlockProps) {
           <View key={block.blockHeight}>
             <TouchableOpacity
               onPress={() => {
+                getTransactionsFromBlock(block.blockHash);
                 setBlockData(block);
                 setModalVisible(true);
               }}
@@ -51,6 +62,7 @@ export default function Block(props: BlockProps) {
         isVisible={modalVisible}
         handleModalClose={() => {
           setModalVisible(false);
+          setBlockTransactions([]);
         }}
         modalType="Block"
         blockHash={blockData.blockHash}
@@ -60,6 +72,7 @@ export default function Block(props: BlockProps) {
         timeAgo={blockData.timeAgo}
         transactions={blockData.transactions}
         extras={blockData.extras}
+        blockTransactions={blockTransactions}
       />
     </View>
   );

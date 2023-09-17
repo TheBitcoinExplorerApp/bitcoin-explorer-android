@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { useState } from "react";
 import React from "react";
 import ModalHeader from "../ModalHeader/ModalHeader";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import { BlockModalProps, TransactionType } from "../../types";
-import * as Clipboard from "expo-clipboard";
-import { getBlockTransactions } from "src/api/getData";
+import { BlockModalProps } from "../../types";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInBlockModal";
+import ModalServices from "src/services/ModalServices";
+import { ActivityIndicator } from "react-native";
 
 export default function BlockModal(props: BlockModalProps) {
   const {
@@ -26,54 +25,26 @@ export default function BlockModal(props: BlockModalProps) {
     timeAgo,
     transactions,
     extras,
+    blockTransactions,
   } = props;
 
   const { pool } = extras;
 
-  const [transactionsData, setTransactionsData] = useState<TransactionType[]>(
-    []
-  );
+  const showLoading = () => <ActivityIndicator color="#FFF" />;
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const copyToClipboard = async (text: string) => {
-    await Clipboard.setStringAsync(text);
-  };
+  const showAllTransactions = () =>
+    blockTransactions.map((transaction) => (
+      <AllTransactionsInTransactionModal
+        key={transaction.transactionId}
+        data={transaction}
+      />
+    ));
 
   return (
-    <Modal
-      animationType="slide"
-      visible={isVisible}
-      transparent
-      onShow={() => {
-        setIsLoading(true);
-        const fetchData = async () => {
-          const response = await getBlockTransactions(blockHash);
-          const formattedData: TransactionType[] = response.map(
-            (transaction) => ({
-              transactionId: transaction.txid,
-              size: transaction.size,
-              fee: transaction.fee,
-              inputTransactions: transaction.vin,
-              outputTransactions: transaction.vout,
-              statusTransaction: {
-                confirmed: transaction.status.confirmed,
-                blockHeight: transaction.status.block_height,
-                blockHash: transaction.status.block_hash,
-                blockTime: transaction.status.block_time,
-              },
-            })
-          );
-
-          setTransactionsData(formattedData);
-          setIsLoading(false);
-        };
-        fetchData();
-      }}
-    >
+    <Modal animationType="slide" visible={isVisible} transparent>
       <ScrollView
         contentContainerStyle={{
-          marginTop: "60%",
+          marginTop: "38%",
           paddingBottom: "60%",
         }}
       >
@@ -90,9 +61,7 @@ export default function BlockModal(props: BlockModalProps) {
 
             <View>
               <TouchableOpacity
-                onPress={() => {
-                  copyToClipboard(blockHash);
-                }}
+                onPress={() => ModalServices.copyToClipboard(blockHash)}
               >
                 <BoxContainerWithText
                   firstText="Hash"
@@ -156,16 +125,9 @@ export default function BlockModal(props: BlockModalProps) {
             </Text>
 
             <View style={styles.transactionContainer}>
-              {isLoading ? (
-                <Text>Carregando...</Text>
-              ) : (
-                transactionsData.map((transaction) => (
-                  <AllTransactionsInTransactionModal
-                    key={transaction.transactionId}
-                    data={transaction}
-                  />
-                ))
-              )}
+              {blockTransactions.length != 0
+                ? showAllTransactions()
+                : showLoading()}
             </View>
           </View>
         </View>
@@ -194,5 +156,6 @@ const styles = StyleSheet.create({
   },
   transactionContainer: {
     gap: 15,
+    height: "100%",
   },
 });

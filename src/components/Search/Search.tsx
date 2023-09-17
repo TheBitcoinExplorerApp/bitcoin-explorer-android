@@ -39,7 +39,6 @@ export default function Search() {
 
   const handleEnterPress = () => {
     if (blockHeightRange) {
-      console.log("invoked height range");
       setModalVisibility({
         ...modalVisibility,
         blockModalWithHeight: true,
@@ -172,14 +171,11 @@ export default function Search() {
 
   const getBlockInfosWithHeight = async () => {
     const blockHash = await ModalServices.getBlockHash(searchContent);
-    console.log("blockHash on getBlockInfosWithHeight", blockHash);
+
     const blockBasicInfo = await ModalServices.getBlockBasicInfo(blockHash);
     const blockTransactions = await ModalServices.getBlockTransactions(
       blockHash
     );
-
-    console.log("blockHash", blockHash);
-    console.log("blockBasicInfo", blockBasicInfo);
 
     setData({
       ...data,

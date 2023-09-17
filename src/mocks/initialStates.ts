@@ -71,7 +71,7 @@ export const initialStateBlocks: BlockType[] = [
 ];
 
 export const initialStateTransaction: TransactionType = {
-  transactionId: `${Math.random()}`,
+  transactionId: " ",
   size: 0,
   fee: 0,
   inputTransactions: [

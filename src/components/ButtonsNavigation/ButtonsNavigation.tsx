@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import HouseIcon from "../../../assets/house.svg";
 import BlocksIcon from "../../../assets/blocks.svg";
@@ -87,5 +87,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 5,
+    width: 74,
   },
 });

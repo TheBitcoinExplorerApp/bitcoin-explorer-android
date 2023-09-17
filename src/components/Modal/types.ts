@@ -40,8 +40,11 @@ export type AddressInfoType = {
   balance: number;
 };
 
-export type AddressModalProps = BasicModalProps & Omit<BasicModalProps, "modalType"> & {
-  addressForSearch: string;
+export type AddressModalProps = BasicModalProps & {
+  addressInfo: {
+    address: string;
+    addressData: AddressInfoType;
+  };
 };
 
 export type ModalProps =

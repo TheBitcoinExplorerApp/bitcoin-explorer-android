@@ -9,7 +9,7 @@ import {
   TextInputSubmitEditingEventData,
 } from "react-native";
 import { DataSearchType } from "./types";
-import { TransactionType } from "../Modal/types";
+import { AddressInfoType, TransactionType } from "../Modal/types";
 import ModalServices from "src/services/ModalServices";
 
 export default function Search() {
@@ -24,6 +24,10 @@ export default function Search() {
   });
   const [data, setData] = useState<DataSearchType>({
     transactionInfo: {} as TransactionType,
+    addressInfo: {
+      address: "",
+      addressData: {} as AddressInfoType,
+    },
   });
 
   const handleInputChange = (text: string) => {
@@ -38,6 +42,10 @@ export default function Search() {
       transactionModal: false,
     });
     setSearchContent("");
+    setData({
+      ...data,
+      transactionInfo: {} as TransactionType,
+    });
   };
 
   const handleAddressModalClose = () => {
@@ -46,6 +54,13 @@ export default function Search() {
       addressModal: false,
     });
     setSearchContent("");
+    setData({
+      ...data,
+      addressInfo: {
+        address: "",
+        addressData: {} as AddressInfoType,
+      },
+    });
   };
 
   const getTransactionInfo = async () => {
@@ -56,6 +71,18 @@ export default function Search() {
     setData({
       ...data,
       transactionInfo,
+    });
+  };
+
+  const getAddressInfo = async () => {
+    const addressData = await ModalServices.getAddressInfos(searchContent);
+
+    setData({
+      ...data,
+      addressInfo: {
+        address: searchContent,
+        addressData,
+      },
     });
   };
 
@@ -74,6 +101,8 @@ export default function Search() {
       ...modalVisibility,
       addressModal: true,
     });
+
+    getAddressInfo();
   };
 
   return (
@@ -99,7 +128,7 @@ export default function Search() {
 
       <Modal
         modalType="Address"
-        addressForSearch={searchContent}
+        addressInfo={data.addressInfo}
         isVisible={modalVisibility.addressModal}
         handleModalClose={handleAddressModalClose}
       />

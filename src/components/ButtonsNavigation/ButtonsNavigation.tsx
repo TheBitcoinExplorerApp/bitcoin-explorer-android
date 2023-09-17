@@ -79,14 +79,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     height: 60,
-    justifyContent: "space-between",
-    paddingHorizontal: 44,
+    justifyContent: "space-evenly",
   },
   buttonContainer: {
     height: "100%",
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 5,
-    width: 74,
+    width: 90,
   },
 });

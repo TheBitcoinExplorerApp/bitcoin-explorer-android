@@ -8,6 +8,9 @@ import {
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
 } from "react-native";
+import { DataSearchType } from "./types";
+import { TransactionType } from "../Modal/types";
+import ModalServices from "src/services/ModalServices";
 
 export default function Search() {
   const onlyLettersAndNumbers = /^[a-zA-Z0-9]*$/;
@@ -18,6 +21,9 @@ export default function Search() {
     addressModal: false,
     transactionModal: false,
     blockModal: false,
+  });
+  const [data, setData] = useState<DataSearchType>({
+    transactionInfo: {} as TransactionType,
   });
 
   const handleInputChange = (text: string) => {
@@ -42,6 +48,17 @@ export default function Search() {
     setSearchContent("");
   };
 
+  const getTransactionInfo = async () => {
+    const transactionInfo = await ModalServices.getTransactionTransactionsInfo(
+      searchContent
+    );
+
+    setData({
+      ...data,
+      transactionInfo,
+    });
+  };
+
   const handleEnterPress = () => {
     if (searchContent.length > maxAddressSize) {
       setModalVisibility({
@@ -49,7 +66,8 @@ export default function Search() {
         transactionModal: true,
       });
 
-      return
+      getTransactionInfo();
+      return;
     }
 
     setModalVisibility({
@@ -70,16 +88,18 @@ export default function Search() {
           onSubmitEditing={handleEnterPress}
         />
       </View>
+
       <Modal
         modalType="Transaction"
-        keyForSearch={searchContent}
+        transactionInfo={data.transactionInfo}
+        transactionHash={searchContent}
         isVisible={modalVisibility.transactionModal}
         handleModalClose={handleTransactionModalClose}
       />
 
       <Modal
         modalType="Address"
-        keyForSearch={searchContent}
+        addressForSearch={searchContent}
         isVisible={modalVisibility.addressModal}
         handleModalClose={handleAddressModalClose}
       />

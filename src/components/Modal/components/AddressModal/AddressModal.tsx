@@ -9,7 +9,7 @@ import { initialStateAddress } from "src/mocks/initialStates";
 import { getAddressInfo } from "src/api/getData";
 
 export default function AddressModal(props: AddressModalProps) {
-  const { keyForSearch, isVisible, handleModalClose } = props;
+  const { addressForSearch, isVisible, handleModalClose } = props;
 
   const [addressInfo, setAddressInfo] =
     useState<AddressInfoType>(initialStateAddress);
@@ -25,7 +25,7 @@ export default function AddressModal(props: AddressModalProps) {
       transparent
       style={styles.modal}
       onShow={async () => {
-        const response = await getAddressInfo(keyForSearch);
+        const response = await getAddressInfo(addressForSearch);
 
         const actualBalance =
           response.chain_stats.funded_txo_sum -
@@ -54,7 +54,7 @@ export default function AddressModal(props: AddressModalProps) {
         <View style={styles.contentContainer}>
           <TouchableOpacity
             onPress={() => {
-              copyToClipboard(keyForSearch);
+              copyToClipboard(addressForSearch);
             }}
           >
             <BoxContainerWithText

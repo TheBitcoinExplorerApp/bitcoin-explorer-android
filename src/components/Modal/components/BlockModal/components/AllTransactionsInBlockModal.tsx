@@ -134,9 +134,11 @@ const styles = StyleSheet.create({
   },
   transactionHash: {
     color: "#DF7800",
+    fontSize: 14,
   },
   transactionHeaderDateHour: {
     color: "#C6C6C6",
+    fontSize: 14,
   },
   transactionContainer: {
     backgroundColor: "#1d2133",
@@ -145,7 +147,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 8,
-    paddingVertical: 8,
+    paddingVertical: 5,
+    overflow: "hidden",
   },
   transactionInputContainer: {
     paddingVertical: 8,
@@ -162,5 +165,6 @@ const styles = StyleSheet.create({
   textStyles: {
     color: "#FFF",
     textAlign: "center",
+    fontSize: 14,
   },
 });

@@ -48,6 +48,8 @@ export default function Search() {
         ...modalVisibility,
         transactionModal: true,
       });
+
+      return
     }
 
     setModalVisibility({

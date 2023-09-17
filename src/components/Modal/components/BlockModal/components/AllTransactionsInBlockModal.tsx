@@ -2,16 +2,16 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import { TransactionType } from "src/components/Modal/types";
-import * as Clipboard from "expo-clipboard";
 import { formatDate } from "src/utils/formatBlockInfo";
 import {
   inputTransactions,
   outputTransactions,
 } from "src/components/Transactions/types";
+import uuid from "react-native-uuid";
+import ModalServices from "src/services/ModalServices";
 
 type AllTransactionsInTransactionModalProps = {
   data: TransactionType;
@@ -30,17 +30,15 @@ export default function AllTransactionsInTransactionModal(
 
   const formattedDate = formatDate(statusTransaction.blockTime);
 
-  const copyToClipboard = async (text: string) => {
-    await Clipboard.setStringAsync(text);
-  };
-
-  const coinBaseTransaction = () => {
-    return <Text style={styles.textStyles}>Coinbase</Text>;
-  };
+  const coinBaseTransaction = () => (
+    <Text key={`${uuid.v4()}`} style={styles.textStyles}>
+      Coinbase
+    </Text>
+  );
 
   const normalTransaction = (transaction: inputTransactions) => {
     return (
-      <View>
+      <View key={`${uuid.v4()}`}>
         <Text style={styles.textStyles}>
           {transaction.prevout.scriptpubkey_address.substring(0, 16)}...
         </Text>
@@ -53,7 +51,7 @@ export default function AllTransactionsInTransactionModal(
 
   const opReturnOutput = () => {
     return (
-      <View>
+      <View key={`${uuid.v4()}`}>
         <Text style={styles.textStyles}>OP_RETURN</Text>
         <Text style={styles.textStyles}>0.00000000 BTC</Text>
       </View>
@@ -62,7 +60,7 @@ export default function AllTransactionsInTransactionModal(
 
   const normalOutput = (outputTransaction: outputTransactions) => {
     return (
-      <View>
+      <View key={`${uuid.v4()}`}>
         <Text style={styles.textStyles}>
           {outputTransaction.scriptpubkey_address.substring(0, 16)}...
         </Text>
@@ -76,7 +74,9 @@ export default function AllTransactionsInTransactionModal(
   return (
     <View style={styles.container}>
       <View style={styles.transactionHeaderContainer}>
-        <TouchableOpacity onPress={() => copyToClipboard(transactionId)}>
+        <TouchableOpacity
+          onPress={() => ModalServices.copyToClipboard(transactionId)}
+        >
           <View style={styles.transactionHeaderHashAndDateHour}>
             <Text style={styles.transactionHash}>
               {transactionId.substring(0, 24)}...

@@ -1,16 +1,10 @@
 import Modal from "../Modal/Modal";
 import { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  NativeSyntheticEvent,
-  TextInputSubmitEditingEventData,
-} from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
 import { DataSearchType } from "./types";
 import { AddressInfoType, TransactionType } from "../Modal/types";
 import ModalServices from "src/services/ModalServices";
+import { initialStateBlocks } from "src/mocks/initialStates";
 
 export default function Search() {
   const onlyLettersAndNumbers = /^[a-zA-Z0-9]*$/;
@@ -20,7 +14,8 @@ export default function Search() {
   const [modalVisibility, setModalVisibility] = useState({
     addressModal: false,
     transactionModal: false,
-    blockModal: false,
+    blockModalWithHeight: false,
+    blockModalWithHash: false,
   });
   const [data, setData] = useState<DataSearchType>({
     transactionInfo: {} as TransactionType,
@@ -29,7 +24,60 @@ export default function Search() {
       addressData: {} as AddressInfoType,
       addressTransactions: [] as TransactionType[],
     },
+    blockInfo: {
+      basicBlockInfo: initialStateBlocks[0],
+      blockTransactions: [] as TransactionType[],
+    },
   });
+
+  const blockHeightRange =
+    searchContent.length >= 1 && searchContent.length <= 7;
+  const blockHashRange = searchContent.length === 64;
+  const transactionRange = searchContent.length > maxAddressSize;
+  const addressRange =
+    searchContent.length >= 27 && searchContent.length <= maxAddressSize;
+
+  const handleEnterPress = () => {
+    if (blockHeightRange) {
+      console.log("invoked height range");
+      setModalVisibility({
+        ...modalVisibility,
+        blockModalWithHeight: true,
+      });
+
+      getBlockInfosWithHeight();
+      return;
+    }
+
+    if (blockHashRange) {
+      setModalVisibility({
+        ...modalVisibility,
+        blockModalWithHash: true,
+      });
+
+      getBlockInfosWithHash();
+      return;
+    }
+
+    if (transactionRange) {
+      setModalVisibility({
+        ...modalVisibility,
+        transactionModal: true,
+      });
+
+      getTransactionInfo();
+      return;
+    }
+
+    if (addressRange) {
+      setModalVisibility({
+        ...modalVisibility,
+        addressModal: true,
+      });
+
+      getAddressInfo();
+    }
+  };
 
   const handleInputChange = (text: string) => {
     if (onlyLettersAndNumbers.test(text)) {
@@ -65,6 +113,36 @@ export default function Search() {
     });
   };
 
+  const handleBlockModalClose = () => {
+    setModalVisibility({
+      ...modalVisibility,
+      blockModalWithHeight: false,
+    });
+    setSearchContent("");
+    setData({
+      ...data,
+      blockInfo: {
+        basicBlockInfo: initialStateBlocks[0],
+        blockTransactions: [] as TransactionType[],
+      },
+    });
+  };
+
+  const handleBlockModalWithHashClose = () => {
+    setModalVisibility({
+      ...modalVisibility,
+      blockModalWithHash: false,
+    });
+    setSearchContent("");
+    setData({
+      ...data,
+      blockInfo: {
+        basicBlockInfo: initialStateBlocks[0],
+        blockTransactions: [] as TransactionType[],
+      },
+    });
+  };
+
   const getTransactionInfo = async () => {
     const transactionInfo = await ModalServices.getTransactionTransactionsInfo(
       searchContent
@@ -92,23 +170,39 @@ export default function Search() {
     });
   };
 
-  const handleEnterPress = () => {
-    if (searchContent.length > maxAddressSize) {
-      setModalVisibility({
-        ...modalVisibility,
-        transactionModal: true,
-      });
+  const getBlockInfosWithHeight = async () => {
+    const blockHash = await ModalServices.getBlockHash(searchContent);
+    console.log("blockHash on getBlockInfosWithHeight", blockHash);
+    const blockBasicInfo = await ModalServices.getBlockBasicInfo(blockHash);
+    const blockTransactions = await ModalServices.getBlockTransactions(
+      blockHash
+    );
 
-      getTransactionInfo();
-      return;
-    }
+    console.log("blockHash", blockHash);
+    console.log("blockBasicInfo", blockBasicInfo);
 
-    setModalVisibility({
-      ...modalVisibility,
-      addressModal: true,
+    setData({
+      ...data,
+      blockInfo: {
+        basicBlockInfo: blockBasicInfo[0],
+        blockTransactions: blockTransactions,
+      },
     });
+  };
 
-    getAddressInfo();
+  const getBlockInfosWithHash = () => {
+    Promise.all([
+      ModalServices.getBlockBasicInfo(searchContent),
+      ModalServices.getBlockTransactions(searchContent),
+    ]).then((values) => {
+      setData({
+        ...data,
+        blockInfo: {
+          basicBlockInfo: values[0][0],
+          blockTransactions: values[1],
+        },
+      });
+    });
   };
 
   return (
@@ -138,6 +232,24 @@ export default function Search() {
         addressTransactions={data.addressInfo.addressTransactions}
         isVisible={modalVisibility.addressModal}
         handleModalClose={handleAddressModalClose}
+      />
+
+      <Modal
+        modalType="Block"
+        blockHash={searchContent}
+        isVisible={modalVisibility.blockModalWithHeight}
+        handleModalClose={handleBlockModalClose}
+        blockTransactions={data.blockInfo.blockTransactions}
+        {...data.blockInfo.basicBlockInfo}
+      />
+
+      <Modal
+        modalType="Block"
+        blockHash={searchContent}
+        isVisible={modalVisibility.blockModalWithHash}
+        handleModalClose={handleBlockModalWithHashClose}
+        blockTransactions={data.blockInfo.blockTransactions}
+        {...data.blockInfo.basicBlockInfo}
       />
     </>
   );

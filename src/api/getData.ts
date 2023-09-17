@@ -10,6 +10,8 @@ import {
   blocksTransaction,
   addressInfo,
   addressTransactions,
+  blockHashBasedOnHeight,
+  blockInfo,
 } from "src/env/apiLinks";
 
 export const getTaxes = async () => {
@@ -59,5 +61,28 @@ export const getAddressTransactions = async (address: string) => {
   const response = await fetch(url);
   const data: TransactionsData[] = await response.json();
 
+  return data;
+};
+
+export const getBlockHash = async (blockHeight: string) => {
+  const url = `${blockHashBasedOnHeight}/${blockHeight}`;
+  const response = await fetch(url, {
+    redirect: "follow",
+  });
+
+  const data: string = await response.text();
+
+  return data;
+};
+
+export const getBlockInfo = async (blockHash: string) => {
+  console.log("blockHash on getBlockInfo", blockHash);
+  const url = `${blockInfo}/${blockHash}`;
+  console.log("url on getBlockInfo", url);
+  const response = await fetch(url);
+  const data: BlockInfoType = await response.json();
+
+  console.log("data on getBlockInfo", data);
+  
   return data;
 };

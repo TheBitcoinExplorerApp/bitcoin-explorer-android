@@ -1,4 +1,3 @@
-import { addressInfo } from "./../../env/apiLinks";
 import { BlockType } from "../BlocksInfo/components/Block/type";
 import { AddressInfoType, TransactionType } from "../Modal/types";
 
@@ -9,4 +8,8 @@ export type DataSearchType = {
     addressData: AddressInfoType;
     addressTransactions: TransactionType[];
   };
+  blockInfo: {
+    basicBlockInfo: BlockType,
+    blockTransactions: TransactionType[],
+  }
 };

@@ -7,8 +7,6 @@ type BasicModalProps = {
   handleModalClose: () => void;
 };
 export type BlockModalProps = BasicModalProps & {
-  isVisible: boolean;
-  handleModalClose: () => void;
   blockTransactions: TransactionType[];
 } & BlockType;
 

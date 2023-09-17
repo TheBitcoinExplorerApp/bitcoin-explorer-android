@@ -1,15 +1,16 @@
+import uuid from "react-native-uuid";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { TransactionType } from "src/components/Modal/types";
 
 type AllTransactionsInTransactionModalProps = {
-  data: TransactionType;
+  inputTransactions: TransactionType["inputTransactions"];
+  outputTransactions: TransactionType["outputTransactions"];
 };
 
 export default function AllTransactionsInTransactionModal(
   props: AllTransactionsInTransactionModalProps
 ) {
-  const { data } = props;
-  const { inputTransactions, outputTransactions } = data;
+  const { inputTransactions, outputTransactions } = props;
 
   return (
     <View style={styles.container}>
@@ -19,12 +20,11 @@ export default function AllTransactionsInTransactionModal(
         <View style={styles.inputTransactionsContainer}>
           {inputTransactions.map((inputTransaction) => {
             const { prevout } = inputTransaction;
-            const { scriptpubkey_address } = prevout;
 
             return (
               <View
                 style={styles.transactionContentContainer}
-                key={scriptpubkey_address}
+                key={`${uuid.v4()}`}
               >
                 <View>
                   <View>
@@ -54,7 +54,7 @@ export default function AllTransactionsInTransactionModal(
             const { value, scriptpubkey_address } = outputTransaction;
 
             return (
-              <View key={scriptpubkey_address}>
+              <View key={`${uuid.v4()}`}>
                 <Text style={styles.transactionAddress}>
                   {scriptpubkey_address.toString().slice(0, 14).concat("...")}
                 </Text>
@@ -76,6 +76,8 @@ const styles = StyleSheet.create({
   },
   container: {
     gap: 16,
+    height: "100%",
+    backgroundColor: "#101427",
   },
   transactionContainer: {
     backgroundColor: "#1d2133",

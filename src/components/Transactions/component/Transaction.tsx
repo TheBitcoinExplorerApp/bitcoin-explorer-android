@@ -1,13 +1,10 @@
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  Pressable,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useState } from "react";
 import Modal from "src/components/Modal/Modal";
+import { TransactionType } from "src/components/Modal/types";
+import ModalServices from "src/services/ModalServices";
+import { initialStateTransaction } from "src/mocks/initialStates";
+import { TransactionInfo } from "../types";
 
 type transaction = {
   transactionId: string;
@@ -21,10 +18,22 @@ type TransactionProps = {
 
 export default function Transaction(props: TransactionProps) {
   const { transactions } = props;
-  const [modal, setModal] = useState({
-    isVisible: false,
-    keyForSearch: "",
+  const [modalVisible, setModalVisible] = useState(false);
+  const [transactionInfo, setTransactionInfo] = useState<TransactionInfo>({
+    transactionData: {} as TransactionType,
+    transactionHash: "",
   });
+
+  const getTransactionInfo = async (transactionHash: string) => {
+    const result = await ModalServices.getTransactionTransactionsInfo(
+      transactionHash
+    );
+
+    setTransactionInfo({
+      transactionHash: result.transactionId,
+      transactionData: result,
+    });
+  };
 
   return (
     <>
@@ -35,11 +44,12 @@ export default function Transaction(props: TransactionProps) {
           return (
             <Pressable
               onPress={() => {
-                const newData = {
-                  isVisible: true,
-                  keyForSearch: transactionId,
-                };
-                setModal({ ...newData });
+                setTransactionInfo({
+                  ...transactionInfo,
+                  transactionHash: transactionId,
+                });
+                getTransactionInfo(transactionId);
+                setModalVisible(true);
               }}
               key={transactionId}
             >
@@ -70,12 +80,18 @@ export default function Transaction(props: TransactionProps) {
       </View>
 
       <Modal
-        isVisible={modal.isVisible}
+        isVisible={modalVisible}
         modalType="Transaction"
-        keyForSearch={modal.keyForSearch}
-        handleModalClose={() =>
-          setModal({ isVisible: false, keyForSearch: "" })
-        }
+        transactionHash={transactionInfo.transactionHash}
+        transactionInfo={transactionInfo.transactionData}
+        handleModalClose={() => {
+          setModalVisible(false);
+          setTransactionInfo({
+            ...transactionInfo,
+            transactionData: {} as TransactionType,
+            transactionHash: "",
+          });
+        }}
       />
     </>
   );

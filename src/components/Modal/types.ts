@@ -6,16 +6,17 @@ type BasicModalProps = {
   isVisible: boolean;
   handleModalClose: () => void;
 };
-export type BlockModalProps = {
+export type BlockModalProps = BasicModalProps & {
   isVisible: boolean;
   handleModalClose: () => void;
   blockTransactions: TransactionType[];
 } & BlockType;
 
-export type TransactionModalProps = {
-  keyForSearch: string;
+export type TransactionModalProps = BasicModalProps & {
   isVisible: boolean;
   handleModalClose: () => void;
+  transactionInfo: TransactionType;
+  transactionHash: string;
 };
 
 export type TransactionType = {
@@ -39,10 +40,11 @@ export type AddressInfoType = {
   balance: number;
 };
 
-export type AddressModalProps = Omit<BasicModalProps, "modalType"> &
-  Pick<TransactionModalProps, "keyForSearch">;
+export type AddressModalProps = BasicModalProps & Omit<BasicModalProps, "modalType"> & {
+  addressForSearch: string;
+};
 
 export type ModalProps =
-  | (BasicModalProps & BlockModalProps)
-  | (BasicModalProps & TransactionModalProps)
-  | (BasicModalProps & AddressModalProps);
+  | BlockModalProps
+  | TransactionModalProps
+  | AddressModalProps;

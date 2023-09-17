@@ -1,3 +1,5 @@
+import { TransactionType } from "../Modal/types";
+
 export type BasicTransactionInfo = {
   txid: string;
   fee: number;
@@ -33,3 +35,8 @@ export type TransactionsData = {
   vout: outputTransactions[];
   status: StatusTransaction;
 };
+
+export type TransactionInfo = {
+  transactionHash: string;
+  transactionData: TransactionType;
+}

@@ -1,87 +1,79 @@
-import { View, Modal, StyleSheet, TouchableOpacity } from "react-native";
-import { useState } from "react";
-import { TransactionModalProps, TransactionType } from "../../types";
-import { getTransactionInfo } from "src/api/getData";
+import {
+  View,
+  Modal,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
+import { TransactionModalProps } from "../../types";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import { initialStateTransaction } from "src/mocks/initialStates";
-import { Image } from "react-native";
 import NotConfirmedContent from "./components/NotConfirmedContent";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInTransactionModal";
-import * as Clipboard from "expo-clipboard";
 import ModalHeader from "../ModalHeader/ModalHeader";
+import ModalServices from "src/services/ModalServices";
 
 export default function TransactionModal(props: TransactionModalProps) {
-  const { keyForSearch, isVisible, handleModalClose } = props;
+  const { isVisible, handleModalClose, transactionInfo, transactionHash } =
+    props;
 
-  const [data, setData] = useState<TransactionType>(initialStateTransaction);
+  const transactionDataIsLoading = Object.values(transactionInfo).length === 0;
 
-  const copyToClipboard = async (text: string) => {
-    await Clipboard.setStringAsync(text);
-  };
+  const showContent = () => (
+    <>
+      <NotConfirmedContent
+        fee={transactionInfo.fee}
+        size={transactionInfo.size}
+      />
 
-  const shouldRenderBlockInfo = (blockHeight: number) => (
-    <BoxContainerWithText
-      firstText="Bloco"
-      secondText={`${blockHeight}`}
-      width="20px"
-    />
+      <AllTransactionsInTransactionModal
+        inputTransactions={transactionInfo.inputTransactions}
+        outputTransactions={transactionInfo.outputTransactions}
+      />
+    </>
   );
+
+  const showLoading = () => <ActivityIndicator size="large" color="#fff" />;
 
   return (
     <Modal
       animationType="slide"
       visible={isVisible}
-      transparent
       style={styles.modal}
-      onShow={() => {
-        const fetchData = async () => {
-          const response = await getTransactionInfo(keyForSearch);
-          const formattedData: TransactionType = {
-            transactionId: response.txid,
-            size: response.size,
-            fee: response.fee,
-            inputTransactions: response.vin,
-            outputTransactions: response.vout,
-            statusTransaction: {
-              confirmed: response.status.confirmed,
-              blockHeight: response.status.block_height,
-              blockHash: response.status.block_hash,
-              blockTime: response.status.block_time,
-            },
-          };
-          setData(formattedData);
-        };
-        fetchData();
-      }}
+      transparent
     >
-      <View style={{ width: "100%", height: "20%" }}></View>
-
-      <View style={styles.container}>
-        <ModalHeader
-          title="Transação"
-          handleModalClose={() => {
-            handleModalClose();
-            setData(initialStateTransaction);
-          }}
-        />
-
-        <View style={styles.contentContainer}>
-          <TouchableOpacity
-            onPress={() => {
-              copyToClipboard(data.transactionId);
+      <ScrollView
+        contentContainerStyle={{
+          marginTop: "38%",
+          paddingBottom: "40%",
+          height: transactionDataIsLoading ? "100%" : "auto",
+          backgroundColor: "#101427",
+        }}
+      >
+        <View style={styles.container}>
+          <ModalHeader
+            title="Transação"
+            handleModalClose={() => {
+              handleModalClose();
             }}
-          >
-            <BoxContainerWithText
-              firstText="Transação"
-              secondText={data.transactionId.slice(0, 18).concat("...")}
-            />
-          </TouchableOpacity>
+          />
 
-          <NotConfirmedContent fee={data.fee} size={data.size} />
+          <View style={styles.contentContainer}>
+            <TouchableOpacity
+              onPress={() => ModalServices.copyToClipboard(transactionHash)}
+            >
+              <BoxContainerWithText
+                firstText="Transação"
+                secondText={transactionHash.slice(0, 18).concat("...")}
+              />
+            </TouchableOpacity>
 
-          <AllTransactionsInTransactionModal data={data} />
+            <View style={styles.transactionsContainer}>
+              {transactionDataIsLoading ? showLoading() : showContent()}
+            </View>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </Modal>
   );
 }
@@ -92,13 +84,15 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "#101427",
-    height: "80%",
     paddingVertical: 17,
     paddingHorizontal: 10,
   },
   contentContainer: {
     paddingHorizontal: 8,
     marginTop: 35,
-    gap: 20,
+    gap: 16,
+  },
+  transactionsContainer: {
+    gap: 16,
   },
 });

@@ -16,7 +16,7 @@ export default function CloseBtn(props: CloseBtnProps) {
         handleModalClose();
       }}
     >
-      <Image source={require("../../../../../assets/xIcon.png")} />
+      <Image source={require("./../../../../assets/xIcon.png")} />
     </TouchableOpacity>
   );
 }

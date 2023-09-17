@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
-import HouseIcon from "../../../assets/house.svg";
-import BlocksIcon from "../../../assets/blocks.svg";
-import TransactionsIcon from "../../../assets/transactions.svg";
+import HouseIcon from "./../../assets/house.svg";
+import BlocksIcon from "./../../assets/blocks.svg";
+import TransactionsIcon from "./../../assets/transactions.svg";
 
 type ButtonsNavigationProps = {
   navigation: any;

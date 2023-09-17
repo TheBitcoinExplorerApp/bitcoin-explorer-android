@@ -7,25 +7,23 @@
     "version": "1.0.0",
     "platforms": ["android"],
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icon.png",
+      "image": "./src/assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#111428"
     },
     "experiments": {
       "tsconfigPaths": true
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./src/assets/icon.png",
         "backgroundColor": "#111428"
       },
       "package": "com.pedrow21.bitcoinexplorerandroid"

@@ -19,8 +19,6 @@ export default function AddressModal(props: AddressModalProps) {
   const { address, addressData } = addressInfo;
   const isLoading = Object.values(addressData).length === 0;
 
-  console.log("addressTransactions", addressTransactions);
-
   const showLoading = () => <ActivityIndicator color="#FFF" size="large" />;
 
   const showContent = () => (

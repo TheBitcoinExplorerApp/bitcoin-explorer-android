@@ -14,6 +14,7 @@
     "@types/react": "~18.0.27",
     "expo": "~48.0.18",
     "expo-clipboard": "~4.1.2",
+    "expo-dev-client": "~2.2.1",
     "expo-image": "~1.0.1",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
@@ -23,8 +24,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-svg": "13.4.0",
     "react-native-tab-view": "^3.5.2",
-    "typescript": "^4.9.4",
-    "expo-dev-client": "~2.2.1"
+    "react-native-uuid": "^2.0.1",
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

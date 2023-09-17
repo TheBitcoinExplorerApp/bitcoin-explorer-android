@@ -4,13 +4,16 @@ import {
   initialStateFormattedTransactions,
 } from "../mocks/initialStates";
 import { DataProviderProps } from "./types";
-import { getBlocks, getTransactions } from "src/api/getData";
+import { getBlocks, getTaxes, getTransactions } from "src/api/getData";
 import { formatBlocksData } from "src/utils/formatBlockInfo";
 import { formatTransactionsData } from "src/utils/formatTransactionsInfo";
+import { SmallBox } from "src/components/SmallBoxInfo/SmallBoxInfo";
+import formatFees from "src/utils/formatFees";
 
 export const DataContext = createContext({
   blocks: initialStateBlocks,
   transactions: initialStateFormattedTransactions,
+  fees: [] as SmallBox[],
 });
 
 export function DataProvider(props: DataProviderProps) {
@@ -19,14 +22,17 @@ export function DataProvider(props: DataProviderProps) {
   const [transactions, setTransactions] = useState(
     initialStateFormattedTransactions
   );
+  const [feesInfos, setFeesInfos] = useState<SmallBox[]>([]);
 
   useEffect(() => {
-    Promise.all([getBlocks(), getTransactions()]).then((data) => {
+    Promise.all([getBlocks(), getTransactions(), getTaxes()]).then((data) => {
       const blocksData = formatBlocksData(data[0]);
       const transactionsData = formatTransactionsData(data[1]);
+      const feesData = formatFees(data[2]);
 
       setBlocks(blocksData);
       setTransactions(transactionsData);
+      setFeesInfos(feesData);
     });
   }, []);
 
@@ -35,6 +41,7 @@ export function DataProvider(props: DataProviderProps) {
       value={{
         blocks,
         transactions,
+        fees: feesInfos,
       }}
     >
       {children}

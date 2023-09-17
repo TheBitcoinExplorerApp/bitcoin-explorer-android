@@ -1,34 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
-import SmallBoxInfo, { SmallBox } from '../SmallBoxInfo/SmallBoxInfo';
-import { useState, useEffect } from 'react';
-import { getTaxes } from 'src/api/getData';
-import { FeesType } from './types';
+import { View, Text, StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import SmallBoxInfo from "../SmallBoxInfo/SmallBoxInfo";
+import { DataContext } from "src/context/DataProvider";
 
 export default function PrioritiesTax() {
-  const initialState = [
-    { title: '0', value: '0' },
-    { title: '0', value: '0' },
-    { title: '0', value: '0' },
-  ];
-
-  const [taxes, setTaxes] = useState<SmallBox[]>(initialState);
-
-  useEffect(() => {
-    const getTaxesData = async () => {
-      const data = await getTaxes();
-      const { halfHourFee, hourFee, fastestFee } = data;
-
-      const taxesData: SmallBox[] = [
-        { title: `${halfHourFee}`, value: '0' },
-        { title: `${hourFee}`, value: '0' },
-        { title: `${fastestFee}`, value: '0' },
-      ];
-
-      setTaxes(taxesData);
-    };
-    getTaxesData();
-  }, []);
+  const { fees } = useContext(DataContext);
 
   return (
     <>
@@ -37,22 +13,22 @@ export default function PrioritiesTax() {
         <Text style={styles.taxPrioritiesTaxText}>Média Prioridade</Text>
         <Text style={styles.taxPrioritiesTaxText}>Alta Prioridade</Text>
       </View>
-      <SmallBoxInfo boxesInfos={taxes} />
+      <SmallBoxInfo boxesInfos={fees} />
     </>
   );
 }
 
 const styles = StyleSheet.create({
   taxContainerPrioritiesTaxText: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#1d2133',
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#1d2133",
     padding: 16,
     borderRadius: 8,
   },
   taxPrioritiesTaxText: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 12,
   },
 });

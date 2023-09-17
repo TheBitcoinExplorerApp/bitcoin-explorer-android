@@ -27,6 +27,7 @@ export default function Search() {
     addressInfo: {
       address: "",
       addressData: {} as AddressInfoType,
+      addressTransactions: [] as TransactionType[],
     },
   });
 
@@ -59,6 +60,7 @@ export default function Search() {
       addressInfo: {
         address: "",
         addressData: {} as AddressInfoType,
+        addressTransactions: [] as TransactionType[],
       },
     });
   };
@@ -74,15 +76,19 @@ export default function Search() {
     });
   };
 
-  const getAddressInfo = async () => {
-    const addressData = await ModalServices.getAddressInfos(searchContent);
-
-    setData({
-      ...data,
-      addressInfo: {
-        address: searchContent,
-        addressData,
-      },
+  const getAddressInfo = () => {
+    Promise.all([
+      ModalServices.getAddressInfos(searchContent),
+      ModalServices.getAddressTransactions(searchContent),
+    ]).then((values) => {
+      setData({
+        ...data,
+        addressInfo: {
+          address: searchContent,
+          addressData: values[0],
+          addressTransactions: values[1],
+        },
+      });
     });
   };
 
@@ -129,6 +135,7 @@ export default function Search() {
       <Modal
         modalType="Address"
         addressInfo={data.addressInfo}
+        addressTransactions={data.addressInfo.addressTransactions}
         isVisible={modalVisibility.addressModal}
         handleModalClose={handleAddressModalClose}
       />

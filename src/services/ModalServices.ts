@@ -2,10 +2,11 @@ import {
   getBlockTransactions,
   getTransactionInfo,
   getAddressInfo,
+  getAddressTransactions
 } from "src/api/getData";
 import formatBlockTransactionsInfo from "src/utils/formatBlockTransactionsInfo";
 import * as Clipboard from "expo-clipboard";
-import formatTransactionTransactionsInfo from "src/utils/formatTransactionTransactionsInfo";
+import formatTransactionsInfo from "src/utils/formatTransactionTransactionsInfo";
 import formatAddressInfo from "src/utils/formatAddressInfo";
 
 class ModalServices {
@@ -18,13 +19,19 @@ class ModalServices {
   static async getTransactionTransactionsInfo(transactionHash: string) {
     const res = await getTransactionInfo(transactionHash);
 
-    return formatTransactionTransactionsInfo(res);
+    return formatTransactionsInfo(res);
   }
 
   static async getAddressInfos(address: string) {
     const res = await getAddressInfo(address);
 
     return formatAddressInfo(res);
+  }
+
+  static async getAddressTransactions (address: string) {
+    const res = await getAddressTransactions(address);
+
+    return formatBlockTransactionsInfo(res);
   }
 
   static copyToClipboard = async (text: string) => {

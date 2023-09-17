@@ -6,7 +6,7 @@ import {
 import { DataProviderProps } from "./types";
 import { getBlocks, getTaxes, getTransactions } from "src/api/getData";
 import { formatBlocksData } from "src/utils/formatBlockInfo";
-import { formatTransactionsData } from "src/utils/formatTransactionsInfo";
+import { formatTransactionsData } from "src/utils/formatTransactionsData";
 import { SmallBox } from "src/components/SmallBoxInfo/SmallBoxInfo";
 import formatFees from "src/utils/formatFees";
 

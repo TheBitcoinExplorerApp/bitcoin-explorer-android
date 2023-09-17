@@ -7,5 +7,6 @@ export type DataSearchType = {
   addressInfo: {
     address: string;
     addressData: AddressInfoType;
+    addressTransactions: TransactionType[];
   };
 };

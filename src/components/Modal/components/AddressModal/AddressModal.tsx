@@ -10,11 +10,16 @@ import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContain
 import ModalHeader from "../ModalHeader/ModalHeader";
 import ModalServices from "src/services/ModalServices";
 import { AddressModalProps } from "../../types";
+import AllTransactionsInTransactionModal from "../TransactionModal/components/AllTransactionsInTransactionModal";
+import uuid from "react-native-uuid";
 
 export default function AddressModal(props: AddressModalProps) {
-  const { addressInfo, isVisible, handleModalClose } = props;
+  const { addressInfo, addressTransactions, isVisible, handleModalClose } =
+    props;
   const { address, addressData } = addressInfo;
   const isLoading = Object.values(addressData).length === 0;
+
+  console.log("addressTransactions", addressTransactions);
 
   const showLoading = () => <ActivityIndicator color="#FFF" size="large" />;
 
@@ -59,6 +64,16 @@ export default function AddressModal(props: AddressModalProps) {
           }}
         />
       </View>
+
+      <View>
+        {addressTransactions.map((transaction) => (
+          <AllTransactionsInTransactionModal
+            inputTransactions={transaction.inputTransactions}
+            outputTransactions={transaction.outputTransactions}
+            key={`${uuid.v4()}`}
+          />
+        ))}
+      </View>
     </View>
   );
 
@@ -72,9 +87,10 @@ export default function AddressModal(props: AddressModalProps) {
       <ScrollView
         contentContainerStyle={{
           marginTop: "38%",
-          paddingBottom: "60%",
+          paddingBottom: "40%",
           height: isLoading ? "100%" : "auto",
         }}
+        showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
           <ModalHeader
@@ -105,6 +121,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     marginTop: 35,
     gap: 20,
-    height: '100%'
+    height: "100%",
   },
 });

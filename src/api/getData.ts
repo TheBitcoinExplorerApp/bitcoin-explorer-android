@@ -9,6 +9,7 @@ import {
   transactionInfo,
   blocksTransaction,
   addressInfo,
+  addressTransactions,
 } from "src/env/apiLinks";
 
 export const getTaxes = async () => {
@@ -49,6 +50,14 @@ export const getAddressInfo = async (address: string) => {
   const url = `${addressInfo}/${address}`;
   const response = await fetch(url);
   const data: AddressDataType = await response.json();
+
+  return data;
+};
+
+export const getAddressTransactions = async (address: string) => {
+  const url = addressTransactions.replace("bitcoin_address", address);
+  const response = await fetch(url);
+  const data: TransactionsData[] = await response.json();
 
   return data;
 };

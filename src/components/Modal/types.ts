@@ -45,6 +45,7 @@ export type AddressModalProps = BasicModalProps & {
     address: string;
     addressData: AddressInfoType;
   };
+  addressTransactions: TransactionType[];
 };
 
 export type ModalProps =

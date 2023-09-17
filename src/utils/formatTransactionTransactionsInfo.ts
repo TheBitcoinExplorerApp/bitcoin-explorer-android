@@ -1,7 +1,7 @@
 import { TransactionType } from "src/components/Modal/types";
 import { TransactionsData } from "src/components/Transactions/types";
 
-const formatTransactionTransactionsInfo = (
+const formatTransactionsInfo = (
   transaction: TransactionsData
 ): TransactionType => ({
   transactionId: transaction.txid,
@@ -17,4 +17,4 @@ const formatTransactionTransactionsInfo = (
   },
 });
 
-export default formatTransactionTransactionsInfo;
+export default formatTransactionsInfo;

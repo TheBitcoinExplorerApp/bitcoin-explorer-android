@@ -8,7 +8,7 @@
     "platforms": ["android"],
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./src/assets/icon.png",
       "resizeMode": "contain",

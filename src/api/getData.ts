@@ -79,6 +79,6 @@ export const getBlockInfo = async (blockHash: string) => {
   const url = `${blockInfo}/${blockHash}`;
   const response = await fetch(url);
   const data: BlockInfoType = await response.json();
-  
+
   return data;
 };

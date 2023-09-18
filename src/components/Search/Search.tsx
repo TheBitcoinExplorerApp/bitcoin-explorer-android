@@ -32,7 +32,8 @@ export default function Search() {
 
   const blockHeightRange =
     searchContent.length >= 1 && searchContent.length <= 7;
-  const blockHashRange = searchContent.length === 64;
+  const blockHashRange =
+    searchContent.length === 64 && searchContent.includes("000");
   const transactionRange = searchContent.length > maxAddressSize;
   const addressRange =
     searchContent.length >= 27 && searchContent.length <= maxAddressSize;

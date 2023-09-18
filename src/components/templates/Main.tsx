@@ -17,6 +17,7 @@ export default function Main(props: MainProps) {
       <ScrollView
         style={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
       >
         <View style={styles.container}>
           <Title />

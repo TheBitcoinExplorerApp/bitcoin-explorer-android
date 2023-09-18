@@ -1,9 +1,10 @@
-import { Text, StyleSheet } from "react-native";
-import React from "react";
+import { Text, StyleSheet, ActivityIndicator } from "react-native";
+import { useContext } from "react";
 import PrioritiesTaxValuesBox from "../components/PrioritiesTax/PrioritiesTax";
 import Main from "src/components/templates/Main";
 import BlocksInfo from "src/components/BlocksInfo/BlocksInfo";
 import TransactionsInfo from "src/components/Transactions/TransactionsInfo";
+import { DataContext } from "src/context/DataProvider";
 
 type HomeProps = {
   navigation: any;
@@ -12,8 +13,12 @@ type HomeProps = {
 export default function Home(props: HomeProps) {
   const { navigation } = props;
 
-  return (
-    <Main navigation={navigation} actualScreen="Home" >
+  const { isLoading } = useContext(DataContext);
+
+  const showLoading = <ActivityIndicator size="large" color="white" />;
+
+  const content = (
+    <>
       <Text style={styles.title}>Taxas de Transação</Text>
 
       <PrioritiesTaxValuesBox />
@@ -21,6 +26,12 @@ export default function Home(props: HomeProps) {
       <BlocksInfo qtdBlocksToRender={4} />
 
       <TransactionsInfo />
+    </>
+  );
+
+  return (
+    <Main navigation={navigation} actualScreen="Home">
+      {isLoading ? showLoading : content}
     </Main>
   );
 }

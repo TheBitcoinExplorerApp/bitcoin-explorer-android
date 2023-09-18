@@ -14,6 +14,7 @@ export const DataContext = createContext({
   blocks: initialStateBlocks,
   transactions: initialStateFormattedTransactions,
   fees: [] as SmallBox[],
+  isLoading: true,
 });
 
 export function DataProvider(props: DataProviderProps) {
@@ -23,6 +24,7 @@ export function DataProvider(props: DataProviderProps) {
     initialStateFormattedTransactions
   );
   const [feesInfos, setFeesInfos] = useState<SmallBox[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([getBlocks(), getTransactions(), getTaxes()]).then((data) => {
@@ -33,6 +35,7 @@ export function DataProvider(props: DataProviderProps) {
       setBlocks(blocksData);
       setTransactions(transactionsData);
       setFeesInfos(feesData);
+      setIsLoading(false);
     });
   }, []);
 
@@ -42,6 +45,7 @@ export function DataProvider(props: DataProviderProps) {
         blocks,
         transactions,
         fees: feesInfos,
+        isLoading,
       }}
     >
       {children}

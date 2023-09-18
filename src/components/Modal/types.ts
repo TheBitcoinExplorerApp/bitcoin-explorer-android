@@ -2,10 +2,15 @@ import { BlockType } from "../BlocksInfo/components/Block/type";
 import { inputTransactions, outputTransactions } from "../Transactions/types";
 
 type BasicModalProps = {
-  modalType: "Transaction" | "Block" | "Address";
+  modalType: "Transaction" | "Block" | "Address" | "Information";
   isVisible: boolean;
   handleModalClose: () => void;
 };
+
+export type InformationModalProps = BasicModalProps & {
+  modalType: "Information";
+};
+
 export type BlockModalProps = BasicModalProps & {
   modalType: "Block";
   blockTransactions: TransactionType[];
@@ -50,4 +55,5 @@ export type AddressModalProps = BasicModalProps & {
 export type ModalProps =
   | BlockModalProps
   | TransactionModalProps
-  | AddressModalProps;
+  | AddressModalProps
+  | InformationModalProps;

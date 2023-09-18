@@ -12,11 +12,18 @@ export default function Title() {
         width={28}
         height={28}
         onPress={() => {
-          console.log("pressed!");
+          setModalVisible(true);
         }}
       />
 
       <Text style={styles.title}>Bitcoin Block Explorer</Text>
+      <Modal
+        modalType="Information"
+        isVisible={modalVisible}
+        handleModalClose={() => {
+          setModalVisible(false);
+        }}
+      />
     </View>
   );
 }

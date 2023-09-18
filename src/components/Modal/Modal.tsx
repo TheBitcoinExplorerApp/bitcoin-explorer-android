@@ -14,12 +14,12 @@ export default function Modal(props: ModalProps) {
   const { modalType } = props;
 
   if (modalType === "Transaction") {
-    return <TransactionModal {...(props as TransactionModalProps)} />;
+    return <TransactionModal {...props} />;
   }
 
   if (modalType === "Address") {
-    return <AddressModal {...(props as AddressModalProps)} />;
+    return <AddressModal {...props} />;
   }
 
-  return <BlockModal {...(props as BlockModalProps)} />;
+  return <BlockModal {...props} />;
 }

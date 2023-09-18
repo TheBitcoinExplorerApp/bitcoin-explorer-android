@@ -7,12 +7,12 @@ type BasicModalProps = {
   handleModalClose: () => void;
 };
 export type BlockModalProps = BasicModalProps & {
+  modalType: "Block";
   blockTransactions: TransactionType[];
 } & BlockType;
 
 export type TransactionModalProps = BasicModalProps & {
-  isVisible: boolean;
-  handleModalClose: () => void;
+  modalType: "Transaction";
   transactionInfo: TransactionType;
   transactionHash: string;
 };
@@ -39,6 +39,7 @@ export type AddressInfoType = {
 };
 
 export type AddressModalProps = BasicModalProps & {
+  modalType: "Address";
   addressInfo: {
     address: string;
     addressData: AddressInfoType;

@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
+import { View, Text, StyleSheet } from "react-native";
+import React from "react";
 
 export type SmallBox = {
   title: string;
@@ -18,7 +18,9 @@ export default function SmallBoxInfo(props: SmallBoxInfoProps) {
       {boxesInfos.map((infos, idx) => (
         <View style={styles.boxContainer} key={idx}>
           <Text style={styles.text}>{infos.title} sat/vB</Text>
-          <Text style={styles.text}>R$ {infos.value}</Text>
+          {/* <Text style={styles.text}>R$ {infos.value}</Text>
+            #TODO: take price value from another endpoint to calculate the value in BRL
+          */}
         </View>
       ))}
     </View>
@@ -27,21 +29,21 @@ export default function SmallBoxInfo(props: SmallBoxInfoProps) {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   boxContainer: {
-    textAlign: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1d2133',
+    textAlign: "center",
+    alignItems: "center",
+    backgroundColor: "#1d2133",
     width: 100,
     paddingVertical: 16,
     paddingHorizontal: 8,
     borderRadius: 7,
   },
   text: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 14,
   },
 });

@@ -23,7 +23,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/icon_1024x1024.png",
+        "foregroundImage": "./src/assets/icon_512x512.png",
         "backgroundColor": "#111428"
       },
       "package": "com.pedrow21.bitcoinexplorerandroid"

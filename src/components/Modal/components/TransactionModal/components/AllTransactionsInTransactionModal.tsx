@@ -26,22 +26,16 @@ export default function AllTransactionsInTransactionModal(
                 style={styles.transactionContentContainer}
                 key={`${uuid.v4()}`}
               >
-                <View>
-                  <View>
-                    <Text style={styles.transactionAddress}>
-                      {(prevout?.scriptpubkey_address)
-                        .toString()
-                        .slice(0, 14)
-                        .concat("...")}
-                    </Text>
-                  </View>
-                  <View>
-                    <Text style={styles.text}>
-                      {(prevout?.value / 100000000).toString()}
-                      BTC
-                    </Text>
-                  </View>
-                </View>
+                <Text style={styles.transactionAddress}>
+                  {(prevout?.scriptpubkey_address)
+                    .toString()
+                    .slice(0, 14)
+                    .concat("...")}
+                </Text>
+
+                <Text style={styles.text}>
+                  {(prevout?.value / 100000000).toString()} BTC
+                </Text>
               </View>
             );
           })}
@@ -54,7 +48,10 @@ export default function AllTransactionsInTransactionModal(
             const { value, scriptpubkey_address } = outputTransaction;
 
             return (
-              <View key={`${uuid.v4()}`}>
+              <View
+                key={`${uuid.v4()}`}
+                style={styles.eachTransactionOutputContainer}
+              >
                 <Text style={styles.transactionAddress}>
                   {scriptpubkey_address.toString().slice(0, 14).concat("...")}
                 </Text>
@@ -83,10 +80,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#1d2133",
     borderRadius: 8,
     paddingVertical: 5,
-    paddingHorizontal: 8,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
+    maxWidth: "100%",
   },
   inputTransactionsContainer: {
     gap: 5,
@@ -96,10 +93,13 @@ const styles = StyleSheet.create({
     gap: 5,
     alignItems: "center",
   },
-  transactionContentContainer: {
-    flexDirection: "row",
+  eachTransactionOutputContainer: {
+    width: "100%",
     alignItems: "center",
-    justifyContent: "space-between",
+  },
+  transactionContentContainer: {
+    alignItems: "center",
+    width: "100%",
   },
   transactionAddress: {
     color: "#DF7800",

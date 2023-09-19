@@ -103,11 +103,10 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     backgroundColor: "#1d2133",
     borderRadius: 7,
     paddingVertical: 10,
-    paddingHorizontal: 15,
   },
   transactionInfoContainer: {
     alignItems: "center",

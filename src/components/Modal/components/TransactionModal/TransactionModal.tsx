@@ -12,19 +12,35 @@ import NotConfirmedContent from "./components/NotConfirmedContent";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInTransactionModal";
 import ModalHeader from "../ModalHeader/ModalHeader";
 import ModalServices from "src/services/ModalServices";
+import ConfirmedContent from "./components/ConfirmedContent";
 
 export default function TransactionModal(props: TransactionModalProps) {
   const { isVisible, handleModalClose, transactionInfo, transactionHash } =
     props;
 
   const transactionDataIsLoading = Object.values(transactionInfo).length === 0;
+  const transactionIsConfirmed = transactionInfo.statusTransaction?.blockHeight;
+
+  const showConfirmedContent = () => (
+    <ConfirmedContent
+      fee={transactionInfo.fee}
+      size={transactionInfo.size}
+      statusTransaction={transactionInfo.statusTransaction}
+    />
+  );
+
+  const showNotConfirmedContent = () => (
+    <NotConfirmedContent
+      fee={transactionInfo.fee}
+      size={transactionInfo.size}
+    />
+  );
 
   const showContent = () => (
     <>
-      <NotConfirmedContent
-        fee={transactionInfo.fee}
-        size={transactionInfo.size}
-      />
+      {transactionIsConfirmed
+        ? showConfirmedContent()
+        : showNotConfirmedContent()}
 
       <AllTransactionsInTransactionModal
         inputTransactions={transactionInfo.inputTransactions}

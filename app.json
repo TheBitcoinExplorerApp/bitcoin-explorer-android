@@ -7,10 +7,10 @@
     "version": "1.0.0",
     "platforms": ["android"],
     "orientation": "portrait",
-    "icon": "./src/assets/icon_1024x1024.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./src/assets/icon_1024x1024.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#111428"
     },
@@ -23,7 +23,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/icon_512x512.png",
+        "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#111428"
       },
       "package": "com.pedrow21.bitcoinexplorerandroid"

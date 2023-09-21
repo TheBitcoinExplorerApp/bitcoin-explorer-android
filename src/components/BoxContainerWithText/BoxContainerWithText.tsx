@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     paddingHorizontal: 18,
     alignItems: 'center',
+    height: 48
   },
   firstText: {
     color: '#FFF',

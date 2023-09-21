@@ -1,6 +1,7 @@
 import { TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import { Image } from "react-native";
+import CloseIcon from "../../../../assets/xIcon.svg";
 
 type CloseBtnProps = {
   handleModalClose: () => void;
@@ -15,16 +16,17 @@ export default function CloseBtn(props: CloseBtnProps) {
       onPress={() => {
         handleModalClose();
       }}
+      accessibilityLabel="Close Modal"
     >
-      <Image source={require("./../../../../assets/xIcon.png")} />
+      <CloseIcon width={20} height={20} />
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   closeButton: {
-    width: 30,
-    height: 30,
+    width: 36,
+    height: 36,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 100,

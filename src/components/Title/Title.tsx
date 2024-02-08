@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import BitcoinLogo from "../../assets/bitcoinLogo.svg";
+import LogoIcons from "../../assets/iconsLogo.svg";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 
@@ -8,15 +8,13 @@ export default function Title() {
 
   return (
     <View style={styles.container}>
-      <BitcoinLogo
-        width={28}
-        height={28}
+      <LogoIcons
+        height={32}
         onPress={() => {
           setModalVisible(true);
         }}
       />
 
-      <Text style={styles.title}>Bitcoin Block Explorer</Text>
       <Modal
         modalType="Information"
         isVisible={modalVisible}

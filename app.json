@@ -2,7 +2,7 @@
   "expo": {
     "name": "Bitcoin Blockchain Explorer",
     "slug": "bitcoin-blockchain-explorer-android",
-    "description": "An app to explore the Bitcoin blockchain",
+    "description": "An unofficial app to explore the Bitcoin blockchain",
     "privacy": "hidden",
     "version": "1.0.0",
     "platforms": ["android"],

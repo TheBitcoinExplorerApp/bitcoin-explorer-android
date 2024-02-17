@@ -5,7 +5,9 @@
     "description": "An unofficial app to explore the Bitcoin blockchain",
     "privacy": "hidden",
     "version": "1.0.0",
-    "platforms": ["android"],
+    "platforms": [
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "dark",
@@ -17,7 +19,9 @@
     "experiments": {
       "tsconfigPaths": true
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -26,14 +30,14 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#111428"
       },
-      "package": "com.pedrow21.bitcoinexplorerandroid"
+      "package": "com.pedrow21.bitcoinblockchainexplorerandroid"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "af163f27-004c-406d-a24b-aaaceaa27b0a"
+        "projectId": "cda97b11-945f-4934-8b4b-1031a7e48bdf"
       }
     }
   }

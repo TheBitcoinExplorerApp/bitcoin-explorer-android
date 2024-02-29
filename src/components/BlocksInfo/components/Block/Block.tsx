@@ -7,16 +7,18 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { BlockProps, BlockType } from "./type";
 import Modal from "src/components/Modal/Modal";
 import { useState } from "react";
 import { initialStateBlocks } from "src/mocks/initialStates";
 import ModalServices from "src/services/ModalServices";
 import { TransactionType } from "src/components/Modal/types";
+import { I18nContext } from "src/context/LocaleProvider";
 
 export default function Block(props: BlockProps) {
   const { blocks } = props;
+  const i18nContext = useContext(I18nContext);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [blockData, setBlockData] = useState<BlockType>(initialStateBlocks[0]);
@@ -48,7 +50,10 @@ export default function Block(props: BlockProps) {
                 <Text style={styles.textPrimary}>{block.blockHeight}</Text>
                 <Text style={styles.text}>{block.satPerVbyte} sat/vB</Text>
                 <Text style={styles.text}>{block.size} MB</Text>
-                <Text style={styles.text}>{block.transactions} transações</Text>
+                <Text style={styles.text}>
+                  {block.transactions}{" "}
+                  {i18nContext.t("transactions").toLowerCase()}
+                </Text>
                 <Text style={styles.text}>
                   {block.timeAgo.hour}:{block.timeAgo.minutes}
                 </Text>

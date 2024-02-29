@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import ModalHeader from "../ModalHeader/ModalHeader";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import { BlockModalProps } from "../../types";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInBlockModal";
 import ModalServices from "src/services/ModalServices";
 import { ActivityIndicator } from "react-native";
+import { I18nContext } from "src/context/LocaleProvider";
 
 export default function BlockModal(props: BlockModalProps) {
   const {
@@ -27,8 +28,9 @@ export default function BlockModal(props: BlockModalProps) {
     extras,
     blockTransactions,
   } = props;
-
   const { pool } = extras;
+
+  const i18nContext = useContext(I18nContext);
 
   const dataIsLoading = !blockHash || blockTransactions.length === 0;
   const showLoading = () => <ActivityIndicator color="#FFF" />;
@@ -44,7 +46,7 @@ export default function BlockModal(props: BlockModalProps) {
   const showContent = () => (
     <>
       <BoxContainerWithText
-        firstText="Bloco"
+        firstText={i18nContext.t("block")}
         secondText={`${blockHeight}`}
         secondTextWhite
         width="42%"
@@ -65,7 +67,7 @@ export default function BlockModal(props: BlockModalProps) {
         </TouchableOpacity>
 
         <BoxContainerWithText
-          firstText="Data/Hora"
+          firstText={i18nContext.t("date_time")}
           secondText={`${timeAgo.day}/${timeAgo.month}/${timeAgo.year} ${timeAgo.hour}:${timeAgo.minutes}`}
           secondTextWhite
           borderStyles={{
@@ -77,7 +79,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText="Tamanho"
+          firstText={i18nContext.t("size")}
           secondText={`${size} MB`}
           secondTextWhite
           borderStyles={{
@@ -89,7 +91,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText="Taxa mediana"
+          firstText={i18nContext.t("median_fee")}
           secondText={`~${satPerVbyte} sat/vB`}
           secondTextWhite
           borderStyles={{
@@ -101,7 +103,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText="Minerador"
+          firstText={i18nContext.t("miner")}
           secondText={pool.name}
           secondTextWhite
           borderStyles={{
@@ -112,7 +114,7 @@ export default function BlockModal(props: BlockModalProps) {
       </View>
 
       <Text style={styles.titleTransactionBlock}>
-        {transactions} transações
+        {transactions} {i18nContext.t("transactions").toLocaleLowerCase()}
       </Text>
 
       <View style={styles.transactionContainer}>
@@ -133,7 +135,7 @@ export default function BlockModal(props: BlockModalProps) {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
-          <ModalHeader handleModalClose={handleModalClose} title="Bloco" />
+          <ModalHeader handleModalClose={handleModalClose} title={i18nContext.t('block')} />
 
           <View style={styles.contentContainer}>
             {dataIsLoading ? showLoading() : showContent()}

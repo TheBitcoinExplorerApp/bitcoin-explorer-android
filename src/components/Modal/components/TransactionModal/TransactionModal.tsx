@@ -13,10 +13,14 @@ import AllTransactionsInTransactionModal from "./components/AllTransactionsInTra
 import ModalHeader from "../ModalHeader/ModalHeader";
 import ModalServices from "src/services/ModalServices";
 import ConfirmedContent from "./components/ConfirmedContent";
+import { I18nContext } from "src/context/LocaleProvider";
+import { useContext } from "react";
 
 export default function TransactionModal(props: TransactionModalProps) {
   const { isVisible, handleModalClose, transactionInfo, transactionHash } =
     props;
+
+  const i18nContext = useContext(I18nContext);
 
   const transactionDataIsLoading = Object.values(transactionInfo).length === 0;
   const transactionIsConfirmed = transactionInfo.statusTransaction?.blockHeight;
@@ -68,7 +72,7 @@ export default function TransactionModal(props: TransactionModalProps) {
       >
         <View style={styles.container}>
           <ModalHeader
-            title="Transação"
+            title={i18nContext.t("transaction")}
             handleModalClose={() => {
               handleModalClose();
             }}
@@ -79,7 +83,7 @@ export default function TransactionModal(props: TransactionModalProps) {
               onPress={() => ModalServices.copyToClipboard(transactionHash)}
             >
               <BoxContainerWithText
-                firstText="Transação"
+                firstText={i18nContext.t("hash")}
                 secondText={transactionHash.slice(0, 18).concat("...")}
               />
             </TouchableOpacity>

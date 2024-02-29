@@ -1,0 +1,27 @@
+const ptBR = {
+  transaction_fees: "Taxas de Transação",
+  low_priority: "Baixa Prioridade",
+  medium_priority: "Média Prioridade",
+  high_priority: "Alta Prioridade",
+  block: "Bloco",
+  blocks: "Blocos",
+  transaction: "Transação",
+  transactions: "Transações",
+  transaction_id: "ID Transação",
+  amount: "Valor",
+  fee: "Taxa",
+  unconfirmed: "Não Confirmada",
+  confirmed: "Confirmada",
+  date_time: "Data/Hora",
+  size: "Tamanho",
+  inputs_and_outputs: "Entradas e Saídas",
+  median_fee: "Taxa Mediana",
+  miner: "Minerador",
+  hash: "Hash",
+  address: "Endereço",
+  total_received: "Total Recebido",
+  total_sent: "Total Enviado",
+  balance: "Saldo",
+};
+
+export default ptBR;

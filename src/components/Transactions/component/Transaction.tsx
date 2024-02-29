@@ -1,10 +1,11 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Modal from "src/components/Modal/Modal";
 import { TransactionType } from "src/components/Modal/types";
 import ModalServices from "src/services/ModalServices";
 import { initialStateTransaction } from "src/mocks/initialStates";
 import { TransactionInfo } from "../types";
+import { I18nContext } from "src/context/LocaleProvider";
 
 type transaction = {
   transactionId: string;
@@ -18,6 +19,8 @@ type TransactionProps = {
 
 export default function Transaction(props: TransactionProps) {
   const { transactions } = props;
+    const i18nContext = useContext(I18nContext);
+
   const [modalVisible, setModalVisible] = useState(false);
   const [transactionInfo, setTransactionInfo] = useState<TransactionInfo>({
     transactionData: {} as TransactionType,
@@ -55,20 +58,24 @@ export default function Transaction(props: TransactionProps) {
             >
               <View style={styles.container}>
                 <View style={styles.transactionInfoContainer}>
-                  <Text style={styles.transactionInfoLabel}>ID transação</Text>
+                  <Text style={styles.transactionInfoLabel}>
+                    {i18nContext.t("transaction_id")}
+                  </Text>
                   <Text style={styles.transactionId}>
                     {transactionId.slice(0, 14).concat("...")}
                   </Text>
                 </View>
 
                 <View style={styles.transactionInfoContainer}>
-                  <Text style={styles.transactionInfoLabel}>Valor</Text>
+                  <Text style={styles.transactionInfoLabel}>
+                    {i18nContext.t("amount")}
+                  </Text>
                   <Text style={styles.transactionInfoValue}>
                     {value / 100000000} BTC
                   </Text>
                 </View>
                 <View style={styles.transactionInfoContainer}>
-                  <Text style={styles.transactionInfoLabel}>Taxa</Text>
+                  <Text style={styles.transactionInfoLabel}>{i18nContext.t('fee')}</Text>
                   <Text style={styles.transactionInfoValue}>
                     {fee.toLocaleString()} sats
                   </Text>

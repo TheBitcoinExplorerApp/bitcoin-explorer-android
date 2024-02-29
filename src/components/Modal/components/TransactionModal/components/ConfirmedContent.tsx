@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import { TransactionType } from "src/components/Modal/types";
 import { formatDate } from "src/utils/formatBlockInfo";
+import { I18nContext } from "src/context/LocaleProvider";
 
 type ConfirmedContentProps = Required<
   Pick<TransactionType, "fee" | "size" | "statusTransaction">
@@ -11,6 +12,7 @@ type ConfirmedContentProps = Required<
 export default function ConfirmedContent(props: ConfirmedContentProps) {
   const { fee, size, statusTransaction } = props;
   const { blockHeight, blockTime } = statusTransaction;
+  const i18nContext = useContext(I18nContext);
 
   const { day, month, year, hour, minutes } = formatDate(blockTime);
 
@@ -23,13 +25,13 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
         }}
       >
         <BoxContainerWithText
-          firstText={`Bloco ${blockHeight}`}
+          firstText={`${i18nContext.t("block")} ${blockHeight}`}
           secondText=""
           width="auto"
         />
 
         <BoxContainerWithText
-          firstText="Confirmada"
+          firstText={i18nContext.t("confirmed")}
           secondText=""
           width="auto"
         />
@@ -37,7 +39,7 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
 
       <View>
         <BoxContainerWithText
-          firstText="Data/Hora"
+          firstText={i18nContext.t("date_time")}
           secondText={`${day}/${month}/${year} ${hour}:${minutes}`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -46,7 +48,7 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText="Tamanho"
+          firstText={i18nContext.t("size")}
           secondText={`${size} B`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -57,7 +59,7 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText="Taxa"
+          firstText={i18nContext.t("fee")}
           secondText={`${(fee / 100000000).toString()} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,

@@ -1,0 +1,27 @@
+const enUS = {
+  transaction_fees: "Transaction Fees",
+  low_priority: "Low Priority",
+  medium_priority: "Medium Priority",
+  high_priority: "High Priority",
+  block: "Block",
+  blocks: "Blocks",
+  transaction: "Transaction",
+  transactions: "Transactions",
+  transaction_id: "Transaction ID",
+  amount: "Amount",
+  fee: "Fee",
+  unconfirmed: "Unconfirmed",
+  confirmed: "Confirmed",
+  date_time: "Date/Time",
+  size: "Size",
+  inputs_and_outputs: "Inputs and Outputs",
+  median_fee: "Median Fee",
+  miner: "Miner",
+  hash: "Hash",
+  address: "Address",
+  total_received: "Total Received",
+  total_sent: "Total Sent",
+  balance: "Balance",
+};
+
+export default enUS;

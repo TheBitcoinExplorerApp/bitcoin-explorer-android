@@ -3,19 +3,25 @@ import { BlockInfoType } from "src/components/BlocksInfo/types";
 
 export const formatDate = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
+  const test = new Date(timestamp * 1000);
 
   const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
   const hour = date.getHours();
+  const year = date.getFullYear();
   const minutes = date.getMinutes();
+  const month = date.getMonth() + 1;
+
+  const dayWithTwoDigits = day < 10 ? parseInt(`0${day}`) : day;
+  const hourWithTwoDigits = hour < 10 ? parseInt(`0${hour}`) : hour;
+  const monthWithTwoDigits = month < 10 ? parseInt(`0${month}`) : month;
+  const minutesWithTwoDigits = minutes < 10 ? parseInt(`0${minutes}`) : minutes;
 
   return {
-    day,
-    month,
+    day: dayWithTwoDigits,
+    month: monthWithTwoDigits,
     year,
-    hour,
-    minutes,
+    hour: hourWithTwoDigits,
+    minutes: minutesWithTwoDigits,
   };
 };
 

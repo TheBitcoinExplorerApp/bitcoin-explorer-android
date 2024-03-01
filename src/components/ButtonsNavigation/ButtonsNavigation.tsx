@@ -1,8 +1,9 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import HouseIcon from "./../../assets/house.svg";
 import BlocksIcon from "./../../assets/blocks.svg";
 import TransactionsIcon from "./../../assets/transactions.svg";
+import { I18nContext } from "src/context/LocaleProvider";
 
 type ButtonsNavigationProps = {
   navigation: any;
@@ -11,6 +12,8 @@ type ButtonsNavigationProps = {
 
 export default function ButtonsNavigation(props: ButtonsNavigationProps) {
   const { navigation, actualScreen } = props;
+
+  const i18nContext = useContext(I18nContext);
 
   const homeColor = actualScreen === "Home" ? "#DF7800" : "#D6D6D6";
   const blocksColor = actualScreen === "Blocks" ? "#DF7800" : "#D6D6D6";
@@ -48,7 +51,7 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
               color: blocksColor,
             }}
           >
-            Blocos
+            {i18nContext.t("blocks")}
           </Text>
         </View>
       </TouchableOpacity>
@@ -65,7 +68,7 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
               color: transactionsColor,
             }}
           >
-            Transações
+            {i18nContext.t("transactions")}
           </Text>
         </View>
       </TouchableOpacity>

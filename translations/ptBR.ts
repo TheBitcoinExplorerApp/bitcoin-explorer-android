@@ -22,6 +22,7 @@ const ptBR = {
   total_received: "Total Recebido",
   total_sent: "Total Enviado",
   balance: "Saldo",
+  waiting_confirmation: "Aguardando Confirmação",
 };
 
 export default ptBR;

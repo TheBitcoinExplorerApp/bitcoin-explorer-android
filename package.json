@@ -28,7 +28,8 @@
     "react-native-svg": "14.1.0",
     "react-native-tab-view": "^3.5.2",
     "react-native-uuid": "^2.0.1",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

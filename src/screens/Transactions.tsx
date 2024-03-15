@@ -2,7 +2,7 @@ import { ActivityIndicator } from "react-native";
 import React, { useContext } from "react";
 import Main from "src/components/templates/Main";
 import TransactionsInfo from "src/components/Transactions/TransactionsInfo";
-import { DataContext } from "src/context/DataProvider";
+import useAppDataStore from "src/context/DataProvider";
 
 type TransactionsProps = {
   navigation: any;
@@ -10,7 +10,7 @@ type TransactionsProps = {
 
 export default function Transactions(props: TransactionsProps) {
   const { navigation } = props;
-  const { isLoading } = useContext(DataContext);
+  const { isLoading } = useAppDataStore();
   const showLoading = <ActivityIndicator size="large" color="white" />;
 
   return (

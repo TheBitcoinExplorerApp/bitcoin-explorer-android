@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import React, { useContext } from "react";
 import SmallBoxInfo from "../SmallBoxInfo/SmallBoxInfo";
-import { DataContext } from "src/context/DataProvider";
+import useAppDataStore from "src/context/DataProvider";
 import { I18nContext } from "src/context/LocaleProvider";
 
 export default function PrioritiesTax() {
-  const { fees } = useContext(DataContext);
+  const { fees } = useAppDataStore();
   const i18nContext = useContext(I18nContext);
 
   return (

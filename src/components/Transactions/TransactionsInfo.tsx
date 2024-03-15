@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useContext } from "react";
 import Transaction from "./component/Transaction";
-import { DataContext } from "src/context/DataProvider";
+import useAppDataStore from "src/context/DataProvider";
 import { I18nContext } from "src/context/LocaleProvider";
 
 export default function TransactionsInfo() {
-  const { transactions } = useContext(DataContext);
+    const { transactions } = useAppDataStore();
     const i18nContext = useContext(I18nContext);
 
 

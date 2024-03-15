@@ -1,5 +1,11 @@
 import { TransactionType } from "../Modal/types";
 
+export type TransactionState = {
+  transactionId: string;
+  fee: number;
+  value: number;
+};
+
 export type BasicTransactionInfo = {
   txid: string;
   fee: number;
@@ -39,4 +45,4 @@ export type TransactionsData = {
 export type TransactionInfo = {
   transactionHash: string;
   transactionData: TransactionType;
-}
+};

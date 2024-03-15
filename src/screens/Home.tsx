@@ -4,7 +4,7 @@ import PrioritiesTaxValuesBox from "../components/PrioritiesTax/PrioritiesTax";
 import Main from "src/components/templates/Main";
 import BlocksInfo from "src/components/BlocksInfo/BlocksInfo";
 import TransactionsInfo from "src/components/Transactions/TransactionsInfo";
-import { DataContext } from "src/context/DataProvider";
+import useAppDataStore from "src/context/DataProvider";
 import { I18n } from "i18n-js";
 import { I18nContext } from "src/context/LocaleProvider";
 
@@ -14,11 +14,10 @@ type HomeProps = {
 
 export default function Home(props: HomeProps) {
 
+  const { isLoading } = useAppDataStore();
   const i18nContext = useContext(I18nContext);
 
   const { navigation } = props;
-
-  const { isLoading } = useContext(DataContext);
 
   const showLoading = <ActivityIndicator size="large" color="white" />;
 

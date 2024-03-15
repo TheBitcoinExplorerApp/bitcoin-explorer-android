@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Block from "./components/Block/Block";
 import useAppDataStore from "src/context/DataProvider";
-import { I18nContext } from "src/context/LocaleProvider";
 
 type BlocksInfoProps = {
   qtdBlocksToRender?: number;
@@ -10,8 +9,8 @@ type BlocksInfoProps = {
 
 export default function BlocksInfo(props: BlocksInfoProps) {
   const { qtdBlocksToRender } = props;
-  const { blocks } = useAppDataStore();
-  const i18nContext = useContext(I18nContext);
+  const { blocks, i18n } = useAppDataStore();
+
 
   const blocksToRender = qtdBlocksToRender
     ? blocks.slice(0, qtdBlocksToRender)
@@ -19,7 +18,7 @@ export default function BlocksInfo(props: BlocksInfoProps) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{i18nContext.t("blocks")}</Text>
+      <Text style={styles.title}>{i18n.t("blocks")}</Text>
 
       <Block blocks={blocksToRender} />
     </View>
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "white",
-    fontSize: 17,
+  fontSize: 17,
     fontWeight: "500",
   },
 });

@@ -1,17 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
-import { useContext } from "react";
 import Transaction from "./component/Transaction";
 import useAppDataStore from "src/context/DataProvider";
-import { I18nContext } from "src/context/LocaleProvider";
 
 export default function TransactionsInfo() {
-    const { transactions } = useAppDataStore();
-    const i18nContext = useContext(I18nContext);
-
+  const { transactions, i18n } = useAppDataStore();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{i18nContext.t('transactions')}</Text>
+      <Text style={styles.title}>{i18n.t("transactions")}</Text>
 
       <Transaction transactions={transactions} />
     </View>

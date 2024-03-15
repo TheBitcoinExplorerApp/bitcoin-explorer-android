@@ -13,7 +13,7 @@ import { BlockModalProps } from "../../types";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInBlockModal";
 import ModalServices from "src/services/ModalServices";
 import { ActivityIndicator } from "react-native";
-import { I18nContext } from "src/context/LocaleProvider";
+import useAppDataStore from "src/context/DataProvider";
 
 export default function BlockModal(props: BlockModalProps) {
   const {
@@ -30,7 +30,8 @@ export default function BlockModal(props: BlockModalProps) {
   } = props;
   const { pool } = extras;
 
-  const i18nContext = useContext(I18nContext);
+    const { i18n } = useAppDataStore();
+
 
   const dataIsLoading = !blockHash || blockTransactions.length === 0;
   const showLoading = () => <ActivityIndicator color="#FFF" />;
@@ -46,7 +47,7 @@ export default function BlockModal(props: BlockModalProps) {
   const showContent = () => (
     <>
       <BoxContainerWithText
-        firstText={i18nContext.t("block")}
+        firstText={i18n.t("block")}
         secondText={`${blockHeight}`}
         secondTextWhite
         width="42%"
@@ -67,7 +68,7 @@ export default function BlockModal(props: BlockModalProps) {
         </TouchableOpacity>
 
         <BoxContainerWithText
-          firstText={i18nContext.t("date_time")}
+          firstText={i18n.t("date_time")}
           secondText={`${timeAgo.day}/${timeAgo.month}/${timeAgo.year} ${timeAgo.hour}:${timeAgo.minutes}`}
           secondTextWhite
           borderStyles={{
@@ -79,7 +80,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText={i18nContext.t("size")}
+          firstText={i18n.t("size")}
           secondText={`${size} MB`}
           secondTextWhite
           borderStyles={{
@@ -91,7 +92,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText={i18nContext.t("median_fee")}
+          firstText={i18n.t("median_fee")}
           secondText={`~${satPerVbyte} sat/vB`}
           secondTextWhite
           borderStyles={{
@@ -103,7 +104,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText={i18nContext.t("miner")}
+          firstText={i18n.t("miner")}
           secondText={pool.name}
           secondTextWhite
           borderStyles={{
@@ -114,7 +115,7 @@ export default function BlockModal(props: BlockModalProps) {
       </View>
 
       <Text style={styles.titleTransactionBlock}>
-        {transactions} {i18nContext.t("transactions").toLocaleLowerCase()}
+        {transactions} {i18n.t("transactions").toLocaleLowerCase()}
       </Text>
 
       <View style={styles.transactionContainer}>
@@ -135,7 +136,7 @@ export default function BlockModal(props: BlockModalProps) {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
-          <ModalHeader handleModalClose={handleModalClose} title={i18nContext.t('block')} />
+          <ModalHeader handleModalClose={handleModalClose} title={i18n.t('block')} />
 
           <View style={styles.contentContainer}>
             {dataIsLoading ? showLoading() : showContent()}

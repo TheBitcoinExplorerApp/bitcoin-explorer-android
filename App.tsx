@@ -1,12 +1,10 @@
 import Home from "./src/screens/Home";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Blocks from "src/screens/Blocks";
 import Transactions from "src/screens/Transactions";
-// import { DataProvider } from "src/context/DataProvider";
 import useAppDataStore from "src/context/DataProvider";
-import { LocaleProvider, i18n } from "src/context/LocaleProvider";
 import { useEffect } from "react";
 import { getBlocks, getTaxes, getTransactions } from "src/api/getData";
 import { formatBlocksData } from "src/utils/formatBlockInfo";
@@ -32,37 +30,35 @@ export default function App() {
   }, []);
 
   return (
-    <LocaleProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen
-              name="Home"
-              component={Home}
-              options={{
-                headerShown: false,
-                animation: "none",
-              }}
-            />
-            <Stack.Screen
-              name="Blocks"
-              component={Blocks}
-              options={{
-                headerShown: false,
-                animation: "none",
-              }}
-            />
-            <Stack.Screen
-              name="Transactions"
-              component={Transactions}
-              options={{
-                headerShown: false,
-                animation: "none",
-              }}
-            />
-          </Stack.Navigator>
-          <StatusBar />
-        </NavigationContainer>
-    </LocaleProvider>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerShown: false,
+            animation: "none",
+          }}
+        />
+        <Stack.Screen
+          name="Blocks"
+          component={Blocks}
+          options={{
+            headerShown: false,
+            animation: "none",
+          }}
+        />
+        <Stack.Screen
+          name="Transactions"
+          component={Transactions}
+          options={{
+            headerShown: false,
+            animation: "none",
+          }}
+        />
+      </Stack.Navigator>
+      <StatusBar />
+    </NavigationContainer>
   );
 }
 

@@ -14,11 +14,11 @@ import { useState } from "react";
 import { initialStateBlocks } from "src/mocks/initialStates";
 import ModalServices from "src/services/ModalServices";
 import { TransactionType } from "src/components/Modal/types";
-import { I18nContext } from "src/context/LocaleProvider";
+import useAppDataStore from "src/context/DataProvider";
 
 export default function Block(props: BlockProps) {
   const { blocks } = props;
-  const i18nContext = useContext(I18nContext);
+  const { i18n } = useAppDataStore();
 
   const [modalVisible, setModalVisible] = useState(false);
   const [blockData, setBlockData] = useState<BlockType>(initialStateBlocks[0]);
@@ -51,8 +51,7 @@ export default function Block(props: BlockProps) {
                 <Text style={styles.text}>{block.satPerVbyte} sat/vB</Text>
                 <Text style={styles.text}>{block.size} MB</Text>
                 <Text style={styles.text}>
-                  {block.transactions}{" "}
-                  {i18nContext.t("transactions").toLowerCase()}
+                  {block.transactions} {i18n.t("transactions").toLowerCase()}
                 </Text>
                 <Text style={styles.text}>
                   {block.timeAgo.hour}:{block.timeAgo.minutes}

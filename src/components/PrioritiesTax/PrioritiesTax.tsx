@@ -1,24 +1,21 @@
 import { View, Text, StyleSheet } from "react-native";
-import React, { useContext } from "react";
 import SmallBoxInfo from "../SmallBoxInfo/SmallBoxInfo";
 import useAppDataStore from "src/context/DataProvider";
-import { I18nContext } from "src/context/LocaleProvider";
 
 export default function PrioritiesTax() {
-  const { fees } = useAppDataStore();
-  const i18nContext = useContext(I18nContext);
+  const { fees, i18n } = useAppDataStore();
 
   return (
     <>
       <View style={styles.taxContainerPrioritiesTaxText}>
         <Text style={styles.taxPrioritiesTaxText}>
-          {i18nContext.t("low_priority")}
+          {i18n.t("low_priority")}
         </Text>
         <Text style={styles.taxPrioritiesTaxText}>
-          {i18nContext.t("medium_priority")}
+          {i18n.t("medium_priority")}
         </Text>
         <Text style={styles.taxPrioritiesTaxText}>
-          {i18nContext.t("high_priority")}
+          {i18n.t("high_priority")}
         </Text>
       </View>
       <SmallBoxInfo boxesInfos={fees} />

@@ -1,7 +1,6 @@
-import { View, Text, StyleSheet } from "react-native";
-import React, { useContext } from "react";
+import { View, StyleSheet } from "react-native";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import { I18nContext } from "src/context/LocaleProvider";
+import useAppDataStore from "src/context/DataProvider";
 
 type NotConfirmedContentProps = {
   size: number;
@@ -10,8 +9,7 @@ type NotConfirmedContentProps = {
 
 export default function NotConfirmedContent(props: NotConfirmedContentProps) {
   const { fee, size } = props;
-
-  const i18nContext = useContext(I18nContext);
+  const { i18n } = useAppDataStore();
 
   return (
     <View style={styles.container}>
@@ -22,7 +20,7 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
         }}
       >
         <BoxContainerWithText
-          firstText={i18nContext.t("unconfirmed")}
+          firstText={i18n.t("unconfirmed")}
           secondText=""
           width="auto"
         />
@@ -30,8 +28,8 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
 
       <View>
         <BoxContainerWithText
-          firstText={i18nContext.t("date_time")}
-          secondText={i18nContext.t("waiting_confirmation")}
+          firstText={i18n.t("date_time")}
+          secondText={i18n.t("waiting_confirmation")}
           borderStyles={{
             borderBottomEndRadius: 0,
             borderBottomStartRadius: 0,
@@ -39,7 +37,7 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18nContext.t("size")}
+          firstText={i18n.t("size")}
           secondText={`${size} B`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -50,7 +48,7 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18nContext.t("fee")}
+          firstText={i18n.t("fee")}
           secondText={`${(fee / 100000000).toString()} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,

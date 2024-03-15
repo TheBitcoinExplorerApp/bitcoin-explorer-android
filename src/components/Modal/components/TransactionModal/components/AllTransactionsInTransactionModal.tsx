@@ -1,8 +1,7 @@
 import uuid from "react-native-uuid";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { TransactionType } from "src/components/Modal/types";
-import { I18nContext } from "src/context/LocaleProvider";
-import { useContext } from "react";
+import useAppDataStore from "src/context/DataProvider";
 
 type AllTransactionsInTransactionModalProps = {
   inputTransactions: TransactionType["inputTransactions"];
@@ -13,11 +12,11 @@ export default function AllTransactionsInTransactionModal(
   props: AllTransactionsInTransactionModalProps
 ) {
   const { inputTransactions, outputTransactions } = props;
-  const i18nContext = useContext(I18nContext);
+  const { i18n } = useAppDataStore();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{i18nContext.t("inputs_and_outputs")}</Text>
+      <Text style={styles.title}>{i18n.t("inputs_and_outputs")}</Text>
 
       <View style={styles.transactionContainer}>
         <View style={styles.inputTransactionsContainer}>

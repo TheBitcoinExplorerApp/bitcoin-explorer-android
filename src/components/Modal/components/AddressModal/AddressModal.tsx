@@ -12,14 +12,13 @@ import ModalServices from "src/services/ModalServices";
 import { AddressModalProps } from "../../types";
 import AllTransactionsInTransactionModal from "../TransactionModal/components/AllTransactionsInTransactionModal";
 import uuid from "react-native-uuid";
-import { I18nContext } from "src/context/LocaleProvider";
-import { useContext } from "react";
+import useAppDataStore from "src/context/DataProvider";
 
 export default function AddressModal(props: AddressModalProps) {
   const { addressInfo, addressTransactions, isVisible, handleModalClose } =
     props;
   const { address, addressData } = addressInfo;
-  const i18nContext = useContext(I18nContext);
+  const { i18n } = useAppDataStore();
 
   const isLoading = Object.values(addressData).length === 0;
   const showLoading = () => <ActivityIndicator color="#FFF" size="large" />;
@@ -32,14 +31,14 @@ export default function AddressModal(props: AddressModalProps) {
         }}
       >
         <BoxContainerWithText
-          firstText={i18nContext.t("address")}
+          firstText={i18n.t("address")}
           secondText={`${address.slice(0, 18)}...`}
         />
       </TouchableOpacity>
 
       <View>
         <BoxContainerWithText
-          firstText={i18nContext.t("total_received")}
+          firstText={i18n.t("total_received")}
           secondText={`${addressData.totalAmountReceived / 100000000} BTC`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -47,7 +46,7 @@ export default function AddressModal(props: AddressModalProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18nContext.t("total_sent")}
+          firstText={i18n.t("total_sent")}
           secondText={`${addressData.totalAmountSent / 100000000} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,
@@ -57,7 +56,7 @@ export default function AddressModal(props: AddressModalProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18nContext.t("balance")}
+          firstText={i18n.t("balance")}
           secondText={`${addressData.balance / 100000000} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,
@@ -95,7 +94,7 @@ export default function AddressModal(props: AddressModalProps) {
       >
         <View style={styles.container}>
           <ModalHeader
-            title={i18nContext.t("address")}
+            title={i18n.t("address")}
             handleModalClose={() => {
               handleModalClose();
             }}

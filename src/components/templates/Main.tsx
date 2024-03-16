@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
+import { View, RefreshControl, StyleSheet, ScrollView } from "react-native";
 import Title from "../Title/Title";
 import Search from "../Search/Search";
 import ButtonsNavigation from "../ButtonsNavigation/ButtonsNavigation";
+import { useState } from "react";
 
 type MainProps = {
   children: React.ReactNode;
@@ -10,7 +11,13 @@ type MainProps = {
 };
 
 export default function Main(props: MainProps) {
+  const [refreshing, setRefreshing] = useState(false);
   const { children, navigation, actualScreen } = props;
+
+  const handleRefresh = () => {
+    console.log('💆‍♂️', actualScreen);
+
+  }
 
   return (
     <>
@@ -18,6 +25,9 @@ export default function Main(props: MainProps) {
         style={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
+        refreshControl={
+          <RefreshControl refreshing={false} onRefresh={handleRefresh} />
+        }
       >
         <View style={styles.container}>
           <Title />

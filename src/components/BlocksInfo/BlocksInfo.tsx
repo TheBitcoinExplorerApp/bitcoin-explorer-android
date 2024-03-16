@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
 import Block from "./components/Block/Block";
+import { View, Text, StyleSheet } from "react-native";
 import useAppDataStore from "src/context/DataProvider";
 
 type BlocksInfoProps = {
@@ -10,7 +9,6 @@ type BlocksInfoProps = {
 export default function BlocksInfo(props: BlocksInfoProps) {
   const { qtdBlocksToRender } = props;
   const { blocks, i18n } = useAppDataStore();
-
 
   const blocksToRender = qtdBlocksToRender
     ? blocks.slice(0, qtdBlocksToRender)

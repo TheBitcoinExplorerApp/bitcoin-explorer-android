@@ -19,7 +19,6 @@ type TransactionProps = {
 export default function Transaction(props: TransactionProps) {
   const { transactions } = props;
   const { i18n } = useAppDataStore();
-
   const [modalVisible, setModalVisible] = useState(false);
   const [transactionInfo, setTransactionInfo] = useState<TransactionInfo>({
     transactionData: {} as TransactionType,

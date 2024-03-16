@@ -17,33 +17,7 @@ type HomeProps = {
 };
 
 export default function Home(props: HomeProps) {
-  const { setBlocks, setTransactions, setFees, setIsLoading, isLoading, i18n } =
-    useAppDataStore();
-  const { blocksData, blocksIsLoading } = blocksQuery();
-  const { transactionsData, transactionsIsLoading } = transactionsQuery();
-  const { feesData, feesIsLoading } = feesQuery();
-
-  useEffect(() => {
-    if (blocksData) {
-      const blocksDataFormatted = formatBlocksData(blocksData);
-      setBlocks(blocksDataFormatted);
-    }
-
-    if (transactionsData) {
-      const formattedTransactionsData =
-        formatTransactionsData(transactionsData);
-      setTransactions(formattedTransactionsData);
-    }
-
-    if (feesData) {
-      const formattedFees = formatFees(feesData);
-      setFees(formattedFees);
-    }
-
-    if (!blocksIsLoading && !transactionsIsLoading && !feesIsLoading)
-      setIsLoading(false);
-  }, [blocksIsLoading, transactionsIsLoading, feesIsLoading]);
-
+  const { isLoading, i18n } = useAppDataStore();
   const { navigation } = props;
 
   const showLoading = <ActivityIndicator size="large" color="white" />;
@@ -61,7 +35,7 @@ export default function Home(props: HomeProps) {
   );
 
   return (
-    <Main navigation={navigation} actualScreen="Home">
+    <Main navigation={navigation} actualScreen={"Home"}>
       {isLoading ? showLoading : content}
     </Main>
   );

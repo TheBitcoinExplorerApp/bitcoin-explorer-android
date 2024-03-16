@@ -6,12 +6,13 @@ const blocksQuery = () => {
     data: blocksData,
     isLoading: blocksIsLoading,
     error: blocksError,
+    refetch: refetchBlocks,
   } = useQuery({
     queryKey: ["blocksQuery"],
-    queryFn: getBlocks,
+  queryFn: getBlocks,
   });
 
-  return { blocksData, blocksIsLoading, blocksError };
+  return { blocksData, blocksIsLoading, blocksError, refetchBlocks };
 };
 
 export default blocksQuery;

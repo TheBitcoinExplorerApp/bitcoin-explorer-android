@@ -6,12 +6,13 @@ const feesQuery = () => {
     isLoading: feesIsLoading,
     data: feesData,
     error: feesError,
+    refetch: refetchFees,
   } = useQuery({
     queryKey: ["feesQuery"],
     queryFn: getTaxes,
   });
 
-  return { feesData, feesIsLoading, feesError };
+  return { feesData, feesIsLoading, feesError, refetchFees };
 };
 
 export default feesQuery;

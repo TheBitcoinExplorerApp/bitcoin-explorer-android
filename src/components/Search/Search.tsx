@@ -5,8 +5,10 @@ import { DataSearchType } from "./types";
 import { AddressInfoType, TransactionType } from "../Modal/types";
 import ModalServices from "src/services/ModalServices";
 import { initialStateBlocks } from "src/mocks/initialStates";
+import useAppDataStore from "src/context/DataProvider";
 
 export default function Search() {
+  const { i18n } = useAppDataStore();
   const onlyLettersAndNumbers = /^[a-zA-Z0-9]*$/;
   const maxAddressSize = 62;
 
@@ -206,7 +208,7 @@ export default function Search() {
     <>
       <View style={styles.container}>
         <TextInput
-          placeholder="Pesquisar"
+          placeholder={i18n.t("search")}
           style={styles.input}
           placeholderTextColor="#8d8d9a"
           value={searchContent}

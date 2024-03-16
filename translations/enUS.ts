@@ -23,6 +23,7 @@ const enUS = {
   total_sent: "Total Sent",
   balance: "Balance",
   waiting_confirmation: "Waiting Confirmation",
+  search: "Search",
 };
 
 export default enUS;

@@ -23,6 +23,7 @@ const ptBR = {
   total_sent: "Total Enviado",
   balance: "Saldo",
   waiting_confirmation: "Aguardando Confirmação",
+  search: "Pesquisar",
 };
 
 export default ptBR;

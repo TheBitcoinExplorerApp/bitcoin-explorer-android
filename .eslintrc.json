@@ -36,5 +36,6 @@
     "import/extensions": ["error", "never"],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"]
-  }
+  },
+  "ignorePatterns": ["node_modules/", "build/", "dist/", "src/assets/*"]
 }

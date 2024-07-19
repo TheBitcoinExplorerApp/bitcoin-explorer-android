@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { nanoid } from "nanoid";
 import {
   View,
   Modal,
@@ -7,12 +9,29 @@ import {
   ActivityIndicator,
 } from "react-native";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import ModalHeader from "../ModalHeader/ModalHeader";
+import useAppDataStore from "src/context/DataProvider";
 import ModalServices from "src/services/ModalServices";
+import ModalHeader from "../ModalHeader/ModalHeader";
 import { AddressModalProps } from "../../types";
 import AllTransactionsInTransactionModal from "../TransactionModal/components/AllTransactionsInTransactionModal";
-import uuid from "react-native-uuid";
-import useAppDataStore from "src/context/DataProvider";
+
+const styles = StyleSheet.create({
+  modal: {
+    flexDirection: "row",
+  },
+  container: {
+    backgroundColor: "#101427",
+    height: "100%",
+    paddingVertical: 17,
+    paddingHorizontal: 10,
+  },
+  contentContainer: {
+    paddingHorizontal: 8,
+    marginTop: 35,
+    gap: 20,
+    height: "100%",
+  },
+});
 
 export default function AddressModal(props: AddressModalProps) {
   const { addressInfo, addressTransactions, isVisible, handleModalClose } =
@@ -70,7 +89,7 @@ export default function AddressModal(props: AddressModalProps) {
           <AllTransactionsInTransactionModal
             inputTransactions={transaction.inputTransactions}
             outputTransactions={transaction.outputTransactions}
-            key={`${uuid.v4()}`}
+            key={`${nanoid()}`}
           />
         ))}
       </View>
@@ -106,21 +125,3 @@ export default function AddressModal(props: AddressModalProps) {
     </Modal>
   );
 }
-
-const styles = StyleSheet.create({
-  modal: {
-    flexDirection: "row",
-  },
-  container: {
-    backgroundColor: "#101427",
-    height: "100%",
-    paddingVertical: 17,
-    paddingHorizontal: 10,
-  },
-  contentContainer: {
-    paddingHorizontal: 8,
-    marginTop: 35,
-    gap: 20,
-    height: "100%",
-  },
-});

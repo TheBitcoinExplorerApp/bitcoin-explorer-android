@@ -1,6 +1,18 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, Text, StyleSheet } from "react-native";
-import Transaction from "./component/Transaction";
 import useAppDataStore from "src/context/DataProvider";
+import Transaction from "./component/Transaction";
+
+const styles = StyleSheet.create({
+  container: {
+    gap: 15,
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "white",
+  },
+});
 
 export default function TransactionsInfo() {
   const { transactions, i18n } = useAppDataStore();
@@ -13,14 +25,3 @@ export default function TransactionsInfo() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    gap: 15,
-  },
-  title: {
-    fontSize: 15,
-    fontWeight: "600",
-    color: "white",
-  },
-});

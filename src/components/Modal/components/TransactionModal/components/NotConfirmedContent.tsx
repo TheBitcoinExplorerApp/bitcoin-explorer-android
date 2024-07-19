@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, StyleSheet } from "react-native";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import useAppDataStore from "src/context/DataProvider";
@@ -6,6 +7,12 @@ type NotConfirmedContentProps = {
   size: number;
   fee: number;
 };
+
+const styles = StyleSheet.create({
+  container: {
+    gap: 16,
+  },
+});
 
 export default function NotConfirmedContent(props: NotConfirmedContentProps) {
   const { fee, size } = props;
@@ -59,9 +66,3 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    gap: 16,
-  },
-});

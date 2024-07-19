@@ -1,17 +1,20 @@
-import React, { useEffect } from "react";
+// #TODO: REFACTOR THIS FILE
+/* eslint-disable react-hooks/exhaustive-deps */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useEffect } from "react";
 import blocksQuery from "src/api/blocksQuery";
 import feesQuery from "src/api/feesQuery";
 import transactionsQuery from "src/api/transactionsQuery";
-import useAppDataStore from "./DataProvider";
 import { formatBlocksData } from "src/utils/formatBlockInfo";
-import { formatTransactionsData } from "src/utils/formatTransactionsData";
+import formatTransactionsData from "src/utils/formatTransactionsData";
 import formatFees from "src/utils/formatFees";
+import useAppDataStore from "./DataProvider";
 
 type QueriesContainerProps = {
   children: React.ReactNode;
 };
 
-const QueriesContainer = (props: QueriesContainerProps) => {
+function QueriesContainer(props: QueriesContainerProps) {
   const {
     blocks,
     transactions,
@@ -85,7 +88,7 @@ const QueriesContainer = (props: QueriesContainerProps) => {
     }
   }, [blocksData, transactionsData, feesData]);
 
-  return <>{props.children}</>;
-};
+  return props.children;
+}
 
 export default QueriesContainer;

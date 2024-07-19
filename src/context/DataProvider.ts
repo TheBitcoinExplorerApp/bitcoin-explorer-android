@@ -1,17 +1,15 @@
-import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
-import { getLocales } from "expo-localization";
+/* eslint-disable import/no-extraneous-dependencies */
 import { I18n } from "i18n-js";
-import { BlockType } from "src/components/BlocksInfo/components/Block/type";
-import { BlockInfoType } from "src/components/BlocksInfo/types";
-import { FeesType } from "src/components/PrioritiesTax/types";
+import { create } from "zustand";
+import { getLocales } from "expo-localization";
+import translations from "translations/translations";
 import { SmallBox } from "src/components/SmallBoxInfo/SmallBoxInfo";
-import { BasicTransactionInfo, TransactionState } from "src/components/Transactions/types";
+import { TransactionState } from "src/components/Transactions/types";
+import { BlockType } from "src/components/BlocksInfo/components/Block/type";
 import {
   initialStateBlocks,
   initialStateFormattedTransactions,
 } from "src/mocks/initialStates";
-import translations from "translations/translations";
-import { create } from "zustand";
 
 type AppDataStoreType = {
   isLoading: boolean;

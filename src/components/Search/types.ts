@@ -9,7 +9,7 @@ export type DataSearchType = {
     addressTransactions: TransactionType[];
   };
   blockInfo: {
-    basicBlockInfo: BlockType,
-    blockTransactions: TransactionType[],
-  }
+    basicBlockInfo: BlockType;
+    blockTransactions: TransactionType[];
+  };
 };

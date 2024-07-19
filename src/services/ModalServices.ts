@@ -7,6 +7,7 @@ import {
   getBlockInfo,
 } from "src/api/getData";
 import formatBlockTransactionsInfo from "src/utils/formatBlockTransactionsInfo";
+// eslint-disable-next-line import/no-extraneous-dependencies -- eslint is looking into the wrong package.json
 import * as Clipboard from "expo-clipboard";
 import formatTransactionsInfo from "src/utils/formatTransactionTransactionsInfo";
 import formatAddressInfo from "src/utils/formatAddressInfo";

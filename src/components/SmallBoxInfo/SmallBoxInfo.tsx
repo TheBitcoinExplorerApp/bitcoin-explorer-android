@@ -1,5 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
 
 export type SmallBox = {
   title: string;
@@ -9,23 +9,6 @@ export type SmallBox = {
 type SmallBoxInfoProps = {
   boxesInfos: SmallBox[];
 };
-
-export default function SmallBoxInfo(props: SmallBoxInfoProps) {
-  const { boxesInfos } = props;
-
-  return (
-    <View style={styles.container}>
-      {boxesInfos.map((infos, idx) => (
-        <View style={styles.boxContainer} key={idx}>
-          <Text style={styles.text}>{infos.title} sat/vB</Text>
-          {/* <Text style={styles.text}>R$ {infos.value}</Text>
-            #TODO: take price value from another endpoint to calculate the value in BRL
-          */}
-        </View>
-      ))}
-    </View>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -47,3 +30,21 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
+
+export default function SmallBoxInfo(props: SmallBoxInfoProps) {
+  const { boxesInfos } = props;
+
+  return (
+    <View style={styles.container}>
+      {boxesInfos.map((infos, idx) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <View style={styles.boxContainer} key={idx}>
+          <Text style={styles.text}>{infos.title} sat/vB</Text>
+          {/* <Text style={styles.text}>R$ {infos.value}</Text>
+            #TODO: take price value from another endpoint to calculate the value in BRL
+          */}
+        </View>
+      ))}
+    </View>
+  );
+}

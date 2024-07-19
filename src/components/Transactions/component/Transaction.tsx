@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+/* eslint-disable import/no-extraneous-dependencies */
 import { useState } from "react";
 import Modal from "src/components/Modal/Modal";
-import { TransactionType } from "src/components/Modal/types";
 import ModalServices from "src/services/ModalServices";
-import { TransactionInfo } from "../types";
 import useAppDataStore from "src/context/DataProvider";
+import { TransactionType } from "src/components/Modal/types";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { TransactionInfo } from "../types";
 
 type transaction = {
   transactionId: string;
@@ -16,6 +17,36 @@ type TransactionProps = {
   transactions: transaction[];
 };
 
+const styles = StyleSheet.create({
+  transactionsContainer: {
+    gap: 16,
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    backgroundColor: "#1d2133",
+    borderRadius: 7,
+    paddingVertical: 10,
+  },
+  transactionInfoContainer: {
+    alignItems: "center",
+    gap: 8,
+  },
+  transactionId: {
+    color: "#DF7800",
+    fontWeight: "500",
+  },
+  transactionInfoLabel: {
+    color: "white",
+    fontSize: 13,
+    fontWeight: "500",
+  },
+  transactionInfoValue: {
+    color: "white",
+    fontWeight: "500",
+  },
+});
+
 export default function Transaction(props: TransactionProps) {
   const { transactions } = props;
   const { i18n } = useAppDataStore();
@@ -26,9 +57,8 @@ export default function Transaction(props: TransactionProps) {
   });
 
   const getTransactionInfo = async (transactionHash: string) => {
-    const result = await ModalServices.getTransactionTransactionsInfo(
-      transactionHash
-    );
+    const result =
+      await ModalServices.getTransactionTransactionsInfo(transactionHash);
 
     setTransactionInfo({
       transactionHash: result.transactionId,
@@ -103,33 +133,3 @@ export default function Transaction(props: TransactionProps) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  transactionsContainer: {
-    gap: 16,
-  },
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    backgroundColor: "#1d2133",
-    borderRadius: 7,
-    paddingVertical: 10,
-  },
-  transactionInfoContainer: {
-    alignItems: "center",
-    gap: 8,
-  },
-  transactionId: {
-    color: "#DF7800",
-    fontWeight: "500",
-  },
-  transactionInfoLabel: {
-    color: "white",
-    fontSize: 13,
-    fontWeight: "500",
-  },
-  transactionInfoValue: {
-    color: "white",
-    fontWeight: "500",
-  },
-});

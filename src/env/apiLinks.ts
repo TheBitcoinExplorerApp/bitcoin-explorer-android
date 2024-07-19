@@ -7,8 +7,7 @@ export const lastTenTransactions = "https://mempool.space/api/mempool/recent";
 export const blocksTransaction =
   "https://mempool.space/api/block/block_hash/txs";
 
-export const blockHashBasedOnHeight =
-  "https://mempool.space/api/block-height";
+export const blockHashBasedOnHeight = "https://mempool.space/api/block-height";
 
 export const blockInfo = "https://mempool.space/api/v1/block";
 

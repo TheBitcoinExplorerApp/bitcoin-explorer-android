@@ -1,13 +1,33 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import HouseIcon from "./../../assets/house.svg";
-import BlocksIcon from "./../../assets/blocks.svg";
-import TransactionsIcon from "./../../assets/transactions.svg";
 import useAppDataStore from "src/context/DataProvider";
+import HouseIcon from "../../assets/house.svg";
+import BlocksIcon from "../../assets/blocks.svg";
+import TransactionsIcon from "../../assets/transactions.svg";
 
 type ButtonsNavigationProps = {
+  // # TODO: SEARCH FOR A BETTER WAY TO TYPE THIS
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   navigation: any;
   actualScreen: "Home" | "Blocks" | "Transactions";
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#111428",
+    alignItems: "center",
+    flexDirection: "row",
+    height: 60,
+    justifyContent: "space-evenly",
+  },
+  buttonContainer: {
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 5,
+    width: 90,
+  },
+});
 
 export default function ButtonsNavigation(props: ButtonsNavigationProps) {
   const { navigation, actualScreen } = props;
@@ -74,20 +94,3 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#111428",
-    alignItems: "center",
-    flexDirection: "row",
-    height: 60,
-    justifyContent: "space-evenly",
-  },
-  buttonContainer: {
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 5,
-    width: 90,
-  },
-});

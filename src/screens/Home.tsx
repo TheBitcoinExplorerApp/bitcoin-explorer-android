@@ -1,20 +1,22 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Text, StyleSheet, ActivityIndicator } from "react-native";
-import PrioritiesTaxValuesBox from "../components/PrioritiesTax/PrioritiesTax";
 import Main from "src/components/templates/Main";
 import BlocksInfo from "src/components/BlocksInfo/BlocksInfo";
 import TransactionsInfo from "src/components/Transactions/TransactionsInfo";
 import useAppDataStore from "src/context/DataProvider";
-import blocksQuery from "src/api/blocksQuery";
-import { formatBlocksData } from "src/utils/formatBlockInfo";
-import { useEffect } from "react";
-import transactionsQuery from "src/api/transactionsQuery";
-import { formatTransactionsData } from "src/utils/formatTransactionsData";
-import feesQuery from "src/api/feesQuery";
-import formatFees from "src/utils/formatFees";
+import PrioritiesTaxValuesBox from "../components/PrioritiesTax/PrioritiesTax";
 
 type HomeProps = {
-  navigation: any;
+  navigation: unknown;
 };
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 17,
+    color: "#FFF",
+    textAlign: "center",
+  },
+});
 
 export default function Home(props: HomeProps) {
   const { isLoading, i18n } = useAppDataStore();
@@ -35,16 +37,8 @@ export default function Home(props: HomeProps) {
   );
 
   return (
-    <Main navigation={navigation} actualScreen={"Home"}>
+    <Main navigation={navigation} actualScreen="Home">
       {isLoading ? showLoading : content}
     </Main>
   );
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 17,
-    color: "#FFF",
-    textAlign: "center",
-  },
-});

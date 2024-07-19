@@ -1,7 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useQuery } from "@tanstack/react-query";
 import { getTransactions } from "./getData";
 
-const transactionsQuery = () => {
+const useTransactionsQuery = () => {
   const {
     data: transactionsData,
     isLoading: transactionsIsLoading,
@@ -20,4 +21,4 @@ const transactionsQuery = () => {
   };
 };
 
-export default transactionsQuery;
+export default useTransactionsQuery;

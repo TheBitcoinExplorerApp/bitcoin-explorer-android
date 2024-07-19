@@ -1,6 +1,5 @@
 import { BlockType } from "src/components/BlocksInfo/components/Block/type";
 import { AddressInfoType, TransactionType } from "src/components/Modal/types";
-import crypto from "crypto";
 
 const timeAgoInitialState = {
   hour: 0,

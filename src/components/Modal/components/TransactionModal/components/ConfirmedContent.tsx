@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, StyleSheet } from "react-native";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import { TransactionType } from "src/components/Modal/types";
@@ -7,6 +8,12 @@ import { formatDate } from "src/utils/formatBlockInfo";
 type ConfirmedContentProps = Required<
   Pick<TransactionType, "fee" | "size" | "statusTransaction">
 >;
+
+const styles = StyleSheet.create({
+  container: {
+    gap: 16,
+  },
+});
 
 export default function ConfirmedContent(props: ConfirmedContentProps) {
   const { fee, size, statusTransaction } = props;
@@ -69,9 +76,3 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    gap: 16,
-  },
-});

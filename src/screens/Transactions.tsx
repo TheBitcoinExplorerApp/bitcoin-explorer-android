@@ -1,11 +1,11 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ActivityIndicator } from "react-native";
-import React, { useContext } from "react";
 import Main from "src/components/templates/Main";
 import TransactionsInfo from "src/components/Transactions/TransactionsInfo";
 import useAppDataStore from "src/context/DataProvider";
 
 type TransactionsProps = {
-  navigation: any;
+  navigation: unknown;
 };
 
 export default function Transactions(props: TransactionsProps) {

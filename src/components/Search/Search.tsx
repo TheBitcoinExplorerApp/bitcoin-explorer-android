@@ -1,11 +1,27 @@
-import Modal from "../Modal/Modal";
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/jsx-props-no-spreading */
 import { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
-import { DataSearchType } from "./types";
-import { AddressInfoType, TransactionType } from "../Modal/types";
 import ModalServices from "src/services/ModalServices";
 import { initialStateBlocks } from "src/mocks/initialStates";
 import useAppDataStore from "src/context/DataProvider";
+import { AddressInfoType, TransactionType } from "../Modal/types";
+import { DataSearchType } from "./types";
+import Modal from "../Modal/Modal";
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+  },
+  input: {
+    backgroundColor: "#1d2133",
+    borderRadius: 5,
+    padding: 12,
+    width: "100%",
+    fontSize: 18,
+    color: "#FFF",
+  },
+});
 
 export default function Search() {
   const { i18n } = useAppDataStore();
@@ -39,47 +55,6 @@ export default function Search() {
   const transactionRange = searchContent.length > maxAddressSize;
   const addressRange =
     searchContent.length >= 27 && searchContent.length <= maxAddressSize;
-
-  const handleEnterPress = () => {
-    if (blockHeightRange) {
-      setModalVisibility({
-        ...modalVisibility,
-        blockModalWithHeight: true,
-      });
-
-      getBlockInfosWithHeight();
-      return;
-    }
-
-    if (blockHashRange) {
-      setModalVisibility({
-        ...modalVisibility,
-        blockModalWithHash: true,
-      });
-
-      getBlockInfosWithHash();
-      return;
-    }
-
-    if (transactionRange) {
-      setModalVisibility({
-        ...modalVisibility,
-        transactionModal: true,
-      });
-
-      getTransactionInfo();
-      return;
-    }
-
-    if (addressRange) {
-      setModalVisibility({
-        ...modalVisibility,
-        addressModal: true,
-      });
-
-      getAddressInfo();
-    }
-  };
 
   const handleInputChange = (text: string) => {
     if (onlyLettersAndNumbers.test(text)) {
@@ -146,9 +121,8 @@ export default function Search() {
   };
 
   const getTransactionInfo = async () => {
-    const transactionInfo = await ModalServices.getTransactionTransactionsInfo(
-      searchContent
-    );
+    const transactionInfo =
+      await ModalServices.getTransactionTransactionsInfo(searchContent);
 
     setData({
       ...data,
@@ -176,15 +150,14 @@ export default function Search() {
     const blockHash = await ModalServices.getBlockHash(searchContent);
 
     const blockBasicInfo = await ModalServices.getBlockBasicInfo(blockHash);
-    const blockTransactions = await ModalServices.getBlockTransactions(
-      blockHash
-    );
+    const blockTransactions =
+      await ModalServices.getBlockTransactions(blockHash);
 
     setData({
       ...data,
       blockInfo: {
         basicBlockInfo: blockBasicInfo[0],
-        blockTransactions: blockTransactions,
+        blockTransactions,
       },
     });
   };
@@ -202,6 +175,47 @@ export default function Search() {
         },
       });
     });
+  };
+
+  const handleEnterPress = () => {
+    if (blockHeightRange) {
+      setModalVisibility({
+        ...modalVisibility,
+        blockModalWithHeight: true,
+      });
+
+      getBlockInfosWithHeight();
+      return;
+    }
+
+    if (blockHashRange) {
+      setModalVisibility({
+        ...modalVisibility,
+        blockModalWithHash: true,
+      });
+
+      getBlockInfosWithHash();
+      return;
+    }
+
+    if (transactionRange) {
+      setModalVisibility({
+        ...modalVisibility,
+        transactionModal: true,
+      });
+
+      getTransactionInfo();
+      return;
+    }
+
+    if (addressRange) {
+      setModalVisibility({
+        ...modalVisibility,
+        addressModal: true,
+      });
+
+      getAddressInfo();
+    }
   };
 
   return (
@@ -253,17 +267,3 @@ export default function Search() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
-  input: {
-    backgroundColor: "#1d2133",
-    borderRadius: 5,
-    padding: 12,
-    width: "100%",
-    fontSize: 18,
-    color: "#FFF",
-  },
-});

@@ -1,17 +1,18 @@
-import Home from "./src/screens/Home";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import "react-native-get-random-values";
 import Blocks from "src/screens/Blocks";
 import Transactions from "src/screens/Transactions";
-import { StyleSheet, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import QueriesContainer from "src/context/QueriesContainer";
+import Home from "./src/screens/Home";
 
 const Stack = createNativeStackNavigator();
 export const AppQueryApiDataProvider = new QueryClient();
 
 export default function App() {
-
   return (
     <QueryClientProvider client={AppQueryApiDataProvider}>
       <QueriesContainer>
@@ -48,13 +49,3 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#101429",
-    alignItems: "center",
-    paddingTop: 22.5,
-    paddingHorizontal: 24,
-  },
-});

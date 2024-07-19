@@ -1,7 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useQuery } from "@tanstack/react-query";
 import { getBlocks } from "./getData";
 
-const blocksQuery = () => {
+const useBlocksQuery = () => {
   const {
     data: blocksData,
     isLoading: blocksIsLoading,
@@ -9,10 +10,10 @@ const blocksQuery = () => {
     refetch: refetchBlocks,
   } = useQuery({
     queryKey: ["blocksQuery"],
-  queryFn: getBlocks,
+    queryFn: getBlocks,
   });
 
   return { blocksData, blocksIsLoading, blocksError, refetchBlocks };
 };
 
-export default blocksQuery;
+export default useBlocksQuery;

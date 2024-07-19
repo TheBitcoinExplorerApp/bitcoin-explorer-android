@@ -1,6 +1,25 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, Text, Modal, StyleSheet, ScrollView } from "react-native";
 import { InformationModalProps } from "../../types";
 import ModalHeader from "../ModalHeader/ModalHeader";
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#101427",
+    paddingVertical: 17,
+    paddingHorizontal: 10,
+    gap: 24,
+  },
+  text: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
+    textAlign: "center",
+  },
+  title: {
+    fontSize: 20,
+  },
+});
 
 export default function InformationModal(props: InformationModalProps) {
   const { handleModalClose, isVisible } = props;
@@ -35,21 +54,3 @@ export default function InformationModal(props: InformationModalProps) {
     </Modal>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#101427",
-    paddingVertical: 17,
-    paddingHorizontal: 10,
-    gap: 24,
-  },
-  text: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
-    textAlign: "center",
-  },
-  title: {
-    fontSize: 20,
-  },
-});

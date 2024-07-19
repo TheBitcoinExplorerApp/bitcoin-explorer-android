@@ -1,4 +1,3 @@
 export type DataProviderProps = {
-    children: React.ReactNode;
-}
-
+  children: React.ReactNode;
+};

@@ -1,10 +1,22 @@
-import Block from "./components/Block/Block";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, Text, StyleSheet } from "react-native";
 import useAppDataStore from "src/context/DataProvider";
+import Block from "./components/Block/Block";
 
 type BlocksInfoProps = {
-  qtdBlocksToRender?: number;
+  qtdBlocksToRender: number | null;
 };
+
+const styles = StyleSheet.create({
+  container: {
+    gap: 15,
+  },
+  title: {
+    color: "white",
+    fontSize: 17,
+    fontWeight: "500",
+  },
+});
 
 export default function BlocksInfo(props: BlocksInfoProps) {
   const { qtdBlocksToRender } = props;
@@ -22,14 +34,3 @@ export default function BlocksInfo(props: BlocksInfoProps) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    gap: 15,
-  },
-  title: {
-    color: "white",
-  fontSize: 17,
-    fontWeight: "500",
-  },
-});

@@ -1,8 +1,6 @@
 import { BasicTransactionInfo } from "src/components/Transactions/types";
 
-export const formatTransactionsData = (
-  transactions: BasicTransactionInfo[]
-) => {
+const formatTransactionsData = (transactions: BasicTransactionInfo[]) => {
   const formattedData = transactions.map((basicInfoTransaction) => {
     return {
       transactionId: basicInfoTransaction.txid,
@@ -13,3 +11,5 @@ export const formatTransactionsData = (
 
   return formattedData;
 };
+
+export default formatTransactionsData;

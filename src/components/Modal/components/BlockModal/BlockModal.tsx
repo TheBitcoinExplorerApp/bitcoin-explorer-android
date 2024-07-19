@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import {
   View,
   Text,
@@ -5,15 +6,40 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
-import React, { useContext } from "react";
-import ModalHeader from "../ModalHeader/ModalHeader";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
+import ModalServices from "src/services/ModalServices";
+import useAppDataStore from "src/context/DataProvider";
+import ModalHeader from "../ModalHeader/ModalHeader";
 import { BlockModalProps } from "../../types";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInBlockModal";
-import ModalServices from "src/services/ModalServices";
-import { ActivityIndicator } from "react-native";
-import useAppDataStore from "src/context/DataProvider";
+
+const styles = StyleSheet.create({
+  modal: {
+    flexDirection: "row",
+  },
+  container: {
+    backgroundColor: "#101427",
+    paddingVertical: 17,
+    paddingHorizontal: 10,
+    height: "100%",
+  },
+  contentContainer: {
+    paddingHorizontal: 8,
+    marginTop: 35,
+    gap: 20,
+    height: "100%",
+  },
+  titleTransactionBlock: {
+    color: "#FFF",
+    fontSize: 15,
+  },
+  transactionContainer: {
+    gap: 15,
+    height: "100%",
+  },
+});
 
 export default function BlockModal(props: BlockModalProps) {
   const {
@@ -30,8 +56,7 @@ export default function BlockModal(props: BlockModalProps) {
   } = props;
   const { pool } = extras;
 
-    const { i18n } = useAppDataStore();
-
+  const { i18n } = useAppDataStore();
 
   const dataIsLoading = !blockHash || blockTransactions.length === 0;
   const showLoading = () => <ActivityIndicator color="#FFF" />;
@@ -119,7 +144,7 @@ export default function BlockModal(props: BlockModalProps) {
       </Text>
 
       <View style={styles.transactionContainer}>
-        {blockTransactions.length != 0 ? showAllTransactions() : showLoading()}
+        {blockTransactions.length !== 0 ? showAllTransactions() : showLoading()}
       </View>
     </>
   );
@@ -136,7 +161,10 @@ export default function BlockModal(props: BlockModalProps) {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
-          <ModalHeader handleModalClose={handleModalClose} title={i18n.t('block')} />
+          <ModalHeader
+            handleModalClose={handleModalClose}
+            title={i18n.t("block")}
+          />
 
           <View style={styles.contentContainer}>
             {dataIsLoading ? showLoading() : showContent()}
@@ -146,29 +174,3 @@ export default function BlockModal(props: BlockModalProps) {
     </Modal>
   );
 }
-
-const styles = StyleSheet.create({
-  modal: {
-    flexDirection: "row",
-  },
-  container: {
-    backgroundColor: "#101427",
-    paddingVertical: 17,
-    paddingHorizontal: 10,
-    height: "100%",
-  },
-  contentContainer: {
-    paddingHorizontal: 8,
-    marginTop: 35,
-    gap: 20,
-    height: "100%",
-  },
-  titleTransactionBlock: {
-    color: "#FFF",
-    fontSize: 15,
-  },
-  transactionContainer: {
-    gap: 15,
-    height: "100%",
-  },
-});

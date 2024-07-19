@@ -1,14 +1,29 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, RefreshControl, StyleSheet, ScrollView } from "react-native";
+import useAppDataStore from "src/context/DataProvider";
 import Title from "../Title/Title";
 import Search from "../Search/Search";
 import ButtonsNavigation from "../ButtonsNavigation/ButtonsNavigation";
-import useAppDataStore from "src/context/DataProvider";
 
 type MainProps = {
   children: React.ReactNode;
-  navigation: any;
+  navigation: unknown;
   actualScreen: "Home" | "Blocks" | "Transactions";
 };
+
+const styles = StyleSheet.create({
+  scrollContainer: {
+    width: "100%",
+  },
+  container: {
+    gap: 18,
+    flex: 1,
+    backgroundColor: "#101429",
+    paddingTop: 22.5,
+    paddingHorizontal: 24,
+  },
+  buttonsContainer: {},
+});
 
 export default function Main(props: MainProps) {
   const { children, navigation, actualScreen } = props;
@@ -41,17 +56,3 @@ export default function Main(props: MainProps) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    width: "100%",
-  },
-  container: {
-    gap: 18,
-    flex: 1,
-    backgroundColor: "#101429",
-    paddingTop: 22.5,
-    paddingHorizontal: 24,
-  },
-  buttonsContainer: {},
-});

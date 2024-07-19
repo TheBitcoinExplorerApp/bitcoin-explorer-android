@@ -1,4 +1,3 @@
-import { TransactionsData } from "./../components/Transactions/types";
 import { BlockInfoType } from "src/components/BlocksInfo/types";
 import { FeesType } from "src/components/PrioritiesTax/types";
 import { BasicTransactionInfo } from "src/components/Transactions/types";
@@ -13,6 +12,7 @@ import {
   blockHashBasedOnHeight,
   blockInfo,
 } from "src/env/apiLinks";
+import { TransactionsData } from "../components/Transactions/types";
 
 export const getTaxes = async () => {
   const response = await fetch(taxTransactions);

@@ -7,7 +7,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "prepare": "husky && husky install"
+    "prepare": "husky && husky install",
+    "lint": "eslint --fix --ignore-pattern node_modules/ --ext .ts,.tsx src/**/*",
+    "test": ""
   },
   "dependencies": {
     "@react-native-community/netinfo": "11.1.0",

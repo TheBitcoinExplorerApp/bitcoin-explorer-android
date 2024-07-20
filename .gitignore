@@ -19,3 +19,5 @@ web-build/
 # My configs
 
 keys/
+coverage/**/*
+.eslintcache

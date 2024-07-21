@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { View, Text, StyleSheet } from "react-native";
 import useAppDataStore from "src/context/DataProvider";
 import Transaction from "./component/Transaction";

@@ -3,7 +3,6 @@ import { ModalProps } from "./types";
 import TransactionModal from "./components/TransactionModal/TransactionModal";
 import BlockModal from "./components/BlockModal/BlockModal";
 import AddressModal from "./components/AddressModal/AddressModal";
-import InformationModal from "./components/InformationModal/InformationModal";
 
 export default function Modal(props: ModalProps) {
   const { modalType } = props;
@@ -14,10 +13,6 @@ export default function Modal(props: ModalProps) {
 
   if (modalType === "Address") {
     return <AddressModal {...props} />;
-  }
-
-  if (modalType === "Information") {
-    return <InformationModal {...props} />;
   }
 
   return <BlockModal {...props} />;

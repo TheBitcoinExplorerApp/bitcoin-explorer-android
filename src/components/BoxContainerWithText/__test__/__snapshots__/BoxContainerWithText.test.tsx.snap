@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoxContainerWithText renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#1d2133",
+        "height": 48,
+        "justifyContent": "space-between",
+        "paddingHorizontal": 18,
+        "paddingVertical": 9,
+      },
+      {
+        "borderBottomColor": undefined,
+        "borderBottomEndRadius": undefined,
+        "borderBottomStartRadius": undefined,
+        "borderBottomWidth": 0,
+        "borderRadius": 7,
+        "borderTopEndRadius": undefined,
+        "borderTopStartRadius": undefined,
+        "flexDirection": "row",
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#FFF",
+        "fontSize": 15,
+      }
+    }
+  >
+    first
+  </Text>
+  <Text
+    style={
+      {
+        "color": "#DF7800",
+        "fontSize": 15,
+      }
+    }
+  >
+    second
+  </Text>
+</View>
+`;

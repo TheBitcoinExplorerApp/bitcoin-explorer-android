@@ -55,5 +55,4 @@ export type AddressModalProps = BasicModalProps & {
 export type ModalProps =
   | BlockModalProps
   | TransactionModalProps
-  | AddressModalProps
-  | InformationModalProps;
+  | AddressModalProps;

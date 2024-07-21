@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmedContent renders correctly 1`] = `
+<View
+  style={
+    {
+      "gap": 16,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1d2133",
+            "height": 48,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 18,
+            "paddingVertical": 9,
+          },
+          {
+            "borderBottomColor": undefined,
+            "borderBottomEndRadius": undefined,
+            "borderBottomStartRadius": undefined,
+            "borderBottomWidth": 0,
+            "borderRadius": 7,
+            "borderTopEndRadius": undefined,
+            "borderTopStartRadius": undefined,
+            "flexDirection": "row",
+            "width": "auto",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#FFF",
+            "fontSize": 15,
+          }
+        }
+      >
+        Bloco 1
+      </Text>
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+            "fontSize": 15,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1d2133",
+            "height": 48,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 18,
+            "paddingVertical": 9,
+          },
+          {
+            "borderBottomColor": undefined,
+            "borderBottomEndRadius": undefined,
+            "borderBottomStartRadius": undefined,
+            "borderBottomWidth": 0,
+            "borderRadius": 7,
+            "borderTopEndRadius": undefined,
+            "borderTopStartRadius": undefined,
+            "flexDirection": "row",
+            "width": "auto",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#FFF",
+            "fontSize": 15,
+          }
+        }
+      >
+        Confirmada
+      </Text>
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+            "fontSize": 15,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1d2133",
+            "height": 48,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 18,
+            "paddingVertical": 9,
+          },
+          {
+            "borderBottomColor": "#D9D9D9",
+            "borderBottomEndRadius": 0,
+            "borderBottomStartRadius": 0,
+            "borderBottomWidth": 0.1,
+            "borderRadius": 7,
+            "borderTopEndRadius": undefined,
+            "borderTopStartRadius": undefined,
+            "flexDirection": "row",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#FFF",
+            "fontSize": 15,
+          }
+        }
+      >
+        Data/Hora
+      </Text>
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+            "fontSize": 15,
+          }
+        }
+      >
+        31/12/1969 21:3
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1d2133",
+            "height": 48,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 18,
+            "paddingVertical": 9,
+          },
+          {
+            "borderBottomColor": "#D9D9D9",
+            "borderBottomEndRadius": 0,
+            "borderBottomStartRadius": 0,
+            "borderBottomWidth": 0.1,
+            "borderRadius": 7,
+            "borderTopEndRadius": 0,
+            "borderTopStartRadius": 0,
+            "flexDirection": "row",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#FFF",
+            "fontSize": 15,
+          }
+        }
+      >
+        Tamanho
+      </Text>
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+            "fontSize": 15,
+          }
+        }
+      >
+        0 B
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1d2133",
+            "height": 48,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 18,
+            "paddingVertical": 9,
+          },
+          {
+            "borderBottomColor": undefined,
+            "borderBottomEndRadius": undefined,
+            "borderBottomStartRadius": undefined,
+            "borderBottomWidth": 0,
+            "borderRadius": 7,
+            "borderTopEndRadius": 0,
+            "borderTopStartRadius": 0,
+            "flexDirection": "row",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#FFF",
+            "fontSize": 15,
+          }
+        }
+      >
+        Taxa
+      </Text>
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+            "fontSize": 15,
+          }
+        }
+      >
+        0 BTC
+      </Text>
+    </View>
+  </View>
+</View>
+`;

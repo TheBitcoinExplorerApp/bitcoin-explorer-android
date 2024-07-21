@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import ModalServices from "src/services/ModalServices";
-import { initialStateBlocks } from "src/mocks/initialStates";
+import { initialStateBlocks } from "src/__mocks__/initialStates";
 import useAppDataStore from "src/context/DataProvider";
 import { AddressInfoType, TransactionType } from "../Modal/types";
 import { DataSearchType } from "./types";

@@ -9,7 +9,7 @@ import { BlockType } from "src/components/BlocksInfo/components/Block/type";
 import {
   initialStateBlocks,
   initialStateFormattedTransactions,
-} from "src/mocks/initialStates";
+} from "src/__mocks__/initialStates";
 
 type AppDataStoreType = {
   isLoading: boolean;
@@ -28,9 +28,9 @@ type AppDataStoreType = {
 };
 
 const i18n = new I18n(translations);
+i18n.defaultLocale = "en";
 i18n.locale = getLocales()[0].languageCode;
 i18n.enableFallback = true;
-i18n.defaultLocale = "en";
 
 const useAppDataStore = create<AppDataStoreType>()((set) => {
   const returnObj: AppDataStoreType = {

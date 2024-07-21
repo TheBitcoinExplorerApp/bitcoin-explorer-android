@@ -2,7 +2,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import Modal from "src/components/Modal/Modal";
-import { initialStateBlocks } from "src/mocks/initialStates";
+import { initialStateBlocks } from "src/__mocks__/initialStates";
 import ModalServices from "src/services/ModalServices";
 import { TransactionType } from "src/components/Modal/types";
 import useAppDataStore from "src/context/DataProvider";

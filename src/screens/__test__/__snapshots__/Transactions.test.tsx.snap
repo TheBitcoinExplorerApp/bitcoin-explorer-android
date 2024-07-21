@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transactions renders correctly 1`] = `
+[
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+      }
+    }
+    refreshControl={
+      <RefreshControlMock
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    showsVerticalScrollIndicator={false}
+    style={
+      {
+        "width": "100%",
+      }
+    }
+  >
+    <RCTRefreshControl />
+    <View>
+      <View
+        style={
+          {
+            "backgroundColor": "#101429",
+            "flex": 1,
+            "gap": 18,
+            "paddingHorizontal": 24,
+            "paddingTop": 22.5,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 26,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <svg
+            height={32}
+          />
+        </View>
+        <View
+          style={
+            {
+              "width": "100%",
+            }
+          }
+        >
+          <TextInput
+            onChangeText={[Function]}
+            onSubmitEditing={[Function]}
+            placeholder="Pesquisar"
+            placeholderTextColor="#8d8d9a"
+            style={
+              {
+                "backgroundColor": "#1d2133",
+                "borderRadius": 5,
+                "color": "#FFF",
+                "fontSize": 18,
+                "padding": 12,
+                "width": "100%",
+              }
+            }
+            value=""
+          />
+        </View>
+        <ActivityIndicator
+          color="white"
+          size="large"
+        />
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#111428",
+        "flexDirection": "row",
+        "height": 60,
+        "justifyContent": "space-evenly",
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "space-between",
+            "paddingVertical": 5,
+            "width": 90,
+          }
+        }
+      >
+        <svg
+          style={
+            {
+              "color": "#D6D6D6",
+            }
+          }
+        />
+        <Text
+          style={
+            {
+              "color": "#D6D6D6",
+            }
+          }
+        >
+          Home
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "space-between",
+            "paddingVertical": 5,
+            "width": 90,
+          }
+        }
+      >
+        <svg
+          style={
+            {
+              "color": "#D6D6D6",
+            }
+          }
+        />
+        <Text
+          style={
+            {
+              "color": "#D6D6D6",
+            }
+          }
+        >
+          Blocos
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "space-between",
+            "paddingVertical": 5,
+            "width": 90,
+          }
+        }
+      >
+        <svg
+          style={
+            {
+              "color": "#DF7800",
+            }
+          }
+        />
+        <Text
+          style={
+            {
+              "color": "#DF7800",
+            }
+          }
+        >
+          Transações
+        </Text>
+      </View>
+    </View>
+  </View>,
+]
+`;

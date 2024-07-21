@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders correctly 1`] = `
+<View
+  style={
+    {
+      "width": "100%",
+    }
+  }
+>
+  <TextInput
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="Pesquisar"
+    placeholderTextColor="#8d8d9a"
+    style={
+      {
+        "backgroundColor": "#1d2133",
+        "borderRadius": 5,
+        "color": "#FFF",
+        "fontSize": 18,
+        "padding": 12,
+        "width": "100%",
+      }
+    }
+    value=""
+  />
+</View>
+`;

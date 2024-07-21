@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrioritiesTax renders correctly 1`] = `
+[
+  <View
+    style={
+      {
+        "backgroundColor": "#1d2133",
+        "borderRadius": 8,
+        "flexDirection": "row",
+        "justifyContent": "space-around",
+        "padding": 16,
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "color": "#FFF",
+          "fontSize": 12,
+        }
+      }
+    >
+      Baixa Prioridade
+    </Text>
+    <Text
+      style={
+        {
+          "color": "#FFF",
+          "fontSize": 12,
+        }
+      }
+    >
+      Média Prioridade
+    </Text>
+    <Text
+      style={
+        {
+          "color": "#FFF",
+          "fontSize": 12,
+        }
+      }
+    >
+      Alta Prioridade
+    </Text>
+  </View>,
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "justifyContent": "space-around",
+        "width": "100%",
+      }
+    }
+  />,
+]
+`;

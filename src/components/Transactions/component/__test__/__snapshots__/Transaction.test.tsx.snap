@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transaction renders correctly 1`] = `
+<View
+  style={
+    {
+      "gap": 16,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View
+      style={
+        {
+          "backgroundColor": "#1d2133",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "justifyContent": "space-evenly",
+          "paddingVertical": 10,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "gap": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "white",
+              "fontSize": 13,
+              "fontWeight": "500",
+            }
+          }
+        >
+          ID Transação
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#DF7800",
+              "fontWeight": "500",
+            }
+          }
+        >
+          #ABC12...
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "gap": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "white",
+              "fontSize": 13,
+              "fontWeight": "500",
+            }
+          }
+        >
+          Valor
+        </Text>
+        <Text
+          style={
+            {
+              "color": "white",
+              "fontWeight": "500",
+            }
+          }
+        >
+          1e-7
+           BTC
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "gap": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "white",
+              "fontSize": 13,
+              "fontWeight": "500",
+            }
+          }
+        >
+          Taxa
+        </Text>
+        <Text
+          style={
+            {
+              "color": "white",
+              "fontWeight": "500",
+            }
+          }
+        >
+          10
+           sats
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

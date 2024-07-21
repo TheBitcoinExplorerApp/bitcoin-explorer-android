@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllTransactionsInTransactionModal renders correctly 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#101427",
+      "gap": 16,
+      "height": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#FFF",
+        "fontSize": 15,
+        "fontWeight": "600",
+      }
+    }
+  >
+    Entradas e Saídas
+  </Text>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#1d2133",
+        "borderRadius": 8,
+        "flexDirection": "row",
+        "justifyContent": "space-evenly",
+        "maxWidth": "100%",
+        "paddingVertical": 5,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "gap": 5,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#DF7800",
+              "fontSize": 16,
+            }
+          }
+        >
+           ...
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#FFF",
+              "fontSize": 13,
+              "textAlign": "right",
+            }
+          }
+        >
+          0
+           BTC
+        </Text>
+      </View>
+    </View>
+    <Text
+      style={
+        {
+          "color": "#D9D9D9",
+          "fontSize": 28,
+          "fontWeight": "800",
+        }
+      }
+    >
+      &gt;
+    </Text>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "gap": 5,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#DF7800",
+              "fontSize": 16,
+            }
+          }
+        >
+           ...
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#FFF",
+              "fontSize": 13,
+              "textAlign": "right",
+            }
+          }
+        >
+          0
+           BTC
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,0 +1,613 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonsNavigation renders correctly when at Blocks 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#111428",
+      "flexDirection": "row",
+      "height": 60,
+      "justifyContent": "space-evenly",
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      >
+        Home
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      >
+        Blocos
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      >
+        Transações
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ButtonsNavigation renders correctly when at Home 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#111428",
+      "flexDirection": "row",
+      "height": 60,
+      "justifyContent": "space-evenly",
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      >
+        Home
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      >
+        Blocos
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      >
+        Transações
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ButtonsNavigation renders correctly when at Transactions 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#111428",
+      "flexDirection": "row",
+      "height": 60,
+      "justifyContent": "space-evenly",
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      >
+        Home
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      >
+        Blocos
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      >
+        Transações
+      </Text>
+    </View>
+  </View>
+</View>
+`;

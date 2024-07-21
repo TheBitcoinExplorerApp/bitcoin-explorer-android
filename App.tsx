@@ -1,4 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+/// <reference types="@welldone-software/why-did-you-render" />
+
+import "./wdyr";
 import "react-native-get-random-values";
 import Blocks from "src/screens/Blocks";
 import Transactions from "src/screens/Transactions";

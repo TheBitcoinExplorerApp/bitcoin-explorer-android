@@ -22,3 +22,5 @@ keys/
 coverage/**/*
 .eslintcache
 get_network_local_ip.js
+.env
+.env.local

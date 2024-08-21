@@ -41,5 +41,5 @@
       { "devDependencies": true, "packageDir": "./" }
     ]
   },
-  "ignorePatterns": ["node_modules/", "build/", "dist/", "src/assets/*"]
+  "ignorePatterns": ["node_modules/", "build/", "dist/", "src/assets/*", "get_network_local_ip"]
 }

@@ -21,3 +21,4 @@ web-build/
 keys/
 coverage/**/*
 .eslintcache
+get_network_local_ip.js

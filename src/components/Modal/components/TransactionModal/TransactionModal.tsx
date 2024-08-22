@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import {
   View,
   Modal,
@@ -7,14 +7,15 @@ import {
   ScrollView,
   ActivityIndicator,
 } from "react-native";
+import { useShallow } from "zustand/react/shallow";
+import useAppStore from "src/stores/App/useAppStore";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import ModalServices from "src/services/ModalServices";
-import useAppDataStore from "src/context/DataProvider";
 import { TransactionModalProps } from "../../types";
+import ConfirmedContent from "./components/ConfirmedContent";
+import ModalHeader from "../ModalHeader/ModalHeader";
 import NotConfirmedContent from "./components/NotConfirmedContent";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInTransactionModal";
-import ModalHeader from "../ModalHeader/ModalHeader";
-import ConfirmedContent from "./components/ConfirmedContent";
 
 const styles = StyleSheet.create({
   modal: {
@@ -38,8 +39,7 @@ const styles = StyleSheet.create({
 export default function TransactionModal(props: TransactionModalProps) {
   const { isVisible, handleModalClose, transactionInfo, transactionHash } =
     props;
-
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   const transactionDataIsLoading = Object.values(transactionInfo).length === 0;
   const transactionIsConfirmed = transactionInfo.statusTransaction?.blockHeight;
@@ -91,7 +91,7 @@ export default function TransactionModal(props: TransactionModalProps) {
       >
         <View style={styles.container}>
           <ModalHeader
-            title={i18n.t("transaction")}
+            title={localization.t("transaction")}
             handleModalClose={() => {
               handleModalClose();
             }}
@@ -102,7 +102,7 @@ export default function TransactionModal(props: TransactionModalProps) {
               onPress={() => ModalServices.copyToClipboard(transactionHash)}
             >
               <BoxContainerWithText
-                firstText={i18n.t("hash")}
+                firstText={localization.t("hash")}
                 secondText={transactionHash.slice(0, 18).concat("...")}
               />
             </TouchableOpacity>

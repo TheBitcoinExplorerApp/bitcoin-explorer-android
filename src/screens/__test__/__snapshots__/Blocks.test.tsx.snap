@@ -74,7 +74,7 @@ exports[`Blocks renders correctly 1`] = `
           />
         </View>
         <ActivityIndicator
-          color="white"
+          color="#DF7800"
           size="large"
         />
       </View>

@@ -11,6 +11,7 @@ const useTransactionsQuery = () => {
   } = useQuery({
     queryKey: ["transactionsQuery"],
     queryFn: getTransactions,
+    enabled: false,
   });
 
   return {

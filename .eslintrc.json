@@ -1,11 +1,11 @@
 {
   "extends": [
+    "expo",
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "plugin:prettier/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:prettier/recommended"
   ],
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "parser": "@typescript-eslint/parser",
@@ -25,21 +25,34 @@
         "extensions": [".ts", ".tsx"]
       }
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "all"
-      }
-    ],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "import/extensions": ["error", "never"],
+    "react/prop-types": 0,
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
+    "react/react-in-jsx-scope": "off",
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": true, "packageDir": "./" }
+      {
+        "devDependencies": [
+          "test.{ts,tsx}",
+          "test-*.{ts,tsx}",
+          "**/*{.,_}{test,spec}.{ts,tsx}",
+          "**/jest-setup.ts"
+        ],
+        "optionalDependencies": false
+      }
     ]
   },
-  "ignorePatterns": ["node_modules/", "build/", "dist/", "src/assets/*", "get_network_local_ip"]
+  "ignorePatterns": ["node_modules/", "build/", "dist/", "assets/", ".env.*"],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ]
 }

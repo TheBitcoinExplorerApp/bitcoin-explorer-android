@@ -6,11 +6,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  ActivityIndicator,
 } from "react-native";
-import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import useAppDataStore from "src/context/DataProvider";
+import CustomActivityIndicator from "src/components/CustomActivityIndicator/CustomActivityIndicator";
+import { useShallow } from "zustand/react/shallow";
 import ModalServices from "src/services/ModalServices";
+import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
+import useAppStore from "src/stores/App/useAppStore";
 import ModalHeader from "../ModalHeader/ModalHeader";
 import { AddressModalProps } from "../../types";
 import AllTransactionsInTransactionModal from "../TransactionModal/components/AllTransactionsInTransactionModal";
@@ -37,10 +38,10 @@ export default function AddressModal(props: AddressModalProps) {
   const { addressInfo, addressTransactions, isVisible, handleModalClose } =
     props;
   const { address, addressData } = addressInfo;
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   const isLoading = Object.values(addressData).length === 0;
-  const showLoading = () => <ActivityIndicator color="#FFF" size="large" />;
+  const showLoading = <CustomActivityIndicator />;
 
   const showContent = () => (
     <View style={styles.contentContainer}>
@@ -50,14 +51,14 @@ export default function AddressModal(props: AddressModalProps) {
         }}
       >
         <BoxContainerWithText
-          firstText={i18n.t("address")}
+          firstText={localization.t("address")}
           secondText={`${address.slice(0, 18)}...`}
         />
       </TouchableOpacity>
 
       <View>
         <BoxContainerWithText
-          firstText={i18n.t("total_received")}
+          firstText={localization.t("total_received")}
           secondText={`${addressData.totalAmountReceived / 100000000} BTC`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -65,7 +66,7 @@ export default function AddressModal(props: AddressModalProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18n.t("total_sent")}
+          firstText={localization.t("total_sent")}
           secondText={`${addressData.totalAmountSent / 100000000} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,
@@ -75,7 +76,7 @@ export default function AddressModal(props: AddressModalProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18n.t("balance")}
+          firstText={localization.t("balance")}
           secondText={`${addressData.balance / 100000000} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,
@@ -113,13 +114,13 @@ export default function AddressModal(props: AddressModalProps) {
       >
         <View style={styles.container}>
           <ModalHeader
-            title={i18n.t("address")}
+            title={localization.t("address")}
             handleModalClose={() => {
               handleModalClose();
             }}
           />
 
-          {isLoading ? showLoading() : showContent()}
+          {isLoading ? showLoading : showContent()}
         </View>
       </ScrollView>
     </Modal>

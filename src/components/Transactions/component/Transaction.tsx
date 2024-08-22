@@ -1,20 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { useState } from "react";
 import Modal from "src/components/Modal/Modal";
+import { useShallow } from "zustand/react/shallow";
+import useAppStore from "src/stores/App/useAppStore";
 import ModalServices from "src/services/ModalServices";
-import useAppDataStore from "src/context/DataProvider";
 import { TransactionType } from "src/components/Modal/types";
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { TransactionInfo } from "../types";
-
-type transaction = {
-  transactionId: string;
-  value: number;
-  fee: number;
-};
+import { TransactionInfo, TransactionState } from "../types";
 
 type TransactionProps = {
-  transactions: transaction[];
+  transactions: TransactionState[];
 };
 
 const styles = StyleSheet.create({
@@ -49,7 +44,8 @@ const styles = StyleSheet.create({
 
 export default function Transaction(props: TransactionProps) {
   const { transactions } = props;
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
+
   const [modalVisible, setModalVisible] = useState(false);
   const [transactionInfo, setTransactionInfo] = useState<TransactionInfo>({
     transactionData: {} as TransactionType,
@@ -87,7 +83,7 @@ export default function Transaction(props: TransactionProps) {
               <View style={styles.container}>
                 <View style={styles.transactionInfoContainer}>
                   <Text style={styles.transactionInfoLabel}>
-                    {i18n.t("transaction_id")}
+                    {localization.t("transaction_id")}
                   </Text>
                   <Text style={styles.transactionId}>
                     {transactionId.slice(0, 14).concat("...")}
@@ -96,7 +92,7 @@ export default function Transaction(props: TransactionProps) {
 
                 <View style={styles.transactionInfoContainer}>
                   <Text style={styles.transactionInfoLabel}>
-                    {i18n.t("amount")}
+                    {localization.t("amount")}
                   </Text>
                   <Text style={styles.transactionInfoValue}>
                     {value / 100000000} BTC
@@ -104,7 +100,7 @@ export default function Transaction(props: TransactionProps) {
                 </View>
                 <View style={styles.transactionInfoContainer}>
                   <Text style={styles.transactionInfoLabel}>
-                    {i18n.t("fee")}
+                    {localization.t("fee")}
                   </Text>
                   <Text style={styles.transactionInfoValue}>
                     {fee.toLocaleString()} sats

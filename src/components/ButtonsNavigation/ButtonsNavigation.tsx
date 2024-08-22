@@ -1,6 +1,7 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import useAppDataStore from "src/context/DataProvider";
+import { useShallow } from "zustand/react/shallow";
+import useAppStore from "src/stores/App/useAppStore";
 import HouseIcon from "../../assets/house.svg";
 import BlocksIcon from "../../assets/blocks.svg";
 import TransactionsIcon from "../../assets/transactions.svg";
@@ -31,8 +32,7 @@ const styles = StyleSheet.create({
 
 export default function ButtonsNavigation(props: ButtonsNavigationProps) {
   const { navigation, actualScreen } = props;
-
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   const homeColor = actualScreen === "Home" ? "#DF7800" : "#D6D6D6";
   const blocksColor = actualScreen === "Blocks" ? "#DF7800" : "#D6D6D6";
@@ -70,7 +70,7 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
               color: blocksColor,
             }}
           >
-            {i18n.t("blocks")}
+            {localization.t("blocks")}
           </Text>
         </View>
       </TouchableOpacity>
@@ -87,7 +87,7 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
               color: transactionsColor,
             }}
           >
-            {i18n.t("transactions")}
+            {localization.t("transactions")}
           </Text>
         </View>
       </TouchableOpacity>

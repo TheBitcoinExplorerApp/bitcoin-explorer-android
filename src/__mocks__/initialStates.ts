@@ -1,5 +1,6 @@
 import { BlockType } from "src/components/BlocksInfo/components/Block/type";
 import { AddressInfoType, TransactionType } from "src/components/Modal/types";
+import { SmallBox } from "src/components/SmallBoxInfo/SmallBoxInfo";
 
 const timeAgoInitialState = {
   hour: 0,
@@ -8,6 +9,21 @@ const timeAgoInitialState = {
   month: 0,
   year: 0,
 };
+
+export const initialStateFees: SmallBox[] = [
+  {
+    title: " ",
+    value: " ",
+  },
+  {
+    title: " ",
+    value: " ",
+  },
+  {
+    title: " ",
+    value: " ",
+  },
+];
 
 export const initialStateBlocks: BlockType[] = [
   {

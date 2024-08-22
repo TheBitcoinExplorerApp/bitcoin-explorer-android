@@ -11,6 +11,7 @@ const useFeesQuery = () => {
   } = useQuery({
     queryKey: ["feesQuery"],
     queryFn: getTaxes,
+    enabled: false,
   });
 
   return { feesData, feesIsLoading, feesError, refetchFees };

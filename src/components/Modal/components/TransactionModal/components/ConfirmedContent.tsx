@@ -1,9 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
+import { useShallow } from "zustand/react/shallow";
 import { View, StyleSheet } from "react-native";
-import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import { TransactionType } from "src/components/Modal/types";
-import useAppDataStore from "src/context/DataProvider";
 import { formatDate } from "src/utils/formatBlockInfo";
+import { TransactionType } from "src/components/Modal/types";
+import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
+import useAppStore from "src/stores/App/useAppStore";
 
 type ConfirmedContentProps = Required<
   Pick<TransactionType, "fee" | "size" | "statusTransaction">
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
 export default function ConfirmedContent(props: ConfirmedContentProps) {
   const { fee, size, statusTransaction } = props;
   const { blockHeight, blockTime } = statusTransaction;
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   const { day, month, year, hour, minutes } = formatDate(blockTime);
 
@@ -31,13 +32,13 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
         }}
       >
         <BoxContainerWithText
-          firstText={`${i18n.t("block")} ${blockHeight}`}
+          firstText={`${localization.t("block")} ${blockHeight}`}
           secondText=""
           width="auto"
         />
 
         <BoxContainerWithText
-          firstText={i18n.t("confirmed")}
+          firstText={localization.t("confirmed")}
           secondText=""
           width="auto"
         />
@@ -45,7 +46,7 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
 
       <View>
         <BoxContainerWithText
-          firstText={i18n.t("date_time")}
+          firstText={localization.t("date_time")}
           secondText={`${day}/${month}/${year} ${hour}:${minutes}`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -54,7 +55,7 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18n.t("size")}
+          firstText={localization.t("size")}
           secondText={`${size} B`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -65,7 +66,7 @@ export default function ConfirmedContent(props: ConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18n.t("fee")}
+          firstText={localization.t("fee")}
           secondText={`${(fee / 100000000).toString()} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,

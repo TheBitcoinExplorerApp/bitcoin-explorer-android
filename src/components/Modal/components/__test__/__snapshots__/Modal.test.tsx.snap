@@ -703,7 +703,8 @@ exports[`Modal renders correctly when type is Block 1`] = `
           }
         >
           <ActivityIndicator
-            color="#FFF"
+            color="#DF7800"
+            size="large"
           />
         </View>
       </View>

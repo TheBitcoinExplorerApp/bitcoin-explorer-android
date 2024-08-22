@@ -17,7 +17,7 @@ exports[`BlocksInfo renders correctly 1`] = `
       }
     }
   >
-    Blocos
+    blocks
   </Text>
   <View
     style={

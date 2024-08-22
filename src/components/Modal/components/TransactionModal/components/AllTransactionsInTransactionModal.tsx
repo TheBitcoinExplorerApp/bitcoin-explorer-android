@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable import/no-extraneous-dependencies */
 import { nanoid } from "nanoid";
+import { useShallow } from "zustand/react/shallow";
+import useAppStore from "src/stores/App/useAppStore";
 import { View, Text, StyleSheet } from "react-native";
 import { TransactionType } from "src/components/Modal/types";
-import useAppDataStore from "src/context/DataProvider";
 
 type AllTransactionsInTransactionModalProps = {
   inputTransactions: TransactionType["inputTransactions"];
@@ -69,11 +69,11 @@ export default function AllTransactionsInTransactionModal(
   props: AllTransactionsInTransactionModalProps,
 ) {
   const { inputTransactions, outputTransactions } = props;
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{i18n.t("inputs_and_outputs")}</Text>
+      <Text style={styles.title}>{localization.t("inputs_and_outputs")}</Text>
 
       <View style={styles.transactionContainer}>
         <View style={styles.inputTransactionsContainer}>
@@ -86,14 +86,14 @@ export default function AllTransactionsInTransactionModal(
                 key={`${nanoid()}`}
               >
                 <Text style={styles.transactionAddress}>
-                  {(prevout?.scriptpubkey_address)
+                  {(prevout?.scriptpubkey_address ?? "")
                     .toString()
                     .slice(0, 14)
                     .concat("...")}
                 </Text>
 
                 <Text style={styles.text}>
-                  {(prevout?.value / 100000000).toString()} BTC
+                  {((prevout?.value ?? 0) / 100000000).toString()} BTC
                 </Text>
               </View>
             );

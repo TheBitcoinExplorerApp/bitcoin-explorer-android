@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
+import { useShallow } from "zustand/react/shallow";
 import Modal from "src/components/Modal/Modal";
-import { initialStateBlocks } from "src/__mocks__/initialStates";
+import useAppStore from "src/stores/App/useAppStore";
 import ModalServices from "src/services/ModalServices";
 import { TransactionType } from "src/components/Modal/types";
-import useAppDataStore from "src/context/DataProvider";
+import { initialStateBlocks } from "src/__mocks__/initialStates";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { BlockProps, BlockType } from "./type";
 
 const styles = StyleSheet.create({
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
 
 export default function Block(props: BlockProps) {
   const { blocks } = props;
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   const [modalVisible, setModalVisible] = useState(false);
   const [blockData, setBlockData] = useState<BlockType>(initialStateBlocks[0]);
@@ -68,7 +69,8 @@ export default function Block(props: BlockProps) {
                 <Text style={styles.text}>{block.satPerVbyte} sat/vB</Text>
                 <Text style={styles.text}>{block.size} MB</Text>
                 <Text style={styles.text}>
-                  {block.transactions} {i18n.t("transactions").toLowerCase()}
+                  {block.transactions}{" "}
+                  {localization.t("transactions").toLowerCase()}
                 </Text>
                 <Text style={styles.text}>
                   {block.timeAgo.hour}:{block.timeAgo.minutes}

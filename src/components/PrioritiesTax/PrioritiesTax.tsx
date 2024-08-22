@@ -1,7 +1,12 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
+import { I18n } from "i18n-js";
 import { View, Text, StyleSheet } from "react-native";
-import useAppDataStore from "src/context/DataProvider";
-import SmallBoxInfo from "../SmallBoxInfo/SmallBoxInfo";
+import SmallBoxInfo, { SmallBox } from "../SmallBoxInfo/SmallBoxInfo";
+
+type PrioritiesTaxProps = {
+  fees: SmallBox[];
+  localization: I18n;
+};
 
 const styles = StyleSheet.create({
   taxContainerPrioritiesTaxText: {
@@ -18,20 +23,20 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function PrioritiesTax() {
-  const { fees, i18n } = useAppDataStore();
+export default function PrioritiesTax(props: PrioritiesTaxProps) {
+  const { fees, localization } = props;
 
   return (
     <>
       <View style={styles.taxContainerPrioritiesTaxText}>
         <Text style={styles.taxPrioritiesTaxText}>
-          {i18n.t("low_priority")}
+          {localization.t("low_priority")}
         </Text>
         <Text style={styles.taxPrioritiesTaxText}>
-          {i18n.t("medium_priority")}
+          {localization.t("medium_priority")}
         </Text>
         <Text style={styles.taxPrioritiesTaxText}>
-          {i18n.t("high_priority")}
+          {localization.t("high_priority")}
         </Text>
       </View>
       <SmallBoxInfo boxesInfos={fees} />

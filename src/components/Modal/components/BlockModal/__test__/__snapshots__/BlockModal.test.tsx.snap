@@ -109,7 +109,8 @@ exports[`BlockModal renders correctly 1`] = `
           }
         >
           <ActivityIndicator
-            color="#FFF"
+            color="#DF7800"
+            size="large"
           />
         </View>
       </View>

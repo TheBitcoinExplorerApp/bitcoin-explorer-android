@@ -6,13 +6,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  ActivityIndicator,
 } from "react-native";
-import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
+import CustomActivityIndicator from "src/components/CustomActivityIndicator/CustomActivityIndicator";
+import { useShallow } from "zustand/react/shallow";
 import ModalServices from "src/services/ModalServices";
-import useAppDataStore from "src/context/DataProvider";
-import ModalHeader from "../ModalHeader/ModalHeader";
+import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
+import useAppStore from "src/stores/App/useAppStore";
 import { BlockModalProps } from "../../types";
+import ModalHeader from "../ModalHeader/ModalHeader";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInBlockModal";
 
 const styles = StyleSheet.create({
@@ -56,10 +57,10 @@ export default function BlockModal(props: BlockModalProps) {
   } = props;
   const { pool } = extras;
 
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   const dataIsLoading = !blockHash || blockTransactions.length === 0;
-  const showLoading = () => <ActivityIndicator color="#FFF" />;
+  const showLoading = <CustomActivityIndicator />;
 
   const showAllTransactions = () =>
     blockTransactions.map((transaction) => (
@@ -72,7 +73,7 @@ export default function BlockModal(props: BlockModalProps) {
   const showContent = () => (
     <>
       <BoxContainerWithText
-        firstText={i18n.t("block")}
+        firstText={localization.t("block")}
         secondText={`${blockHeight}`}
         secondTextWhite
         width="42%"
@@ -93,7 +94,7 @@ export default function BlockModal(props: BlockModalProps) {
         </TouchableOpacity>
 
         <BoxContainerWithText
-          firstText={i18n.t("date_time")}
+          firstText={localization.t("date_time")}
           secondText={`${timeAgo.day}/${timeAgo.month}/${timeAgo.year} ${timeAgo.hour}:${timeAgo.minutes}`}
           secondTextWhite
           borderStyles={{
@@ -105,7 +106,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText={i18n.t("size")}
+          firstText={localization.t("size")}
           secondText={`${size} MB`}
           secondTextWhite
           borderStyles={{
@@ -117,7 +118,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText={i18n.t("median_fee")}
+          firstText={localization.t("median_fee")}
           secondText={`~${satPerVbyte} sat/vB`}
           secondTextWhite
           borderStyles={{
@@ -129,7 +130,7 @@ export default function BlockModal(props: BlockModalProps) {
         />
 
         <BoxContainerWithText
-          firstText={i18n.t("miner")}
+          firstText={localization.t("miner")}
           secondText={pool.name}
           secondTextWhite
           borderStyles={{
@@ -140,11 +141,11 @@ export default function BlockModal(props: BlockModalProps) {
       </View>
 
       <Text style={styles.titleTransactionBlock}>
-        {transactions} {i18n.t("transactions").toLocaleLowerCase()}
+        {transactions} {localization.t("transactions").toLocaleLowerCase()}
       </Text>
 
       <View style={styles.transactionContainer}>
-        {blockTransactions.length !== 0 ? showAllTransactions() : showLoading()}
+        {blockTransactions.length !== 0 ? showAllTransactions() : showLoading}
       </View>
     </>
   );
@@ -163,11 +164,11 @@ export default function BlockModal(props: BlockModalProps) {
         <View style={styles.container}>
           <ModalHeader
             handleModalClose={handleModalClose}
-            title={i18n.t("block")}
+            title={localization.t("block")}
           />
 
           <View style={styles.contentContainer}>
-            {dataIsLoading ? showLoading() : showContent()}
+            {dataIsLoading ? showLoading : showContent()}
           </View>
         </View>
       </ScrollView>

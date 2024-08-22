@@ -1,9 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Text, StyleSheet, ActivityIndicator } from "react-native";
+import { Text, StyleSheet } from "react-native";
+import useAppStore from "src/stores/App/useAppStore";
 import Main from "src/components/templates/Main";
 import BlocksInfo from "src/components/BlocksInfo/BlocksInfo";
 import TransactionsInfo from "src/components/Transactions/TransactionsInfo";
-import useAppDataStore from "src/context/DataProvider";
+import CustomActivityIndicator from "src/components/CustomActivityIndicator/CustomActivityIndicator";
 import PrioritiesTaxValuesBox from "../components/PrioritiesTax/PrioritiesTax";
 
 type HomeProps = {
@@ -18,27 +19,35 @@ const styles = StyleSheet.create({
   },
 });
 
+const showLoading = <CustomActivityIndicator />;
+
 export default function Home(props: HomeProps) {
-  const { isLoading, i18n } = useAppDataStore();
   const { navigation } = props;
-
-  const showLoading = <ActivityIndicator size="large" color="white" />;
-
-  const content = (
-    <>
-      <Text style={styles.title}>{i18n.t("transaction_fees")}</Text>
-
-      <PrioritiesTaxValuesBox />
-
-      <BlocksInfo qtdBlocksToRender={4} />
-
-      <TransactionsInfo />
-    </>
-  );
+  const { isLoading, localization, blocks, fees, transactions } = useAppStore();
+  const haveData =
+    blocks?.length > 0 && fees?.length > 0 && transactions?.length > 0;
 
   return (
     <Main navigation={navigation} actualScreen="Home">
-      {isLoading ? showLoading : content}
+      {isLoading && showLoading}
+      {haveData && (
+        <>
+          <Text style={styles.title}>{localization.t("transaction_fees")}</Text>
+
+          <PrioritiesTaxValuesBox fees={fees} localization={localization} />
+
+          <BlocksInfo
+            qtdBlocksToRender={4}
+            blocks={blocks}
+            localization={localization}
+          />
+
+          <TransactionsInfo
+            transactions={transactions}
+            localization={localization}
+          />
+        </>
+      )}
     </Main>
   );
 }

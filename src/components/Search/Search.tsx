@@ -1,13 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useState } from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { useShallow } from "zustand/react/shallow";
+import useAppStore from "src/stores/App/useAppStore";
 import ModalServices from "src/services/ModalServices";
+import { View, TextInput, StyleSheet } from "react-native";
 import { initialStateBlocks } from "src/__mocks__/initialStates";
-import useAppDataStore from "src/context/DataProvider";
-import { AddressInfoType, TransactionType } from "../Modal/types";
 import { DataSearchType } from "./types";
 import Modal from "../Modal/Modal";
+import { AddressInfoType, TransactionType } from "../Modal/types";
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
 });
 
 export default function Search() {
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
   const onlyLettersAndNumbers = /^[a-zA-Z0-9]*$/;
   const maxAddressSize = 62;
 
@@ -222,7 +223,7 @@ export default function Search() {
     <>
       <View style={styles.container}>
         <TextInput
-          placeholder={i18n.t("search")}
+          placeholder={localization.t("search")}
           style={styles.input}
           placeholderTextColor="#8d8d9a"
           value={searchContent}

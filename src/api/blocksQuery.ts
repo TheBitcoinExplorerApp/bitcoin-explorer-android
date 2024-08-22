@@ -11,6 +11,7 @@ const useBlocksQuery = () => {
   } = useQuery({
     queryKey: ["blocksQuery"],
     queryFn: getBlocks,
+    enabled: false,
   });
 
   return { blocksData, blocksIsLoading, blocksError, refetchBlocks };

@@ -1,7 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import { View, StyleSheet } from "react-native";
+import { useShallow } from "zustand/react/shallow";
+import useAppStore from "src/stores/App/useAppStore";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
-import useAppDataStore from "src/context/DataProvider";
 
 type NotConfirmedContentProps = {
   size: number;
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
 
 export default function NotConfirmedContent(props: NotConfirmedContentProps) {
   const { fee, size } = props;
-  const { i18n } = useAppDataStore();
+  const localization = useAppStore(useShallow((state) => state.localization));
 
   return (
     <View style={styles.container}>
@@ -27,7 +28,7 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
         }}
       >
         <BoxContainerWithText
-          firstText={i18n.t("unconfirmed")}
+          firstText={localization.t("unconfirmed")}
           secondText=""
           width="auto"
         />
@@ -35,8 +36,8 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
 
       <View>
         <BoxContainerWithText
-          firstText={i18n.t("date_time")}
-          secondText={i18n.t("waiting_confirmation")}
+          firstText={localization.t("date_time")}
+          secondText={localization.t("waiting_confirmation")}
           borderStyles={{
             borderBottomEndRadius: 0,
             borderBottomStartRadius: 0,
@@ -44,7 +45,7 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18n.t("size")}
+          firstText={localization.t("size")}
           secondText={`${size} B`}
           borderStyles={{
             borderBottomEndRadius: 0,
@@ -55,7 +56,7 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
           }}
         />
         <BoxContainerWithText
-          firstText={i18n.t("fee")}
+          firstText={localization.t("fee")}
           secondText={`${(fee / 100000000).toString()} BTC`}
           borderStyles={{
             borderTopEndRadius: 0,

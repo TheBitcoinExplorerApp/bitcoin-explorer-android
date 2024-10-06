@@ -24,6 +24,12 @@ const enUS = {
   balance: "Balance",
   waiting_confirmation: "Waiting Confirmation",
   search: "Search",
+  settings: "Configurations",
+  language: "Language",
+  currency: "Currency",
+  source_code: "Source Code",
+  report_issues: "Report Issues",
+  support: "Support",
 };
 
 export default enUS;

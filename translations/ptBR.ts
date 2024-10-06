@@ -24,6 +24,12 @@ const ptBR = {
   balance: "Saldo",
   waiting_confirmation: "Aguardando Confirmação",
   search: "Pesquisar",
+  settings: "Configurações",
+  language: "Idioma",
+  currency: "Moeda",
+  source_code: "Código Fonte",
+  report_issues: "Reportar Problemas",
+  support: "Suporte",
 };
 
 export default ptBR;

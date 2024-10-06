@@ -31,28 +31,16 @@ function QueriesContainer(props: QueriesContainerProps) {
     transactionsQuery();
   const { pricesData, pricesIsLoading, refetchPrices } = usePricesQuery();
 
-  const queryHaveData =
-    feesData && blocksData && transactionsData && pricesData;
   const isLoading =
     feesIsLoading ||
     blocksIsLoading ||
     transactionsIsLoading ||
     pricesIsLoading;
 
-  useEffect(() => {
-    if (!queryHaveData) {
-      console.log("🤯", "inside useEffect");
-      console.log("🤯", "fetching data");
-      refetchFees();
-      refetchBlocks();
-      refetchTransactions();
-      refetchPrices();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const queriesHaveData =
+    feesData && blocksData && transactionsData && pricesData;
 
   useEffect(() => {
-    console.log("🙁", "inside useEffect");
     if (feesData)
       setFees(
         formatFees(
@@ -62,14 +50,32 @@ function QueriesContainer(props: QueriesContainerProps) {
           localization.locale,
         ),
       );
+
+    if (pricesData) setBitcoinPrice(pricesData);
     if (blocksData) setBlocks(formatBlocksData(blocksData));
     if (transactionsData)
       setTransactions(formatTransactionsData(transactionsData));
-    if (pricesData) setBitcoinPrice(pricesData);
 
-    if (queryHaveData && !isLoading) setIsLoading(false);
+    // if it's not loading, and we don't have the data, we refetch
+    if (!isLoading && !queriesHaveData) {
+      if (!feesData) refetchFees();
+      if (!blocksData) refetchBlocks();
+      if (!transactionsData) refetchTransactions();
+      if (!pricesData) refetchPrices();
+    }
+
+    // if we have all the data, we set isLoading to false
+    if (queriesHaveData) setIsLoading(false);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [feesIsLoading, blocksIsLoading, transactionsIsLoading]);
+  }, [
+    feesData,
+    isLoading,
+    blocksData,
+    pricesData,
+    queriesHaveData,
+    transactionsData,
+  ]);
 
   return props.children;
 }

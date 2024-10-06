@@ -490,7 +490,7 @@ exports[`Modal renders correctly when type is Address 1`] = `
                         }
                       }
                     >
-                      $ 0,00
+                      $ 0.00
                     </Text>
                   </View>
                 </View>
@@ -636,7 +636,7 @@ exports[`Modal renders correctly when type is Address 1`] = `
                         }
                       }
                     >
-                      $ 0,00
+                      $ 0.00
                     </Text>
                   </View>
                 </View>
@@ -1192,7 +1192,7 @@ exports[`Modal renders correctly when type is Transaction 1`] = `
                         }
                       }
                     >
-                      $ 0,00
+                      $ 0.00
                     </Text>
                   </View>
                 </View>
@@ -1338,7 +1338,7 @@ exports[`Modal renders correctly when type is Transaction 1`] = `
                         }
                       }
                     >
-                      $ 0,00
+                      $ 0.00
                     </Text>
                   </View>
                 </View>

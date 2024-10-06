@@ -68,6 +68,7 @@ exports[`ButtonsNavigation renders correctly when at Blocks 1`] = `
         style={
           {
             "color": "#D6D6D6",
+            "fontSize": 12,
           }
         }
       >
@@ -131,6 +132,7 @@ exports[`ButtonsNavigation renders correctly when at Blocks 1`] = `
         style={
           {
             "color": "#DF7800",
+            "fontSize": 12,
           }
         }
       >
@@ -194,10 +196,75 @@ exports[`ButtonsNavigation renders correctly when at Blocks 1`] = `
         style={
           {
             "color": "#D6D6D6",
+            "fontSize": 12,
           }
         }
       >
         Transações
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+            "fontSize": 12,
+          }
+        }
+      >
+        Configurações
       </Text>
     </View>
   </View>
@@ -272,6 +339,7 @@ exports[`ButtonsNavigation renders correctly when at Home 1`] = `
         style={
           {
             "color": "#DF7800",
+            "fontSize": 12,
           }
         }
       >
@@ -335,6 +403,7 @@ exports[`ButtonsNavigation renders correctly when at Home 1`] = `
         style={
           {
             "color": "#D6D6D6",
+            "fontSize": 12,
           }
         }
       >
@@ -398,10 +467,75 @@ exports[`ButtonsNavigation renders correctly when at Home 1`] = `
         style={
           {
             "color": "#D6D6D6",
+            "fontSize": 12,
           }
         }
       >
         Transações
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+            "fontSize": 12,
+          }
+        }
+      >
+        Configurações
       </Text>
     </View>
   </View>
@@ -476,6 +610,7 @@ exports[`ButtonsNavigation renders correctly when at Transactions 1`] = `
         style={
           {
             "color": "#D6D6D6",
+            "fontSize": 12,
           }
         }
       >
@@ -539,6 +674,7 @@ exports[`ButtonsNavigation renders correctly when at Transactions 1`] = `
         style={
           {
             "color": "#D6D6D6",
+            "fontSize": 12,
           }
         }
       >
@@ -602,10 +738,75 @@ exports[`ButtonsNavigation renders correctly when at Transactions 1`] = `
         style={
           {
             "color": "#DF7800",
+            "fontSize": 12,
           }
         }
       >
         Transações
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "height": "100%",
+          "justifyContent": "space-between",
+          "paddingVertical": 5,
+          "width": 90,
+        }
+      }
+    >
+      <svg
+        style={
+          {
+            "color": "#D6D6D6",
+          }
+        }
+      />
+      <Text
+        style={
+          {
+            "color": "#D6D6D6",
+            "fontSize": 12,
+          }
+        }
+      >
+        Configurações
       </Text>
     </View>
   </View>

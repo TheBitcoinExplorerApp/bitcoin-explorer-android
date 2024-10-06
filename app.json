@@ -4,7 +4,8 @@
     "slug": "bitcoin-blockchain-explorer-android",
     "description": "An unofficial app to explore the Bitcoin blockchain",
     "privacy": "hidden",
-    "version": "1.1.0",
+    "appVersionSource": "remote",
+    "version": "1.0.0",
     "platforms": [
       "android"
     ],

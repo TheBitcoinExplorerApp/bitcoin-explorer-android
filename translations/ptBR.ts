@@ -30,6 +30,7 @@ const ptBR = {
   source_code: "Código Fonte",
   report_issues: "Reportar Problemas",
   support: "Suporte",
+  bitcoin_price: "Preço do Bitcoin",
 };
 
 export default ptBR;

@@ -30,6 +30,7 @@ const enUS = {
   source_code: "Source Code",
   report_issues: "Report Issues",
   support: "Support",
+  bitcoin_price: "Bitcoin Price",
 };
 
 export default enUS;

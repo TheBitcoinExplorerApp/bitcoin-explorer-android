@@ -78,30 +78,14 @@ exports[`PrioritiesTax renders correctly 1`] = `
          
          sat/vB
       </Text>
-    </View>
-    <View
-      style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "#1d2133",
-          "borderRadius": 7,
-          "paddingHorizontal": 8,
-          "paddingVertical": 16,
-          "textAlign": "center",
-          "width": 100,
-        }
-      }
-    >
       <Text
         style={
           {
-            "color": "#FFF",
-            "fontSize": 14,
+            "color": "#DF7800",
           }
         }
       >
          
-         sat/vB
       </Text>
     </View>
     <View
@@ -127,6 +111,49 @@ exports[`PrioritiesTax renders correctly 1`] = `
       >
          
          sat/vB
+      </Text>
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      >
+         
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#1d2133",
+          "borderRadius": 7,
+          "paddingHorizontal": 8,
+          "paddingVertical": 16,
+          "textAlign": "center",
+          "width": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#FFF",
+            "fontSize": 14,
+          }
+        }
+      >
+         
+         sat/vB
+      </Text>
+      <Text
+        style={
+          {
+            "color": "#DF7800",
+          }
+        }
+      >
+         
       </Text>
     </View>
   </View>,

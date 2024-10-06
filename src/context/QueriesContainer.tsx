@@ -18,7 +18,6 @@ function QueriesContainer(props: QueriesContainerProps) {
     setFees,
     setBlocks,
     localization,
-    bitcoinPrice,
     setIsLoading,
     setTransactions,
     setBitcoinPrice,
@@ -41,16 +40,6 @@ function QueriesContainer(props: QueriesContainerProps) {
     feesData && blocksData && transactionsData && pricesData;
 
   useEffect(() => {
-    if (feesData)
-      setFees(
-        formatFees(
-          feesData,
-          selectedCurrency,
-          bitcoinPrice,
-          localization.locale,
-        ),
-      );
-
     if (pricesData) setBitcoinPrice(pricesData);
     if (blocksData) setBlocks(formatBlocksData(blocksData));
     if (transactionsData)
@@ -63,6 +52,11 @@ function QueriesContainer(props: QueriesContainerProps) {
       if (!transactionsData) refetchTransactions();
       if (!pricesData) refetchPrices();
     }
+
+    if (feesData && pricesData)
+      setFees(
+        formatFees(feesData, selectedCurrency, pricesData, localization.locale),
+      );
 
     // if we have all the data, we set isLoading to false
     if (queriesHaveData) setIsLoading(false);

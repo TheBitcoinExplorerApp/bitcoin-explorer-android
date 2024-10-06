@@ -50,7 +50,7 @@ exports[`AddressModal renders correctly 1`] = `
               }
             }
           >
-            Endereço
+            address
           </Text>
           <View
             accessibilityLabel="Close Modal"
@@ -148,27 +148,23 @@ exports[`AddressModal renders correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#1d2133",
-                    "height": 48,
-                    "justifyContent": "space-between",
-                    "paddingHorizontal": 18,
-                    "paddingVertical": 9,
-                  },
-                  {
-                    "borderBottomColor": undefined,
-                    "borderBottomEndRadius": undefined,
-                    "borderBottomStartRadius": undefined,
-                    "borderBottomWidth": 0,
-                    "borderRadius": 7,
-                    "borderTopEndRadius": undefined,
-                    "borderTopStartRadius": undefined,
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#1d2133",
+                  "borderBottomColor": undefined,
+                  "borderBottomEndRadius": undefined,
+                  "borderBottomStartRadius": undefined,
+                  "borderBottomWidth": 0,
+                  "borderRadius": 7,
+                  "borderTopEndRadius": undefined,
+                  "borderTopStartRadius": undefined,
+                  "flexDirection": "row",
+                  "height": 48,
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 18,
+                  "paddingVertical": 9,
+                  "width": "100%",
+                }
               }
             >
               <Text
@@ -179,44 +175,48 @@ exports[`AddressModal renders correctly 1`] = `
                   }
                 }
               >
-                Endereço
+                address
               </Text>
-              <Text
+              <View
                 style={
                   {
-                    "color": "#DF7800",
-                    "fontSize": 15,
+                    "alignItems": "center",
                   }
                 }
               >
-                ...
-              </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#DF7800",
+                      "fontSize": 15,
+                    }
+                  }
+                >
+                  ...
+                </Text>
+              </View>
             </View>
           </View>
           <View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#1d2133",
-                    "height": 48,
-                    "justifyContent": "space-between",
-                    "paddingHorizontal": 18,
-                    "paddingVertical": 9,
-                  },
-                  {
-                    "borderBottomColor": undefined,
-                    "borderBottomEndRadius": 0,
-                    "borderBottomStartRadius": 0,
-                    "borderBottomWidth": 0,
-                    "borderRadius": 7,
-                    "borderTopEndRadius": undefined,
-                    "borderTopStartRadius": undefined,
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#1d2133",
+                  "borderBottomColor": undefined,
+                  "borderBottomEndRadius": 0,
+                  "borderBottomStartRadius": 0,
+                  "borderBottomWidth": 0,
+                  "borderRadius": 7,
+                  "borderTopEndRadius": undefined,
+                  "borderTopStartRadius": undefined,
+                  "flexDirection": "row",
+                  "height": 48,
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 18,
+                  "paddingVertical": 9,
+                  "width": "100%",
+                }
               }
             >
               <Text
@@ -227,42 +227,46 @@ exports[`AddressModal renders correctly 1`] = `
                   }
                 }
               >
-                Total Recebido
+                total_received
               </Text>
-              <Text
+              <View
                 style={
                   {
-                    "color": "#DF7800",
-                    "fontSize": 15,
+                    "alignItems": "center",
                   }
                 }
               >
-                0 BTC
-              </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#DF7800",
+                      "fontSize": 15,
+                    }
+                  }
+                >
+                  0 BTC
+                </Text>
+              </View>
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#1d2133",
-                    "height": 48,
-                    "justifyContent": "space-between",
-                    "paddingHorizontal": 18,
-                    "paddingVertical": 9,
-                  },
-                  {
-                    "borderBottomColor": undefined,
-                    "borderBottomEndRadius": 0,
-                    "borderBottomStartRadius": 0,
-                    "borderBottomWidth": 0,
-                    "borderRadius": 7,
-                    "borderTopEndRadius": 0,
-                    "borderTopStartRadius": 0,
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#1d2133",
+                  "borderBottomColor": undefined,
+                  "borderBottomEndRadius": 0,
+                  "borderBottomStartRadius": 0,
+                  "borderBottomWidth": 0,
+                  "borderRadius": 7,
+                  "borderTopEndRadius": 0,
+                  "borderTopStartRadius": 0,
+                  "flexDirection": "row",
+                  "height": 48,
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 18,
+                  "paddingVertical": 9,
+                  "width": "100%",
+                }
               }
             >
               <Text
@@ -273,42 +277,46 @@ exports[`AddressModal renders correctly 1`] = `
                   }
                 }
               >
-                Total Enviado
+                total_sent
               </Text>
-              <Text
+              <View
                 style={
                   {
-                    "color": "#DF7800",
-                    "fontSize": 15,
+                    "alignItems": "center",
                   }
                 }
               >
-                0 BTC
-              </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#DF7800",
+                      "fontSize": 15,
+                    }
+                  }
+                >
+                  0 BTC
+                </Text>
+              </View>
             </View>
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#1d2133",
-                    "height": 48,
-                    "justifyContent": "space-between",
-                    "paddingHorizontal": 18,
-                    "paddingVertical": 9,
-                  },
-                  {
-                    "borderBottomColor": undefined,
-                    "borderBottomEndRadius": undefined,
-                    "borderBottomStartRadius": undefined,
-                    "borderBottomWidth": 0,
-                    "borderRadius": 7,
-                    "borderTopEndRadius": 0,
-                    "borderTopStartRadius": 0,
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#1d2133",
+                  "borderBottomColor": undefined,
+                  "borderBottomEndRadius": undefined,
+                  "borderBottomStartRadius": undefined,
+                  "borderBottomWidth": 0,
+                  "borderRadius": 7,
+                  "borderTopEndRadius": 0,
+                  "borderTopStartRadius": 0,
+                  "flexDirection": "row",
+                  "height": 48,
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 18,
+                  "paddingVertical": 9,
+                  "width": "100%",
+                }
               }
             >
               <Text
@@ -319,18 +327,26 @@ exports[`AddressModal renders correctly 1`] = `
                   }
                 }
               >
-                Saldo
+                balance
               </Text>
-              <Text
+              <View
                 style={
                   {
-                    "color": "#DF7800",
-                    "fontSize": 15,
+                    "alignItems": "center",
                   }
                 }
               >
-                0 BTC
-              </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#DF7800",
+                      "fontSize": 15,
+                    }
+                  }
+                >
+                  0 BTC
+                </Text>
+              </View>
             </View>
           </View>
           <View>
@@ -352,7 +368,7 @@ exports[`AddressModal renders correctly 1`] = `
                   }
                 }
               >
-                Entradas e Saídas
+                inputs_and_outputs
               </Text>
               <View
                 style={
@@ -405,6 +421,15 @@ exports[`AddressModal renders correctly 1`] = `
                       0
                        BTC
                     </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                        }
+                      }
+                    />
                   </View>
                 </View>
                 <Text
@@ -455,6 +480,17 @@ exports[`AddressModal renders correctly 1`] = `
                     >
                       0
                        BTC
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                        }
+                      }
+                    >
+                      $ 0,00
                     </Text>
                   </View>
                 </View>
@@ -478,7 +514,7 @@ exports[`AddressModal renders correctly 1`] = `
                   }
                 }
               >
-                Entradas e Saídas
+                inputs_and_outputs
               </Text>
               <View
                 style={
@@ -531,6 +567,15 @@ exports[`AddressModal renders correctly 1`] = `
                       0
                        BTC
                     </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                        }
+                      }
+                    />
                   </View>
                 </View>
                 <Text
@@ -581,6 +626,17 @@ exports[`AddressModal renders correctly 1`] = `
                     >
                       0
                        BTC
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                        }
+                      }
+                    >
+                      $ 0,00
                     </Text>
                   </View>
                 </View>

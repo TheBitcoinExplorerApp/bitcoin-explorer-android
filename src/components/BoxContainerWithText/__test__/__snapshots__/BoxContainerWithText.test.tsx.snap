@@ -3,27 +3,23 @@
 exports[`BoxContainerWithText renders correctly 1`] = `
 <View
   style={
-    [
-      {
-        "alignItems": "center",
-        "backgroundColor": "#1d2133",
-        "height": 48,
-        "justifyContent": "space-between",
-        "paddingHorizontal": 18,
-        "paddingVertical": 9,
-      },
-      {
-        "borderBottomColor": undefined,
-        "borderBottomEndRadius": undefined,
-        "borderBottomStartRadius": undefined,
-        "borderBottomWidth": 0,
-        "borderRadius": 7,
-        "borderTopEndRadius": undefined,
-        "borderTopStartRadius": undefined,
-        "flexDirection": "row",
-        "width": "100%",
-      },
-    ]
+    {
+      "alignItems": "center",
+      "backgroundColor": "#1d2133",
+      "borderBottomColor": undefined,
+      "borderBottomEndRadius": undefined,
+      "borderBottomStartRadius": undefined,
+      "borderBottomWidth": 0,
+      "borderRadius": 7,
+      "borderTopEndRadius": undefined,
+      "borderTopStartRadius": undefined,
+      "flexDirection": "row",
+      "height": 48,
+      "justifyContent": "space-between",
+      "paddingHorizontal": 18,
+      "paddingVertical": 9,
+      "width": "100%",
+    }
   }
 >
   <Text
@@ -36,15 +32,23 @@ exports[`BoxContainerWithText renders correctly 1`] = `
   >
     first
   </Text>
-  <Text
+  <View
     style={
       {
-        "color": "#DF7800",
-        "fontSize": 15,
+        "alignItems": "center",
       }
     }
   >
-    second
-  </Text>
+    <Text
+      style={
+        {
+          "color": "#DF7800",
+          "fontSize": 15,
+        }
+      }
+    >
+      second
+    </Text>
+  </View>
 </View>
 `;

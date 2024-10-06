@@ -16,7 +16,7 @@ exports[`TransactionModal renders correctly 1`] = `
     contentContainerStyle={
       {
         "backgroundColor": "#101427",
-        "height": "auto",
+        "height": "100%",
         "marginTop": "38%",
         "paddingBottom": "40%",
       }
@@ -49,7 +49,7 @@ exports[`TransactionModal renders correctly 1`] = `
               }
             }
           >
-            Transação
+            transaction
           </Text>
           <View
             accessibilityLabel="Close Modal"
@@ -146,27 +146,23 @@ exports[`TransactionModal renders correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#1d2133",
-                    "height": 48,
-                    "justifyContent": "space-between",
-                    "paddingHorizontal": 18,
-                    "paddingVertical": 9,
-                  },
-                  {
-                    "borderBottomColor": undefined,
-                    "borderBottomEndRadius": undefined,
-                    "borderBottomStartRadius": undefined,
-                    "borderBottomWidth": 0,
-                    "borderRadius": 7,
-                    "borderTopEndRadius": undefined,
-                    "borderTopStartRadius": undefined,
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#1d2133",
+                  "borderBottomColor": undefined,
+                  "borderBottomEndRadius": undefined,
+                  "borderBottomStartRadius": undefined,
+                  "borderBottomWidth": 0,
+                  "borderRadius": 7,
+                  "borderTopEndRadius": undefined,
+                  "borderTopStartRadius": undefined,
+                  "flexDirection": "row",
+                  "height": 48,
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 18,
+                  "paddingVertical": 9,
+                  "width": "100%",
+                }
               }
             >
               <Text
@@ -177,18 +173,26 @@ exports[`TransactionModal renders correctly 1`] = `
                   }
                 }
               >
-                Hash
+                hash
               </Text>
-              <Text
+              <View
                 style={
                   {
-                    "color": "#DF7800",
-                    "fontSize": 15,
+                    "alignItems": "center",
                   }
                 }
               >
-                #ABC12...
-              </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#DF7800",
+                      "fontSize": 15,
+                    }
+                  }
+                >
+                  #ABC12...
+                </Text>
+              </View>
             </View>
           </View>
           <View
@@ -209,33 +213,29 @@ exports[`TransactionModal renders correctly 1`] = `
                 style={
                   {
                     "flexDirection": "row",
-                    "justifyContent": "flex-end",
+                    "maxWidth": 135,
                   }
                 }
               >
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#1d2133",
-                        "height": 48,
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 18,
-                        "paddingVertical": 9,
-                      },
-                      {
-                        "borderBottomColor": undefined,
-                        "borderBottomEndRadius": undefined,
-                        "borderBottomStartRadius": undefined,
-                        "borderBottomWidth": 0,
-                        "borderRadius": 7,
-                        "borderTopEndRadius": undefined,
-                        "borderTopStartRadius": undefined,
-                        "flexDirection": "row",
-                        "width": "auto",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#1d2133",
+                      "borderBottomColor": undefined,
+                      "borderBottomEndRadius": undefined,
+                      "borderBottomStartRadius": undefined,
+                      "borderBottomWidth": 0,
+                      "borderRadius": 7,
+                      "borderTopEndRadius": undefined,
+                      "borderTopStartRadius": undefined,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 18,
+                      "paddingVertical": 9,
+                      "width": "100%",
+                    }
                   }
                 >
                   <Text
@@ -246,42 +246,46 @@ exports[`TransactionModal renders correctly 1`] = `
                       }
                     }
                   >
-                    Não Confirmada
+                    unconfirmed
                   </Text>
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#DF7800",
-                        "fontSize": 15,
+                        "alignItems": "center",
                       }
                     }
-                  />
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 15,
+                        }
+                      }
+                    />
+                  </View>
                 </View>
               </View>
               <View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#1d2133",
-                        "height": 48,
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 18,
-                        "paddingVertical": 9,
-                      },
-                      {
-                        "borderBottomColor": "#D9D9D9",
-                        "borderBottomEndRadius": 0,
-                        "borderBottomStartRadius": 0,
-                        "borderBottomWidth": 0.1,
-                        "borderRadius": 7,
-                        "borderTopEndRadius": undefined,
-                        "borderTopStartRadius": undefined,
-                        "flexDirection": "row",
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#1d2133",
+                      "borderBottomColor": "#D9D9D9",
+                      "borderBottomEndRadius": 0,
+                      "borderBottomStartRadius": 0,
+                      "borderBottomWidth": 0.1,
+                      "borderRadius": 7,
+                      "borderTopEndRadius": undefined,
+                      "borderTopStartRadius": undefined,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 18,
+                      "paddingVertical": 9,
+                      "width": "100%",
+                    }
                   }
                 >
                   <Text
@@ -292,42 +296,46 @@ exports[`TransactionModal renders correctly 1`] = `
                       }
                     }
                   >
-                    Data/Hora
+                    date_time
                   </Text>
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#DF7800",
-                        "fontSize": 15,
+                        "alignItems": "center",
                       }
                     }
                   >
-                    Aguardando Confirmação
-                  </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 15,
+                        }
+                      }
+                    >
+                      waiting_confirmation
+                    </Text>
+                  </View>
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#1d2133",
-                        "height": 48,
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 18,
-                        "paddingVertical": 9,
-                      },
-                      {
-                        "borderBottomColor": "#D9D9D9",
-                        "borderBottomEndRadius": 0,
-                        "borderBottomStartRadius": 0,
-                        "borderBottomWidth": 0.1,
-                        "borderRadius": 7,
-                        "borderTopEndRadius": 0,
-                        "borderTopStartRadius": 0,
-                        "flexDirection": "row",
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#1d2133",
+                      "borderBottomColor": "#D9D9D9",
+                      "borderBottomEndRadius": 0,
+                      "borderBottomStartRadius": 0,
+                      "borderBottomWidth": 0.1,
+                      "borderRadius": 7,
+                      "borderTopEndRadius": 0,
+                      "borderTopStartRadius": 0,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 18,
+                      "paddingVertical": 9,
+                      "width": "100%",
+                    }
                   }
                 >
                   <Text
@@ -338,42 +346,46 @@ exports[`TransactionModal renders correctly 1`] = `
                       }
                     }
                   >
-                    Tamanho
+                    size
                   </Text>
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#DF7800",
-                        "fontSize": 15,
+                        "alignItems": "center",
                       }
                     }
                   >
-                    0 B
-                  </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 15,
+                        }
+                      }
+                    >
+                      0 B
+                    </Text>
+                  </View>
                 </View>
                 <View
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#1d2133",
-                        "height": 48,
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 18,
-                        "paddingVertical": 9,
-                      },
-                      {
-                        "borderBottomColor": undefined,
-                        "borderBottomEndRadius": undefined,
-                        "borderBottomStartRadius": undefined,
-                        "borderBottomWidth": 0,
-                        "borderRadius": 7,
-                        "borderTopEndRadius": 0,
-                        "borderTopStartRadius": 0,
-                        "flexDirection": "row",
-                        "width": "100%",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#1d2133",
+                      "borderBottomColor": undefined,
+                      "borderBottomEndRadius": undefined,
+                      "borderBottomStartRadius": undefined,
+                      "borderBottomWidth": 0,
+                      "borderRadius": 7,
+                      "borderTopEndRadius": 0,
+                      "borderTopStartRadius": 0,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 18,
+                      "paddingVertical": 9,
+                      "width": "100%",
+                    }
                   }
                 >
                   <Text
@@ -384,18 +396,36 @@ exports[`TransactionModal renders correctly 1`] = `
                       }
                     }
                   >
-                    Taxa
+                    fee
                   </Text>
-                  <Text
+                  <View
                     style={
                       {
-                        "color": "#DF7800",
-                        "fontSize": 15,
+                        "alignItems": "center",
                       }
                     }
                   >
-                    0 BTC
-                  </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 15,
+                        }
+                      }
+                    >
+                      0 BTC
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#FFF",
+                          "fontSize": 14,
+                        }
+                      }
+                    >
+                      $ 0,00
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -417,7 +447,7 @@ exports[`TransactionModal renders correctly 1`] = `
                   }
                 }
               >
-                Entradas e Saídas
+                inputs_and_outputs
               </Text>
               <View
                 style={
@@ -470,6 +500,15 @@ exports[`TransactionModal renders correctly 1`] = `
                       0
                        BTC
                     </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                        }
+                      }
+                    />
                   </View>
                 </View>
                 <Text
@@ -520,6 +559,17 @@ exports[`TransactionModal renders correctly 1`] = `
                     >
                       0
                        BTC
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#DF7800",
+                          "fontSize": 14,
+                          "textAlign": "center",
+                        }
+                      }
+                    >
+                      $ 0,00
                     </Text>
                   </View>
                 </View>

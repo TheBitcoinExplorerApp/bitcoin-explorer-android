@@ -19,7 +19,7 @@ exports[`AllTransactionsInTransactionModal renders correctly 1`] = `
       }
     }
   >
-    Entradas e Saídas
+    inputs_and_outputs
   </Text>
   <View
     style={
@@ -72,6 +72,15 @@ exports[`AllTransactionsInTransactionModal renders correctly 1`] = `
           0
            BTC
         </Text>
+        <Text
+          style={
+            {
+              "color": "#DF7800",
+              "fontSize": 14,
+              "textAlign": "center",
+            }
+          }
+        />
       </View>
     </View>
     <Text
@@ -122,6 +131,17 @@ exports[`AllTransactionsInTransactionModal renders correctly 1`] = `
         >
           0
            BTC
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#DF7800",
+              "fontSize": 14,
+              "textAlign": "center",
+            }
+          }
+        >
+          $ 0,00
         </Text>
       </View>
     </View>

@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "prepare": "husky && husky install",
     "lint": "eslint --fix --ext .ts,.tsx src/**/*",
-    "test": "jest"
+    "test": "jest -u"
   },
   "dependencies": {
     "@react-native-community/netinfo": "11.3.1",

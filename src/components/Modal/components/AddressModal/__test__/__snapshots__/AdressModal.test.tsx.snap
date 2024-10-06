@@ -490,7 +490,7 @@ exports[`AddressModal renders correctly 1`] = `
                         }
                       }
                     >
-                      $ 0.00
+                      $ 0,00
                     </Text>
                   </View>
                 </View>
@@ -636,7 +636,7 @@ exports[`AddressModal renders correctly 1`] = `
                         }
                       }
                     >
-                      $ 0.00
+                      $ 0,00
                     </Text>
                   </View>
                 </View>

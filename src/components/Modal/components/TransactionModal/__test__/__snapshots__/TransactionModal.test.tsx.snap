@@ -423,7 +423,7 @@ exports[`TransactionModal renders correctly 1`] = `
                         }
                       }
                     >
-                      $ 0.00
+                      $ 0,00
                     </Text>
                   </View>
                 </View>
@@ -569,7 +569,7 @@ exports[`TransactionModal renders correctly 1`] = `
                         }
                       }
                     >
-                      $ 0.00
+                      $ 0,00
                     </Text>
                   </View>
                 </View>

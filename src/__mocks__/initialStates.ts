@@ -1,6 +1,7 @@
 import { BlockType } from "src/components/BlocksInfo/components/Block/type";
-import { AddressInfoType, TransactionType } from "src/components/Modal/types";
+import { AddressInfoType } from "src/components/Modal/types";
 import { SmallBox } from "src/components/SmallBoxInfo/SmallBoxInfo";
+import { TransactionType } from "src/components/Transactions/types";
 
 const timeAgoInitialState = {
   hour: 0,

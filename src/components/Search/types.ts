@@ -4,6 +4,7 @@ import { TransactionType } from "../Transactions/types";
 
 export type DataSearchType = {
   transactionInfo: TransactionType;
+  lastBlockHeight: number;
   addressInfo: {
     address: string;
     addressData: AddressInfoType;

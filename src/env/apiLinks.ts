@@ -27,3 +27,5 @@ export const sourceCodeURL =
 
 export const reportIssuesURL =
   "https://bitcoinblockchainexplorer.atlassian.net/servicedesk/customer/portal/1";
+
+export const getLastBlockHeight = "https://mempool.space/api/blocks/tip/height";

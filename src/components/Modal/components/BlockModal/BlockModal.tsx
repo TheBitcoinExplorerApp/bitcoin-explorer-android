@@ -8,10 +8,11 @@ import {
   ScrollView,
 } from "react-native";
 import CustomActivityIndicator from "src/components/CustomActivityIndicator/CustomActivityIndicator";
-import { useShallow } from "zustand/react/shallow";
 import ModalServices from "src/services/ModalServices";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import useAppStore from "src/stores/App/useAppStore";
+import { calcFeesOnCurrency } from "src/utils/formatFees";
+import { currencyProps } from "src/utils/dropDownOptions";
 import { BlockModalProps } from "../../types";
 import ModalHeader from "../ModalHeader/ModalHeader";
 import AllTransactionsInTransactionModal from "./components/AllTransactionsInBlockModal";
@@ -57,7 +58,15 @@ export default function BlockModal(props: BlockModalProps) {
   } = props;
   const { pool } = extras;
 
-  const localization = useAppStore(useShallow((state) => state.localization));
+  const {
+    localization,
+    selectedCurrency,
+    bitcoinPrice: bitcoinPrices,
+  } = useAppStore();
+
+  const currencyOption = currencyProps.find(
+    (currencyProp) => currencyProp.currency === selectedCurrency,
+  );
 
   const dataIsLoading = !blockHash || blockTransactions.length === 0;
   const showLoading = <CustomActivityIndicator />;
@@ -65,8 +74,12 @@ export default function BlockModal(props: BlockModalProps) {
   const showAllTransactions = () =>
     blockTransactions.map((transaction) => (
       <AllTransactionsInTransactionModal
-        key={transaction.transactionId}
         data={transaction}
+        locale={localization.locale}
+        bitcoinPrices={bitcoinPrices}
+        key={transaction.transactionId}
+        currencyOption={currencyOption}
+        selectedCurrency={selectedCurrency}
       />
     ));
 
@@ -127,6 +140,13 @@ export default function BlockModal(props: BlockModalProps) {
             borderBottomEndRadius: 0,
             borderBottomStartRadius: 0,
           }}
+          thirdText={`${currencyOption?.currencySign} ${calcFeesOnCurrency(
+            parseInt(satPerVbyte, 10),
+            selectedCurrency,
+            bitcoinPrices,
+          ).toLocaleString(localization.locale, {
+            maximumFractionDigits: 2,
+          })}`}
         />
 
         <BoxContainerWithText

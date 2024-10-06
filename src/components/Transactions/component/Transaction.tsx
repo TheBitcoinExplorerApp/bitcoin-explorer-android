@@ -49,15 +49,18 @@ export default function Transaction(props: TransactionProps) {
   const [transactionInfo, setTransactionInfo] = useState<TransactionInfo>({
     transactionData: {} as TransactionType,
     transactionHash: "",
+    lastBlockHeight: 0,
   });
 
   const getTransactionInfo = async (transactionHash: string) => {
     const result =
       await ModalServices.getTransactionTransactionsInfo(transactionHash);
+    const lastBlockHeight = await ModalServices.getLastBlockHeight();
 
     setTransactionInfo({
       transactionHash: result.transactionId,
       transactionData: result,
+      lastBlockHeight,
     });
   };
 
@@ -116,12 +119,14 @@ export default function Transaction(props: TransactionProps) {
         modalType="Transaction"
         transactionHash={transactionInfo.transactionHash}
         transactionInfo={transactionInfo.transactionData}
+        lastBlockHeight={transactionInfo.lastBlockHeight}
         handleModalClose={() => {
           setModalVisible(false);
           setTransactionInfo({
             ...transactionInfo,
             transactionData: {} as TransactionType,
             transactionHash: "",
+            lastBlockHeight: 0,
           });
         }}
       />

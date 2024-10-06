@@ -12,6 +12,7 @@ const ptBR = {
   fee: "Taxa",
   unconfirmed: "Não Confirmada",
   confirmed: "Confirmada",
+  confirmations: "Confirmações",
   date_time: "Data/Hora",
   size: "Tamanho",
   inputs_and_outputs: "Entradas e Saídas",

@@ -11,7 +11,7 @@ type DropdownCurrencyOptions = {
   value: CurrencyOptions;
 };
 
-type CountryFlagsType = {
+export type CountryFlagsType = {
   flag: string;
   currencySign: string;
   currency: CurrencyOptions;

@@ -39,6 +39,7 @@ export default function Search() {
   });
   const [data, setData] = useState<DataSearchType>({
     transactionInfo: {} as TransactionType,
+    lastBlockHeight: 0,
     addressInfo: {
       address: "",
       addressData: {} as AddressInfoType,
@@ -126,9 +127,12 @@ export default function Search() {
     const transactionInfo =
       await ModalServices.getTransactionTransactionsInfo(searchContent);
 
+    const lastBlockHeight = await ModalServices.getLastBlockHeight();
+
     setData({
       ...data,
       transactionInfo,
+      lastBlockHeight,
     });
   };
 
@@ -239,6 +243,7 @@ export default function Search() {
         transactionHash={searchContent}
         isVisible={modalVisibility.transactionModal}
         handleModalClose={handleTransactionModalClose}
+        lastBlockHeight={data.lastBlockHeight}
       />
 
       <Modal

@@ -20,6 +20,7 @@ export type TransactionModalProps = BasicModalProps & {
   modalType: "Transaction";
   transactionInfo: TransactionType;
   transactionHash: string;
+  lastBlockHeight: number;
 };
 
 export type AddressInfoType = {

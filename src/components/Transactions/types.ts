@@ -57,4 +57,5 @@ export type TransactionsData = {
 export type TransactionInfo = {
   transactionHash: string;
   transactionData: TransactionType;
+  lastBlockHeight: number;
 };

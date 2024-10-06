@@ -7,7 +7,6 @@ import {
   ScrollView,
   ActivityIndicator,
 } from "react-native";
-import { useShallow } from "zustand/react/shallow";
 import useAppStore from "src/stores/App/useAppStore";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import ModalServices from "src/services/ModalServices";
@@ -37,18 +36,25 @@ const styles = StyleSheet.create({
 });
 
 export default function TransactionModal(props: TransactionModalProps) {
-  const { isVisible, handleModalClose, transactionInfo, transactionHash } =
-    props;
-  const localization = useAppStore(useShallow((state) => state.localization));
+  const {
+    isVisible,
+    handleModalClose,
+    transactionInfo,
+    transactionHash,
+    lastBlockHeight,
+  } = props;
+
+  const { localization } = useAppStore();
 
   const transactionDataIsLoading = Object.values(transactionInfo).length === 0;
-  const transactionIsConfirmed = transactionInfo.statusTransaction?.blockHeight;
+  const transactionIsConfirmed = transactionInfo.statusTransaction?.confirmed;
 
   const showConfirmedContent = () => (
     <ConfirmedContent
       fee={transactionInfo.fee}
       size={transactionInfo.size}
       statusTransaction={transactionInfo.statusTransaction}
+      lastBlockHeight={lastBlockHeight}
     />
   );
 
@@ -85,7 +91,7 @@ export default function TransactionModal(props: TransactionModalProps) {
         contentContainerStyle={{
           marginTop: "38%",
           paddingBottom: "40%",
-          height: transactionDataIsLoading ? "100%" : "auto",
+          height: "100%",
           backgroundColor: "#101427",
         }}
       >

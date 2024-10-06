@@ -7,9 +7,10 @@ import { View, Text, StyleSheet } from "react-native";
 type BoxContainerWithTextProps = {
   firstText: string;
   secondText: string;
+  thirdText?: string;
   reverse?: boolean;
   secondTextWhite?: boolean;
-  width?: string;
+  width?: number | string;
   borderStyles?: {
     borderTopEndRadius?: number;
     borderBottomEndRadius?: number;
@@ -32,37 +33,50 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 15,
   },
+  infoContainer: {
+    alignItems: "center",
+  },
 });
 
 export default function BoxContainerWithText(props: BoxContainerWithTextProps) {
-  const { firstText, secondText, reverse, borderStyles } = props;
+  const { firstText, secondText, reverse, borderStyles, thirdText } = props;
 
   return (
     <View
-      style={[
-        styles.container,
-        {
-          flexDirection: reverse ? "row-reverse" : "row",
-          width: props.width || "100%",
-          borderRadius: 7,
-          borderTopEndRadius: borderStyles?.borderTopEndRadius,
-          borderBottomEndRadius: borderStyles?.borderBottomEndRadius,
-          borderTopStartRadius: borderStyles?.borderTopStartRadius,
-          borderBottomStartRadius: borderStyles?.borderBottomStartRadius,
-          borderBottomColor: borderStyles?.borderBottomColor,
-          borderBottomWidth: borderStyles?.borderBottomColor ? 0.1 : 0,
-        },
-      ]}
+      style={{
+        ...styles.container,
+        flexDirection: reverse ? "row-reverse" : "row",
+        width: typeof props.width === "number" ? props.width : "100%",
+        borderRadius: 7,
+        borderTopEndRadius: borderStyles?.borderTopEndRadius,
+        borderBottomEndRadius: borderStyles?.borderBottomEndRadius,
+        borderTopStartRadius: borderStyles?.borderTopStartRadius,
+        borderBottomStartRadius: borderStyles?.borderBottomStartRadius,
+        borderBottomColor: borderStyles?.borderBottomColor,
+        borderBottomWidth: borderStyles?.borderBottomColor ? 0.1 : 0,
+      }}
     >
       <Text style={styles.firstText}>{firstText}</Text>
-      <Text
-        style={{
-          color: props.secondTextWhite ? "#FFF" : "#DF7800",
-          fontSize: 15,
-        }}
-      >
-        {secondText}
-      </Text>
+      <View style={styles.infoContainer}>
+        <Text
+          style={{
+            color: props.secondTextWhite ? "#FFF" : "#DF7800",
+            fontSize: 15,
+          }}
+        >
+          {secondText}
+        </Text>
+        {thirdText && (
+          <Text
+            style={{
+              color: "#FFF",
+              fontSize: 14,
+            }}
+          >
+            {thirdText}
+          </Text>
+        )}
+      </View>
     </View>
   );
 }

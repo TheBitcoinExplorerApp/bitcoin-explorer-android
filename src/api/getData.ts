@@ -16,6 +16,7 @@ import {
   blockInfo,
   mempoolCoinsPrice,
   blockchainInfoCoinsPrice,
+  getLastBlockHeight,
 } from "src/env/apiLinks";
 import { AddressInfoType } from "src/components/Modal/types";
 import { BlockchainInfoCoinsPriceType, MempoolCoinsPriceType } from "./types";
@@ -85,6 +86,13 @@ export const getBlockInfo = async (blockHash: string) => {
   const url = `${blockInfo}/${blockHash}`;
   const response = await fetch(url);
   const data: BlockInfoType = await response.json();
+
+  return data;
+};
+
+export const getLastBlock = async () => {
+  const response = await fetch(`${getLastBlockHeight}`);
+  const data: number = await response.json();
 
   return data;
 };

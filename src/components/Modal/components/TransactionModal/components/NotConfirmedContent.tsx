@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { View, StyleSheet } from "react-native";
-import { useShallow } from "zustand/react/shallow";
 import useAppStore from "src/stores/App/useAppStore";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
+import { currencyProps } from "src/utils/dropDownOptions";
 
 type NotConfirmedContentProps = {
   size: number;
@@ -17,20 +17,33 @@ const styles = StyleSheet.create({
 
 export default function NotConfirmedContent(props: NotConfirmedContentProps) {
   const { fee, size } = props;
-  const localization = useAppStore(useShallow((state) => state.localization));
+
+  const {
+    localization,
+    selectedCurrency,
+    bitcoinPrice: bitcoinPrices,
+  } = useAppStore();
+
+  const currencyOption = currencyProps.find(
+    (currencyProp) => currencyProp.currency === selectedCurrency,
+  );
+
+  const price =
+    bitcoinPrices.mempool[selectedCurrency] ||
+    bitcoinPrices.blockchainInfo[selectedCurrency].buy;
+  const feeInCurrency = (fee / 100000000) * price;
 
   return (
     <View style={styles.container}>
       <View
         style={{
+          maxWidth: 135,
           flexDirection: "row",
-          justifyContent: "flex-end",
         }}
       >
         <BoxContainerWithText
           firstText={localization.t("unconfirmed")}
           secondText=""
-          width="auto"
         />
       </View>
 
@@ -58,6 +71,13 @@ export default function NotConfirmedContent(props: NotConfirmedContentProps) {
         <BoxContainerWithText
           firstText={localization.t("fee")}
           secondText={`${(fee / 100000000).toString()} BTC`}
+          thirdText={`${currencyOption.currencySign} ${feeInCurrency.toLocaleString(
+            localization.locale,
+            {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            },
+          )}`}
           borderStyles={{
             borderTopEndRadius: 0,
             borderTopStartRadius: 0,

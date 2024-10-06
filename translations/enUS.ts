@@ -12,6 +12,7 @@ const enUS = {
   fee: "Fee",
   unconfirmed: "Unconfirmed",
   confirmed: "Confirmed",
+  confirmations: "Confirmations",
   date_time: "Date/Time",
   size: "Size",
   inputs_and_outputs: "Inputs and Outputs",

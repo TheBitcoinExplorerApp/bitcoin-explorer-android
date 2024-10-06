@@ -8,7 +8,6 @@ import {
   ScrollView,
 } from "react-native";
 import CustomActivityIndicator from "src/components/CustomActivityIndicator/CustomActivityIndicator";
-import { useShallow } from "zustand/react/shallow";
 import ModalServices from "src/services/ModalServices";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import useAppStore from "src/stores/App/useAppStore";
@@ -38,7 +37,7 @@ export default function AddressModal(props: AddressModalProps) {
   const { addressInfo, addressTransactions, isVisible, handleModalClose } =
     props;
   const { address, addressData } = addressInfo;
-  const localization = useAppStore(useShallow((state) => state.localization));
+  const { localization } = useAppStore();
 
   const isLoading = Object.values(addressData).length === 0;
   const showLoading = <CustomActivityIndicator />;

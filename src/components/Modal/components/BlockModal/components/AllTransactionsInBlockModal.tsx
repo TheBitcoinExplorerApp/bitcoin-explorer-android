@@ -8,9 +8,16 @@ import {
   outputTransactions as outputTransactionsType,
   TransactionType,
 } from "src/components/Transactions/types";
+import { CurrencyOptions } from "src/api/types";
+import { useAppStoreStateTypes } from "src/stores/App/useAppStore.types";
+import { CountryFlagsType } from "src/utils/dropDownOptions";
 
 type AllTransactionsInTransactionModalProps = {
+  locale: string;
   data: TransactionType;
+  currencyOption: CountryFlagsType;
+  selectedCurrency: CurrencyOptions;
+  bitcoinPrices: useAppStoreStateTypes["bitcoinPrice"];
 };
 
 const styles = StyleSheet.create({
@@ -65,12 +72,35 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
   },
+  priceText: {
+    color: "#DF7800",
+    fontSize: 12,
+    textAlign: "center",
+  },
 });
+
+const calcBtcToValueTransaction = (
+  price: number,
+  qtdTransaction: number,
+  locale: string,
+  selectedCurrency: CountryFlagsType,
+) => {
+  const currencyTransactionValue = (price * qtdTransaction).toLocaleString(
+    locale,
+    {
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
+    },
+  );
+
+  return `${selectedCurrency.currencySign} ${currencyTransactionValue}`;
+};
 
 export default function AllTransactionsInTransactionModal(
   props: AllTransactionsInTransactionModalProps,
 ) {
-  const { data } = props;
+  const { data, bitcoinPrices, selectedCurrency, currencyOption, locale } =
+    props;
   const {
     transactionId,
     statusTransaction,
@@ -78,6 +108,9 @@ export default function AllTransactionsInTransactionModal(
     outputTransactions,
   } = data;
 
+  const price =
+    bitcoinPrices.mempool[selectedCurrency] ||
+    bitcoinPrices.blockchainInfo[selectedCurrency].buy;
   const formattedDate = formatDate(statusTransaction.blockTime);
 
   const coinBaseTransaction = () => (
@@ -95,6 +128,14 @@ export default function AllTransactionsInTransactionModal(
         <Text style={styles.textStyles}>
           {transaction.prevout.value / 100000000} BTC
         </Text>
+        <Text style={styles.priceText}>
+          {calcBtcToValueTransaction(
+            price,
+            transaction.prevout.value / 100000000,
+            locale,
+            currencyOption,
+          )}
+        </Text>
       </View>
     );
   };
@@ -104,6 +145,7 @@ export default function AllTransactionsInTransactionModal(
       <View key={`${nanoid()}`}>
         <Text style={styles.textStyles}>OP_RETURN</Text>
         <Text style={styles.textStyles}>0.00000000 BTC</Text>
+        <Text style={styles.priceText}>{currencyOption.currencySign} 0</Text>
       </View>
     );
   };
@@ -116,6 +158,14 @@ export default function AllTransactionsInTransactionModal(
         </Text>
         <Text style={styles.textStyles}>
           {outputTransaction.value / 100000000} BTC
+        </Text>
+        <Text style={styles.priceText}>
+          {calcBtcToValueTransaction(
+            price,
+            outputTransaction.value / 100000000,
+            locale,
+            currencyOption,
+          )}
         </Text>
       </View>
     );

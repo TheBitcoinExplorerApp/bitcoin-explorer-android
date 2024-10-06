@@ -5,6 +5,7 @@ import {
   getAddressTransactions,
   getBlockHash,
   getBlockInfo,
+  getLastBlock,
 } from "src/api/getData";
 import formatBlockTransactionsInfo from "src/utils/formatBlockTransactionsInfo";
 // eslint-disable-next-line import/no-extraneous-dependencies -- eslint is looking into the wrong package.json
@@ -18,6 +19,12 @@ class ModalServices {
     const res = await getBlockTransactions(blockHash);
 
     return formatBlockTransactionsInfo(res);
+  }
+
+  static async getLastBlockHeight() {
+    const lastBlockHeight = await getLastBlock();
+
+    return lastBlockHeight;
   }
 
   static async getBlockHash(blockHeight: string) {

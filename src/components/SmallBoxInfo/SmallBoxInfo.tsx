@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 14,
   },
+  price: {
+    color: "#DF7800",
+  },
 });
 
 export default function SmallBoxInfo(props: SmallBoxInfoProps) {
@@ -40,9 +43,7 @@ export default function SmallBoxInfo(props: SmallBoxInfoProps) {
         // eslint-disable-next-line react/no-array-index-key
         <View style={styles.boxContainer} key={idx}>
           <Text style={styles.text}>{infos.title} sat/vB</Text>
-          {/* <Text style={styles.text}>R$ {infos.value}</Text>
-            #TODO: take price value from another endpoint to calculate the value in BRL
-          */}
+          <Text style={styles.price}>{infos.value}</Text>
         </View>
       ))}
     </View>

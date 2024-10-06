@@ -2,9 +2,9 @@
 import { useShallow } from "zustand/react/shallow";
 import { View, StyleSheet } from "react-native";
 import { formatDate } from "src/utils/formatBlockInfo";
-import { TransactionType } from "src/components/Modal/types";
 import BoxContainerWithText from "src/components/BoxContainerWithText/BoxContainerWithText";
 import useAppStore from "src/stores/App/useAppStore";
+import { TransactionType } from "src/components/Transactions/types";
 
 type ConfirmedContentProps = Required<
   Pick<TransactionType, "fee" | "size" | "statusTransaction">

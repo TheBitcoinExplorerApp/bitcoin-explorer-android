@@ -1,5 +1,7 @@
-import { TransactionType } from "src/components/Modal/types";
-import { TransactionsData } from "src/components/Transactions/types";
+import {
+  TransactionsData,
+  TransactionType,
+} from "src/components/Transactions/types";
 
 const formatBlockTransactionsInfo = (data: TransactionsData[]) => {
   const formattedData: TransactionType[] = data.map((transaction) => ({

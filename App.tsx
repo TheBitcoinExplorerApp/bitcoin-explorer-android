@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 /// <reference types="@welldone-software/why-did-you-render" />
 
-import "./wdyr";
+// import "./wdyr";
 import "react-native-get-random-values";
 import Blocks from "src/screens/Blocks";
 import Transactions from "src/screens/Transactions";
@@ -10,7 +10,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import QueriesContainer from "src/context/QueriesContainer";
-import Home from "./src/screens/Home";
+import Configurations from "src/screens/Configurations";
+import Home from "src/screens/Home";
 
 const Stack = createNativeStackNavigator();
 export const AppQueryApiDataProvider = new QueryClient();
@@ -40,6 +41,14 @@ export default function App() {
             <Stack.Screen
               name="Transactions"
               component={Transactions}
+              options={{
+                headerShown: false,
+                animation: "none",
+              }}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={Configurations}
               options={{
                 headerShown: false,
                 animation: "none",

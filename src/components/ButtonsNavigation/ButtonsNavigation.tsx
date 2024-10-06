@@ -2,15 +2,17 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useShallow } from "zustand/react/shallow";
 import useAppStore from "src/stores/App/useAppStore";
+import { ScreenOptions } from "src/stores/App/useAppStore.types";
 import HouseIcon from "../../assets/house.svg";
 import BlocksIcon from "../../assets/blocks.svg";
 import TransactionsIcon from "../../assets/transactions.svg";
+import SettingsIcon from "../../assets/settings.svg";
 
 type ButtonsNavigationProps = {
   // # TODO: SEARCH FOR A BETTER WAY TO TYPE THIS
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   navigation: any;
-  actualScreen: "Home" | "Blocks" | "Transactions";
+  actualScreen: ScreenOptions;
 };
 
 const styles = StyleSheet.create({
@@ -38,6 +40,7 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
   const blocksColor = actualScreen === "Blocks" ? "#DF7800" : "#D6D6D6";
   const transactionsColor =
     actualScreen === "Transactions" ? "#DF7800" : "#D6D6D6";
+  const settingsColor = actualScreen === "Settings" ? "#DF7800" : "#D6D6D6";
 
   return (
     <View style={styles.container}>
@@ -51,6 +54,7 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
           <Text
             style={{
               color: homeColor,
+              fontSize: 12,
             }}
           >
             Home
@@ -68,6 +72,7 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
           <Text
             style={{
               color: blocksColor,
+              fontSize: 12,
             }}
           >
             {localization.t("blocks")}
@@ -85,9 +90,28 @@ export default function ButtonsNavigation(props: ButtonsNavigationProps) {
           <Text
             style={{
               color: transactionsColor,
+              fontSize: 12,
             }}
           >
             {localization.t("transactions")}
+          </Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Settings");
+        }}
+      >
+        <View style={styles.buttonContainer}>
+          <SettingsIcon style={{ color: settingsColor }} />
+          <Text
+            style={{
+              color: settingsColor,
+              fontSize: 12,
+            }}
+          >
+            {localization.t("settings")}
           </Text>
         </View>
       </TouchableOpacity>

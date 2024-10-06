@@ -4,9 +4,9 @@ import { useShallow } from "zustand/react/shallow";
 import Modal from "src/components/Modal/Modal";
 import useAppStore from "src/stores/App/useAppStore";
 import ModalServices from "src/services/ModalServices";
-import { TransactionType } from "src/components/Modal/types";
 import { initialStateBlocks } from "src/__mocks__/initialStates";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { TransactionType } from "src/components/Transactions/types";
 import { BlockProps, BlockType } from "./type";
 
 const styles = StyleSheet.create({

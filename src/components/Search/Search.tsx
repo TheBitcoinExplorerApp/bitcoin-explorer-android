@@ -8,7 +8,8 @@ import { View, TextInput, StyleSheet } from "react-native";
 import { initialStateBlocks } from "src/__mocks__/initialStates";
 import { DataSearchType } from "./types";
 import Modal from "../Modal/Modal";
-import { AddressInfoType, TransactionType } from "../Modal/types";
+import { AddressInfoType } from "../Modal/types";
+import { TransactionType } from "../Transactions/types";
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,6 @@
 import { BlockType } from "../BlocksInfo/components/Block/type";
-import { AddressInfoType, TransactionType } from "../Modal/types";
+import { AddressInfoType } from "../Modal/types";
+import { TransactionType } from "../Transactions/types";
 
 export type DataSearchType = {
   transactionInfo: TransactionType;

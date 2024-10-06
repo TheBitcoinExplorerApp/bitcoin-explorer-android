@@ -4,9 +4,8 @@ import Modal from "src/components/Modal/Modal";
 import { useShallow } from "zustand/react/shallow";
 import useAppStore from "src/stores/App/useAppStore";
 import ModalServices from "src/services/ModalServices";
-import { TransactionType } from "src/components/Modal/types";
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { TransactionInfo, TransactionState } from "../types";
+import { TransactionInfo, TransactionState, TransactionType } from "../types";
 
 type TransactionProps = {
   transactions: TransactionState[];

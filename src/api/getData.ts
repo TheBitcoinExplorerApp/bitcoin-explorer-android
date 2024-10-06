@@ -1,6 +1,9 @@
 import { BlockInfoType } from "src/components/BlocksInfo/types";
 import { FeesType } from "src/components/PrioritiesTax/types";
-import { BasicTransactionInfo } from "src/components/Transactions/types";
+import {
+  BasicTransactionInfo,
+  TransactionsData,
+} from "src/components/Transactions/types";
 import {
   taxTransactions,
   blocksInfo,
@@ -11,8 +14,11 @@ import {
   addressTransactions,
   blockHashBasedOnHeight,
   blockInfo,
+  mempoolCoinsPrice,
+  blockchainInfoCoinsPrice,
 } from "src/env/apiLinks";
-import { TransactionsData } from "../components/Transactions/types";
+import { AddressInfoType } from "src/components/Modal/types";
+import { BlockchainInfoCoinsPriceType, MempoolCoinsPriceType } from "./types";
 
 export const getTaxes = async () => {
   const response = await fetch(taxTransactions);
@@ -51,7 +57,7 @@ export const getBlockTransactions = async (hash: string) => {
 export const getAddressInfo = async (address: string) => {
   const url = `${addressInfo}/${address}`;
   const response = await fetch(url);
-  const data: AddressDataType = await response.json();
+  const data: AddressInfoType = await response.json();
 
   return data;
 };
@@ -81,4 +87,17 @@ export const getBlockInfo = async (blockHash: string) => {
   const data: BlockInfoType = await response.json();
 
   return data;
+};
+
+export const getPrices = async (): Promise<{
+  mempool: MempoolCoinsPriceType;
+  blockchainInfo: BlockchainInfoCoinsPriceType;
+}> => {
+  const mempoolResponse = await fetch(mempoolCoinsPrice);
+  const blockchainInfoResponse = await fetch(blockchainInfoCoinsPrice);
+  const mempool: MempoolCoinsPriceType = await mempoolResponse.json();
+  const blockchainInfo: BlockchainInfoCoinsPriceType =
+    await blockchainInfoResponse.json();
+
+  return { mempool, blockchainInfo };
 };

@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { useShallow } from "zustand/react/shallow";
 import useAppStore from "src/stores/App/useAppStore";
 import { View, Text, StyleSheet } from "react-native";
-import { TransactionType } from "src/components/Modal/types";
+import { TransactionType } from "src/components/Transactions/types";
 
 type AllTransactionsInTransactionModalProps = {
   inputTransactions: TransactionType["inputTransactions"];

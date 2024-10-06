@@ -17,12 +17,23 @@ const useAppStore = create<useAppStoreStateTypes>()((set) => ({
   isRefreshing: false,
   transactions: null,
   localization: i18n,
+  bitcoinPrice: {
+    mempool: null,
+    blockchainInfo: null,
+  },
+  selectedCurrency: i18n.locale === "en" ? "USD" : "BRL",
 
   setFees: (fees) => set({ fees }),
   setBlocks: (blocks) => set({ blocks }),
   setIsLoading: (isLoading) => set({ isLoading }),
   setIsRefreshing: (isRefreshing) => set({ isRefreshing }),
   setTransactions: (transactions) => set({ transactions }),
+  setActualLanguage: (language) => {
+    i18n.locale = language;
+    set({ localization: i18n });
+  },
+  setBitcoinPrice: (bitcoinPrice) => set({ bitcoinPrice }),
+  setSelectedCurrency: (selectedCurrency) => set({ selectedCurrency }),
 }));
 
 export default useAppStore;

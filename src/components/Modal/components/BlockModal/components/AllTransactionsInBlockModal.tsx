@@ -2,11 +2,11 @@
 import { nanoid } from "nanoid";
 import { formatDate } from "src/utils/formatBlockInfo";
 import ModalServices from "src/services/ModalServices";
-import { TransactionType } from "src/components/Modal/types";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import {
   inputTransactions as inputTransactionsType,
   outputTransactions as outputTransactionsType,
+  TransactionType,
 } from "src/components/Transactions/types";
 
 type AllTransactionsInTransactionModalProps = {

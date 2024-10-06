@@ -1,4 +1,16 @@
-import { TransactionType } from "../Modal/types";
+export type TransactionType = {
+  transactionId: string;
+  size: number;
+  fee: number;
+  inputTransactions: inputTransactions[];
+  outputTransactions: outputTransactions[];
+  statusTransaction: {
+    confirmed: boolean;
+    blockHeight?: number;
+    blockHash?: string;
+    blockTime?: number;
+  };
+};
 
 export type TransactionState = {
   transactionId: string;

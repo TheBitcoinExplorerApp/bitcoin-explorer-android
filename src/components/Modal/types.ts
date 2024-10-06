@@ -1,5 +1,5 @@
 import { BlockType } from "../BlocksInfo/components/Block/type";
-import { inputTransactions, outputTransactions } from "../Transactions/types";
+import { TransactionType } from "../Transactions/types";
 
 type BasicModalProps = {
   modalType: "Transaction" | "Block" | "Address" | "Information";
@@ -20,20 +20,6 @@ export type TransactionModalProps = BasicModalProps & {
   modalType: "Transaction";
   transactionInfo: TransactionType;
   transactionHash: string;
-};
-
-export type TransactionType = {
-  transactionId: string;
-  size: number;
-  fee: number;
-  inputTransactions: inputTransactions[];
-  outputTransactions: outputTransactions[];
-  statusTransaction: {
-    confirmed: boolean;
-    blockHeight?: number;
-    blockHash?: string;
-    blockTime?: number;
-  };
 };
 
 export type AddressInfoType = {
